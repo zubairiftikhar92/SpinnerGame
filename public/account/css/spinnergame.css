@@ -1,0 +1,958 @@
+.coin_video {
+  position: absolute;
+  display: none;
+}
+
+body {
+  background-color: #000000;
+  height: auto;
+}
+
+/* START BACKGROUNG ANIMATION */
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* Full height for the viewport */
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  /* Disable interaction with the background */
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(183, 1, 255, 0.3) 60%, rgba(255, 255, 255, 0) 100%);
+  animation: fall infinite linear;
+  opacity: 0.7;
+}
+
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  /* Ensure content is in front of the circles */
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+/* END BACKGROUNG ANIMATION */
+.arrow {
+  display: none;
+  transform: rotate(166deg);
+  width: 250px;
+  position: relative;
+  top: 75%;
+  left: 15%;
+  z-index: 1;
+}
+
+#spin-btn {
+  background: transparent;
+}
+
+.spin_btn {
+  position: relative;
+  bottom: 326px;
+  /* left: 0px; */
+  border: none;
+}
+
+/* .float {
+  animation: float 1s infinite;
+} */
+
+.col {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.spin-btn {
+  height: 146px;
+}
+
+#spinner {
+  height: 500px;
+  position: relative;
+  /* display: none; */
+  z-index: 0;
+  /* left: 300px; */
+}
+
+.pin {
+  height: 100px;
+}
+
+/* .shake {
+  animation: shake 3s infinite;
+} */
+
+.spin {
+  animation: spin 15s infinite;
+}
+
+.pop-up-content {
+  text-shadow: #4800ff 1px 0 10px;
+  color: #f4f1fd;
+  background: linear-gradient(30deg, rgba(47, 1, 74, 1) 15%, rgba(0, 5, 24, 1) 85%);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  bottom: 36%;
+  font-family: "Abril Fatface", cursive;
+  display: none;
+  /* animation: enlarge 1s infinite; */
+  z-index: 1;
+}
+
+.instruct {
+  display: none;
+  color: rgb(255, 0, 0);
+  font-weight: bolder;
+  border: 0.5rem dotted #ffd81f;
+  background: rgba(255, 255, 255, 0.418);
+  padding: 0.5rem;
+  animation: enlarge 1s infinite;
+}
+
+.pop-up-content h1 {
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.pop-up-para {
+  text-align: center;
+  font-size: 2rem;
+  /* border: 0.5rem dotted #ffd81f; */
+}
+.pop-up-btn{
+  color: #ffffff;
+  padding: 6px 25px;
+  width: auto;
+  text-align: center;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background-color: #0066ff;
+  /* background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box; */
+  animation: 2s rotate linear infinite;
+  font-family: "Poppins", sans-serif;
+}
+.pop-up-btn:hover{
+  box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
+  transition: .5s;
+}
+
+.wheel-stand {
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  height: 120px;
+  /* left: 30px; */
+}
+
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: auto;
+}
+
+/* START USERPROFILE */
+.user_profile {
+  padding: 9px 46px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  width: auto;
+  text-align: center;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box;
+  animation: 2s rotate linear infinite;
+}
+
+.user_profile span {
+  padding: 0px 7px;
+}
+
+/* END USERPROFILE */
+/* START CSS COUNDOWN */
+.items_3 {
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+  border: 1px solid #00061e;
+  padding: 12px 17px;
+  border-radius: 13px;
+  background-color: #000000;
+  box-shadow: rgb(87 3 245) 0px 0px 11px, rgb(87 3 245) 0px 0px 6px;
+  margin-top: 1rem;
+}
+
+.count_digit {
+  display: flex;
+  align-items: center;
+}
+
+.coun_down {
+  display: flex;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: #01021cd2;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle),
+      #9100d4,
+      #3600c9,
+      #0068c9) border-box;
+  animation: 2s rotate linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.coun_down img {
+  width: 20px;
+}
+
+#days {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 25px;
+  padding: 0px 7px;
+}
+
+#days span {
+  font-size: 11px;
+  color: #acacac;
+}
+
+#hours {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 25px;
+  padding: 0px 7px;
+}
+
+#hours span {
+  font-size: 11px;
+  color: #acacac;
+}
+
+#minutes {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 25px;
+  padding: 0px 7px;
+
+}
+
+#minutes span {
+  font-size: 11px;
+  color: #acacac;
+}
+
+#seconds {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 25px;
+  padding: 0px 7px;
+}
+
+#seconds span {
+  font-size: 11px;
+  color: #acacac;
+}
+
+/* END CSS COUNDOWN */
+
+
+/* START START RANKING */
+.sta_r {
+  background: #010327ec;
+  color: #ffffff;
+  padding: 7px 17px;
+  border-radius: 32px;
+  width: auto;
+  text-align: center;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle),
+      #9100d4,
+      #3600c9,
+      #0068c9) border-box;
+  animation: 2s rotate linear infinite;
+
+}
+
+.star_text {
+  background: #010327ec;
+  color: #ffffff;
+  padding: 7px 17px;
+  border-radius: 32px;
+  width: auto;
+  text-align: center;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle),
+      #9100d4,
+      #3600c9,
+      #0068c9) border-box;
+  animation: 2s rotate linear infinite;
+}
+
+.star_text span {
+  padding: 0px 7px;
+}
+
+.star_text img {
+  margin-top: -4px;
+  width: 20px;
+}
+
+.sta_r .icon span {
+  font-size: 16px;
+}
+
+.sta_r .icon img {
+  width: 20px;
+  margin-top: -5px;
+}
+
+.icon i {
+  font-size: 14px;
+}
+
+/* END START RANKING */
+
+/* START INVITE_REWARD CSS */
+.modal_body_invite {
+  background: linear-gradient(30deg, rgba(47, 1, 74, 1) 15%, rgba(0, 5, 24, 1) 85%);
+  border-radius: 30px;
+}
+
+.modal_body_invite h5 {
+  color: #fff;
+}
+
+.modal_body_invite .modal-header button {
+  background-color: aliceblue;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+
+.modal_body_invite .modal-header {
+  border-bottom: 1px solid #939393ad
+}
+
+.invite_reward {
+  display: flex;
+  margin-top: -5rem;
+  justify-content: space-between;
+  width: 450px;
+  border: 1px solid #00061e;
+  padding: 12px 17px;
+  border-radius: 13px;
+  background-color: #000000;
+  box-shadow: rgb(87 3 245) 0px 0px 11px, rgb(87 3 245) 0px 0px 6px;
+}
+
+.invite_reward button {
+  width: 110px;
+  color: #ffffff;
+  padding: 7px 17px;
+  border-radius: 32px;
+  width: auto;
+  text-align: center;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box;
+  animation: 2s rotate linear infinite;
+}
+
+.invite_reward button span {
+  padding: 0px 7px;
+}
+
+.invite_button {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #04011360;
+  border: 1px solid rgb(88 88 88 / 62%);
+  border-radius: 14px;
+}
+
+.invite_button button {
+  padding: 5px 10px;
+  border: 1px solid #0000;
+  border-radius: 8px;
+  background: linear-gradient(#08003a, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box;
+  animation: 2s rotate linear infinite;
+  color: aliceblue;
+}
+
+.invite_button button input {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+}
+.invite_button button input:focus-visible {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+}
+.invite_button button span {
+  padding: 0px 7px;
+}
+
+.invite_list ul {
+  color: #fff;
+  padding: 1rem;
+}
+
+/* END INVITE_REWARD CSS */
+
+.wallet_button button{
+  padding: 7px 17px;
+  border: 1px solid #0000;
+  border-radius: 8px;
+  background: linear-gradient(#08003a, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box;
+  animation: 2s rotate linear infinite;
+  color: aliceblue;
+  MARGIN-TOP: 12PX;
+}
+
+.custom-alert{
+      /* border: 1px solid red; */
+      padding: 11px 32px;
+      margin-top: 24px;
+      border-radius: 7px;
+      background-color: #000000;
+      box-shadow: rgb(87 3 245) 0px 0px 14px 11px, rgb(87 3 245) 0px 0px 6px;
+      margin-top: 2rem;
+      text-shadow: #ff04bc 1px 0 10px;
+      color: #dcf5e9;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(3600deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    top: 70px;
+  }
+
+  50% {
+    top: 90px;
+  }
+
+  100% {
+    top: 70px;
+  }
+}
+
+@keyframes shake {
+  0% {
+    left: -5px;
+  }
+
+  25% {
+    left: 5px;
+  }
+
+  50% {
+    left: -5px;
+  }
+
+  75% {
+    left: 5px;
+  }
+
+  100% {
+    left: -5px;
+  }
+}
+
+@keyframes enlarge {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #spinner {
+    height: 310px;
+  }
+
+  .spin_btn {
+    bottom: 200px;
+  }
+
+  .spin-btn {
+    height: 90px;
+  }
+
+  .pin {
+    height: 40px;
+  }
+
+  .items_3 {
+    width: 310px;
+    padding: 8px 5px;
+    border-radius: 8px;
+  }
+
+  .invite_reward {
+    width: 310px;
+    padding: 8px 5px;
+    border-radius: 8px;
+  }
+
+  .coun_down img {
+    width: 16px;
+  }
+
+  #hours {
+    font-size: 12px;
+    padding: 0 3px;
+  }
+
+  #hours span {
+    font-size: 8px;
+  }
+
+  #minutes {
+    font-size: 12px;
+    padding: 0 3px;
+  }
+
+  #minutes span {
+    font-size: 8px;
+  }
+
+  #seconds {
+    font-size: 12px;
+    padding: 0 3px;
+  }
+
+  #seconds span {
+    font-size: 8px;
+  }
+
+  #days {
+    font-size: 12px;
+    padding: 0 3px;
+  }
+
+  #days span {
+    font-size: 8px;
+  }
+
+  .star_text {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .sta_r {
+    padding: 1px 17px;
+  }
+
+  .sta_r .icon img {
+    width: 16px;
+  }
+
+  .sta_r .icon span {
+    font-size: 12px;
+  }
+
+  .star_text img {
+    width: 16px;
+  }
+}
+
+
+/* START SIGNUP CSS */
+
+
+/* Import Google font - Poppins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins",
+    sans-serif;
+}
+
+.signup_login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+}
+
+.wrapper {
+  height: 96vh;
+  position: relative;
+  max-width: 470px;
+  width: 100%;
+  border-radius: 18px;
+  padding: 20px 30px 120px;
+  background: linear-gradient(30deg, rgba(47, 1, 74, 1) 15%, rgba(0, 5, 24, 1) 85%);
+  box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.form.login {
+  position: absolute;
+  left: 50%;
+  bottom: -86%;
+  transform: translateX(-50%);
+  width: calc(100% + 220px);
+  padding: 15px 140px;
+  border-radius: 50%;
+  height: 100%;
+  border: 1px solid rgb(255 255 255 / 46%);
+  background: linear-gradient(30deg, rgba(47, 1, 74, 1) 15%, rgba(0, 5, 24, 1) 85%);
+  transition: all 0.6s ease;
+}
+
+.wrapper.active .form.login {
+  margin-bottom: 166px;
+  overflow: scroll !important;
+  bottom: -39%;
+  border-radius: 30%;
+
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form header {
+  font-size: 30px;
+  text-align: center;
+  text-shadow: #4800ff 1px 0 10px;
+  color: #f4f1fd;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form.login header {
+  text-shadow: #4800ff 1px 0 10px;
+  color: #f4f1fd;
+
+}
+
+.wrapper.active .form.login header {
+  opacity: 1;
+}
+
+.wrapper.active .signup header {
+  opacity: 0.6;
+}
+
+.wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+form input {
+  height: 45px;
+  outline: none;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fffefe;
+  border-radius: 8px;
+  background-color: #04011360;
+  border: 1px solid rgb(255 255 255 / 46%);
+}
+.spinner_signup_btn {
+height: 45px;
+outline: none;
+padding: 0 15px;
+font-size: 16px;
+font-weight: 400;
+color: #fffefe;
+border-radius: 8px;
+background-color: #04011360;
+border: 1px solid rgb(255 255 255 / 46%);
+}
+.form.login input {
+  border: 1px solid #aaa;
+}
+
+.form.login input:focus {
+  box-shadow: 0 1px 0 #ddd;
+}
+
+form .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox input[type="checkbox"] {
+  height: 16px;
+  width: 16px;
+  accent-color: #0080FF;
+  cursor: pointer;
+}
+
+form .checkbox label {
+  cursor: pointer;
+  color: #fff;
+}
+
+form a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+form a:hover {
+  text-decoration: underline;
+}
+
+form input[type="submit"] {
+  margin-top: 15px;
+  padding: none;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form.login input[type="submit"] {
+  background-color: #04011360;
+  border: 1px solid rgb(255 255 255 / 46%);
+  color: #fff;
+}
+
+/* END SIGNUP CSS */
+
+
+
+/* START REWARD CSS */
+.modal_body_reward {
+  background-image: url(../landing_page_images/assets//cop2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30px;
+  border: none;
+}
+
+.modal_body_reward h5 {
+  color: #fff;
+}
+.modal_body_reward h3 {
+  color: #fff;
+}
+
+.modal_body_reward .modal-header button {
+  background-color: aliceblue;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+
+.modal_body_reward .modal-header {
+  border-bottom: 1px solid #939393ad
+}
+
+.reward_main h1 {
+  background: -webkit-linear-gradient(#ff01ea, #c6a2ff, #3a00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: #4800ff 1px 0 10px;
+}
+
+.social-link {
+  padding: 11px 20px;
+  background-color: #00000070;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(
+        var(--angle),
+        #070707,
+        #687aff
+      ) border-box;
+  animation: 10s rotate_1 linear infinite;
+}
+@keyframes rotate_1 {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.social-link:hover{
+  box-shadow: 0px 1px 6px 4px #5c00ff;
+  cursor: pointer;
+}
+.social-text{
+  color: #fff;
+}
+.claim-button {
+  position: relative;
+  padding: 4px 12px;
+  border-radius: 17px;
+  border: 1px solid rgb(118 61 255);
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+.badge-light {
+  position: relative;
+  padding: 7px 12px;
+  border-radius: 17px;
+  border: 1px solid rgb(118 61 255);
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+}
+
+.claim-button.disabled {
+  background-color: lightgray;
+  cursor: not-allowed;
+  width: 64px;
+  height: 31px;
+  background-color: black;
+}
+
+.claim-button .loader {
+  border: 2px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: load_er 5s linear infinite;
+  position: absolute;
+  top: 16%;
+  left: 36%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes load_er {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.points-display {
+  font-size: 20px;
+  margin-bottom: 30px;
+  font-weight: 300;
+  color: #fff;
+}
+.social-link, .url-claim {
+  margin-bottom: 20px;
+}
+
+#claim-url-btn {
+  cursor: pointer;
+  position: relative;
+}
+
+#claim-url-btn.disabled {
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+#url-input {
+  width:  250px;
+  margin-right: 10px;
+  font-size: 15px;
+  background-color: transparent;
+  border-bottom: 1px solid #c40eff;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+}
+
+/* END REWARD CSS */
+
+
+/* START ZERO SPIN MODAL */
+.swal-modal{
+  background: linear-gradient(30deg, rgba(47, 1, 74, 1) 15%, rgba(0, 5, 24, 1) 85%);
+  box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
+}
+.swal-title{
+  color: #fff;
+}
+.swal-text{
+  color: #fff;
+}
+/* START ZERO SPIN MODAL */
