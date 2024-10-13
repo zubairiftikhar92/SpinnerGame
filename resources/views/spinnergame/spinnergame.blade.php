@@ -23,10 +23,10 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet" />
     <style>
-        .disabled {
-            pointer-events: none;
-            opacity: 0.5;
-        }
+    .disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
     </style>
 
 </head>
@@ -43,7 +43,10 @@
                 <!-- START PROFILE -->
                 <div class="user_profile">
                     <img src="{{ asset('account/landing_page_images/assets/profile7.svg') }}"
-                        alt><span>{{ session('user_email') }}</span>
+                        alt><span style="margin-right:20px">{{ session('user_email') }}</span>
+                    <button type="button" class="sta_r">
+                            <span>Login</span>
+                        </button>
                 </div>
                 <!-- END PROFILE -->
                 <div class="items_3">
@@ -63,9 +66,9 @@
                     <!-- COWNDOWN -->
                 </div>
                 @if (session('message'))
-                    <div class="custom-alert" id="message">
-                        {{ session('message') }}
-                    </div>
+                <div class="custom-alert" id="message">
+                    {{ session('message') }}
+                </div>
                 @endif
                 <img id="arrow" class="arrow float"
                     src="{{ asset('account/landing_page_images/assets/7-comic-arrow-1.png') }}" />
@@ -96,30 +99,27 @@
                     src="{{ asset('account/landing_page_images/assets/spin_wheel.png') }}" />
                 <!-- <img class="wheel-stand" src="./assets/stand.png" alt /> -->
                 {{-- <div id="spin-btn" class="spin_btn" onclick="spin()" data-user_id="{{ session('user_id') }}">
-                    <img class="spin-btn" src="{{ asset('account/landing_page_images/assets/blue_button.png') }}"
-                        alt />
-                </div> --}}
-                <div id="spin-btn" class="spin_btn" data-user_id="{{ session('user_id') }}">
-                    <img class="spin-btn" src="{{ asset('account/landing_page_images/assets/blue_button.png') }}"
-                        alt />
-                </div>
-                <div class="invite_reward">
-                    <button data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img src="{{ asset('account/landing_page_images/assets/invite.svg') }}"
-                            alt><span>Friends</span>
-                    </button>
+                <img class="spin-btn" src="{{ asset('account/landing_page_images/assets/blue_button.png') }}" alt />
+            </div> --}}
+            <div id="spin-btn" class="spin_btn" data-user_id="{{ session('user_id') }}">
+                <img class="spin-btn" src="{{ asset('account/landing_page_images/assets/blue_button.png') }}" alt />
+            </div>
+            <div class="invite_reward">
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <img src="{{ asset('account/landing_page_images/assets/invite.svg') }}" alt><span>Friends</span>
+                </button>
 
-                    <button data-bs-toggle="modal" data-bs-target="#walletModal">
-                        <img style="margin-bottom: 4px;" src="{{ asset('account/landing_page_images/assets/wallet.svg') }}" alt><span>Wallet</span>
-                    </button>
-                    <button data-bs-toggle="modal" data-bs-target="#example_Modal">
-                        <img style="width: 16px; margin-top: -5px;"
-                            src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}"
-                            alt><span>Rewards</span>
-                    </button>
-                </div>
+                <button data-bs-toggle="modal" data-bs-target="#walletModal">
+                    <img style="margin-bottom: 4px;" src="{{ asset('account/landing_page_images/assets/wallet.svg') }}"
+                        alt><span>Wallet</span>
+                </button>
+                <button data-bs-toggle="modal" data-bs-target="#example_Modal">
+                    <img style="width: 16px; margin-top: -5px;"
+                        src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}" alt><span>Rewards</span>
+                </button>
             </div>
         </div>
+    </div>
     </div>
     <!-- <div class="pop-up">
       
@@ -138,15 +138,14 @@
                     <div class="invite_list">
                         <ul>
                             @foreach ($direct_referral as $key => $row)
-                                <li>{{ $row->username }}</li>
+                            <li>{{ $row->username }}</li>
                             @endforeach
                         </ul>
                     </div>
                     <div class="invite_button">
                         <button>
                             Invite Friends...
-                            <input type="text" value="{{ $user_referral_link }}" id="myInput"
-                                style="display: none">
+                            <input type="text" value="{{ $user_referral_link }}" id="myInput" style="display: none">
                             <i onclick="myFunction()" class="fa fa-clone"></i>
                         </button>
                         <button>
@@ -182,8 +181,7 @@
                                 {{ isset($walletAddress) ? 'disabled' : '' }} required>
                         </div>
                         <div class="wallet_button">
-                            <button type="submit"
-                                {{ isset($walletAddress) && $walletAddress != '' ? 'disabled' : '' }}>
+                            <button type="submit" {{ isset($walletAddress) && $walletAddress != '' ? 'disabled' : '' }}>
                                 Add Wallet
                             </button>
                         </div>
@@ -201,8 +199,7 @@
     <!--END Wallet Modal -->
 
     <!-- START REWARD MODAL -->
-    <div class="modal fade" id="example_Modal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="example_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal_body_reward">
                 <div class="modal-header">
@@ -217,177 +214,204 @@
                         <div class="social-links">
 
                             @if ($instagram_claimed != true)
-                                <div class="social-link" data-link_clicked="0"
-                                    data-url="https://www.instagram.com/join_nims/" data-wait-time="5000">
-                                    <span class="social-text d-flex">
-                                        <i class="fa fa-instagram"
-                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                        <div>
-                                            Follow NIMS<br>
-                                            <span class="muted-point-value"
-                                                style="font-size: 12px; color: gray;">Points:
-                                                100</span>
-                                        </div>
-                                    </span>
-
-                                    <button id="instagram_btn" class="claim-button"
-                                        data-user_id="{{ session('user_id') }}"
-                                        style="cursor: pointer ; visibility: hidden;" data-source="instagram"
-                                        data-points="100">Follow
-                                    </button>
-
-                                </div>
-                            @else
-                                <div class="social-link"
-                                    style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://www.instagram.com/join_nims/" data-wait-time="5000">
+                                <span class="social-text d-flex">
                                     <i class="fa fa-instagram"
-                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                <span class="social-text">
-                                    Follow on Instagram<br>
-                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
-                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                        Claimed</span>
-                                    </span>
-                                </div>
+                                        style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                    <div>
+                                        Follow NIMS<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+                                </span>
+
+                                <button id="instagram_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    style="cursor: pointer ; visibility: hidden;" data-source="instagram"
+                                    data-points="100">Follow
+                                </button>
+
+                            </div>
+                            @else
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                                    <i class="fa fa-instagram"
+                                        style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
+                                        Follow on Instagram<br>
+                                        <span class="muted-point-value ml-3"
+                                            style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                        <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                            Claimed</span>
+                                   
+                                </span>
+                            </div>
                             @endif
 
                             @if ($telegram_claimed != true)
-                                <div class="social-link" data-link_clicked="0" data-url="https://t.me/join_NIMS"
-                                    data-wait-time="5000">
-                                    <span class="social-text d-flex">
-                                        <i class="fa fa-telegram"
-                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                        <div>
-
-                                            Follow NIMS<br>
-                                            <span class="muted-point-value"
-                                                style="font-size: 12px; color: gray;">Points:
-                                                100</span>
-                                        </div>
-                                    </span>
-                                    <button id="telegram_btn" class="claim-button"
-                                        data-user_id="{{ session('user_id') }}" data-source="telegram"
-                                        data-points="100" style="visibility: hidden">Follow</button>
-
-                                </div>
-                            @else
-                                <div class="social-link"
-                                    style="color:white ; display: flex; justify-content: space-between; align-items: center;>
-                                <span class="social-text">
-                                    Follow on Telegram<br>
-                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
-                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                        Claimed</span>
-                                    </span>
-                                </div>
-                            @endif
-
-                            @if ($facebook_claimed != true)
-                                <div class="social-link" data-link_clicked="0"
-                                    data-url="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD"
-                                    data-wait-time="5000">
-                                    <span class="social-text d-flex">
-                                        <i class="fa fa-facebook-square"
-                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                        <div>
-
-                                            Follow NIMS<br>
-                                            <span class="muted-point-value"
-                                                style="font-size: 12px; color: gray;">Points:
-                                                50</span>
-                                        </div>
-                                    </span>
-                                    <button id="facebook_btn" class="claim-button"
-                                        data-user_id="{{ session('user_id') }}" data-source="facebook"
-                                        data-points="50" style="visibility: hidden">Follow</button>
-
-                                </div>
-                            @else
-                                <div class="social-link"
-                                    style="color:white ; display: flex; justify-content: space-between; align-items: center;>
-                                <span class="social-text">
-                                    Follow on Facebook<br>
-                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                        50</span>
-                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                        Claimed</span>
-                                    </span>
-                                </div>
-                            @endif
-
-
-                            @if ($twitter_claimed != true)
-                                <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
-                                    data-wait-time="5000">
-                                    <span class="social-text d-flex">
-
-                                        <i class="fa fa-twitter-square"
-                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                        <div>
-                                            Follow NIMS
-                                            <br>
-                                            <span class="muted-point-value"
-                                                style="font-size: 12px; color: gray;">Points:
-                                                100</span>
-                                    </span>
-                                </div>
-
-                                <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                    data-source="x(twitter)" data-points="100"
-                                    style="visibility: hidden">Follow</button>
-
-                        </div>
-                    @else
-                        <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
-                                <span class="social-text">
-                            Follow on X<br>
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                100</span>
-                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                Claimed</span>
-                            </span>
-                        </div>
-                        @endif
-
-                        @if ($youtube_claimed != true)
-                            <div class="social-link" data-link_clicked="0"
-                                data-url="https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg"
+                            <div class="social-link" data-link_clicked="0" data-url="https://t.me/join_NIMS"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                    <i class="fa fa-youtube-square"
+                                    <i class="fa fa-telegram"
                                         style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                     <div>
 
                                         Follow NIMS<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
                                             100</span>
+                                    </div>
+                                </span>
+                                <button id="telegram_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="telegram" data-points="100" style="visibility: hidden">Follow</button>
+
+                            </div>
+                            @else
+                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                                <i class="fa fa-telegram"
+                                style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
+                                Follow on Telegram<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                    100</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                    Claimed</span>
                                 </span>
                             </div>
-                            <button id="youtube_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                data-source="youtube_follow" data-points="100"
-                                style="visibility: hidden">Follow</button>
+                            @endif
+
+                            @if ($facebook_claimed != true)
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                    <i class="fa fa-facebook-square"
+                                        style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                    <div>
+
+                                        Follow NIMS<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            50</span>
+                                    </div>
+                                </span>
+                                <button id="facebook_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="facebook" data-points="50" style="visibility: hidden">Follow</button>
+
+                            </div>
+                            @else
+                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                                <i class="fa fa-facebook-square"
+                                style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
+                                Follow on Facebook<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                    50</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                    Claimed</span>
+                                </span>
+                            </div>
+                            @endif
+
+
+                            @if ($twitter_claimed != true)
+                            <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
+                                data-wait-time="5000">
+                                <span class="social-text d-flex">
+
+                                    <i class="fa fa-twitter-square"
+                                        style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                    <div>
+                                        Follow NIMS
+                                        <br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                </span>
+                            </div>
+
+                            <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                data-source="x(twitter)" data-points="100" style="visibility: hidden">Follow</button>
+
+                        </div>
+                        @else
+                        <div class="social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                            <i class="fa fa-twitter-square"
+                            style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
+                                Follow on X<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                    100</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                    Claimed</span>
+                            </span>
+                        </div>
+                        @endif
+                        @if ($twitter_claimed != true)
+                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
+                            data-wait-time="5000">
+                            <span class="social-text d-flex">
+
+                                <i class="fa fa-twitter-square"
+                                    style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                <div>
+                                    Like our Tweet
+                                    <br>
+                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                            </span>
+                        </div>
+
+                        <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                            data-source="x(twitter)" data-points="100" style="visibility: hidden">Like</button>
+
                     </div>
-                @else
+                    @else
                     <div class="social-link"
-                        style="color:white ; display: flex; justify-content: space-between; align-items: center;>
-                                <span class="social-text">
-                        Follow on YouTube<br>
-                        <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                            100</span>
-                        <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                            Claimed</span>
+                        style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                        <i class="fa fa-twitter-square"
+                        style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
+                            Liked<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                100</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
                         </span>
                     </div>
                     @endif
 
-                    {{-- <div class="social-link">
+                    @if ($youtube_claimed != true)
+                    <div class="social-link" data-link_clicked="0"
+                        data-url="https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg" data-wait-time="5000">
+                        <span class="social-text d-flex">
+                            <i class="fa fa-youtube-square"
+                                style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                            <div>
+
+                                Subscribe YouTube channel<br>
+                                <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                    100</span>
+                        </span>
+                    </div>
+                    <button id="youtube_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                        data-source="youtube_follow" data-points="100" style="visibility: hidden">Subscribe</button>
+                </div>
+                @else
+                <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                    Subscribe YouTube channel<br>
+                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                        100</span>
+                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                        Claimed</span>
+                    </span>
+                </div>
+                @endif
+
+                <div class="social-link">
                                 <span class="social-text d-flex"
                                     onclick="window.open('https://x.com/RootBlockCEO')"
                                     data-wait-time="5000">
-                                    <i class="fa fa-youtube-play" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                    <i class="fa fa-twitter-square" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                     <div>
                                         Follow CEO on Nims<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
@@ -395,48 +419,51 @@
                                         </div>
                                 </span>
                                 <button id="ceo_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
-                                    data-source="FollowCEO" data-points="100" disabled>Follow</button>
-                            </div>
+                data-source="FollowCEO" data-points="100" disabled>Follow</button>
+            </div>
 
-                            <div class="social-link">
-                                <span class="social-text"
-                                    onclick="window.open('https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg', '_blank')"
-                                    data-wait-time="5000">
-                                    Follow CIO on Nims<br>
-                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
+            <div class="social-link">
+                <span class="social-text d-flex"
+                    onclick="window.open('https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg', '_blank')"
+                    data-wait-time="5000">
+                    <i class="fa fa-twitter-square" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                    <div>
 
-                                </span>
-                                <button id="cio_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
-                                    data-source="FollowCIO" data-points="100" disabled>Follow</button>
-                            </div> --}}
+                        Follow CIO on Nims<br>
+                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                            100</span>
+                        </div>
 
-                    <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com"
-                        data-wait-time="5000" style="">
-                        <span class="social-text d-flex">
-                            <i class="fa fa-youtube-play"
-                                style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                            <div>
+                </span>
+                <button id="cio_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
+                    data-source="FollowCIO" data-points="100" disabled>Follow</button>
+            </div>
 
-                                Watch Video YouTube<br>
-                                <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                    100</span>
-                            </div>
-                        </span>
-                        <button id="video_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
-                            data-source="watchYouTubeVideo" data-points="100" style="visibility: hidden">Watch
-                            Video</button>
+            <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com" data-wait-time="5000"
+                style="">
+                <span class="social-text d-flex">
+                    <i class="fa fa-youtube-play" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                    <div>
+
+                        Watch Video YouTube<br>
+                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                            100</span>
                     </div>
+                </span>
+                <button id="video_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
+                    data-source="watchYouTubeVideo" data-points="100" style="visibility: hidden">Watch
+                    Video</button>
+            </div>
 
-                    <div class="url-claim social-link">
-                                <input type="text" id="url-input" placeholder="Paste retweet link" />
-                                <button class="claim-button" data_user_id="{{ session('user_id') }}"
-                                    data-source="ReTweetLink" data-points="200" id="claim-url-btn">Claim
-                                </button>
-                            </div> 
-                </div>
+            <div class="url-claim social-link">
+                <input type="text" id="url-input" placeholder="Paste retweet link" />
+                <button class="claim-button" data_user_id="{{ session('user_id') }}" data-source="ReTweetLink"
+                    data-points="200" id="claim-url-btn">Claim
+                </button>
             </div>
         </div>
+    </div>
+    </div>
 
     </div>
     </div>
@@ -451,385 +478,386 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        $('#closePopup').click(function(event) {
-            event.preventDefault();
-            handleModalClose();
-        });
+    $('#closePopup').click(function(event) {
+        event.preventDefault();
+        handleModalClose();
+    });
+});
+
+const prizes = [{
+        id: 0,
+        msg: "0",
+    },
+    {
+        id: 1,
+        msg: "10",
+    },
+    {
+        id: 2,
+        msg: "300",
+    },
+    {
+        id: 3,
+        msg: "50",
+    },
+    {
+        id: 4,
+        msg: "150",
+    },
+    {
+        id: 5,
+        msg: "200",
+    },
+    {
+        id: 6,
+        msg: "400",
+    },
+    {
+        id: 7,
+        msg: "1",
+    },
+    {
+        id: 8,
+        msg: "500",
+    },
+    {
+        id: 9,
+        msg: "-1",
+    },
+    {
+        id: 10,
+        msg: "250",
+    },
+    {
+        id: 11,
+        msg: "100",
+    },
+];
+
+var activeBtn = false;
+var audio = new Audio("./account/landing_page_images/assets/wheel-audio.mp3");
+
+function randomNum() {
+    var prizeNum = Math.random() * 12;
+    prizeNum = Math.floor(prizeNum);
+    console.log(prizeNum);
+    return prizeNum;
+}
+
+function removeClass() {
+    prize = randomNum();
+
+    document.getElementById("spinner").classList.remove("spin");
+    document.getElementById("spin-btn").classList.remove("disabled");
+    //   document.getElementById("spinner").classList.add("shake");
+
+    document.getElementById("spinner").style.transform =
+        "rotate(" + prize * 30 + "deg)";
+
+    // $(".pop-up-content").fadeIn();
+    $(".pop-up-content").fadeIn(); // Show the modal
+
+    // Set a timeout to hide the modal after 5 seconds (5000 milliseconds)
+    setTimeout(function() {
+        handleModalClose();
+        $(".pop-up-content").fadeOut(); // Hide the modal with a fade out effect
+    }, 5000);
+
+    setTimeout(function() {
+        document.getElementById("spin-btn").disabled = false;
+        document.getElementById("arrow").classList.add("float");
+        activeBtn = false;
+    }, 2000);
+
+    prizeText = prizes[prize].msg;
+
+    // console.log("Current Prize Amount is: " +prizeText);
+    sessionStorage.setItem("prizeAmount", prizeText);
+
+
+    document.getElementsByClassName("pop-up-para")[0].innerHTML = prizeText;
+    document.getElementById("reward_tokens").value = prizeText;
+    $(".pop-up").fadeIn();
+}
+
+function handleModalClose() {
+    // event.preventDefault();
+    $userID = $('.spin_btn').data('user_id');
+    let prize_amount = sessionStorage.getItem('prizeAmount');
+    console.log($userID);
+    console.log("prize_amount: " + prize_amount);
+
+    $.ajax({
+        url: "{{ route('spinner-game-reward') }}",
+        method: "POST",
+        data: {
+            _token: '{{ csrf_token() }}',
+            user_id: $userID,
+            prize_amount: prize_amount,
+            source: 'web_app'
+        },
+        success: function(response) {
+            console.log(response);
+            if (response.status == true) {
+                window.location.reload();
+            } else {
+                swal({
+                    title: "Oops",
+                    text: response.message,
+                    icon: "error",
+                    button: "OK",
+                });
+            }
+        },
     });
 
-    const prizes = [{
-            id: 0,
-            msg: "0",
-        },
-        {
-            id: 1,
-            msg: "10",
-        },
-        {
-            id: 2,
-            msg: "300",
-        },
-        {
-            id: 3,
-            msg: "50",
-        },
-        {
-            id: 4,
-            msg: "150",
-        },
-        {
-            id: 5,
-            msg: "200",
-        },
-        {
-            id: 6,
-            msg: "400",
-        },
-        {
-            id: 7,
-            msg: "1",
-        },
-        {
-            id: 8,
-            msg: "500",
-        },
-        {
-            id: 9,
-            msg: "-1",
-        },
-        {
-            id: 10,
-            msg: "250",
-        },
-        {
-            id: 11,
-            msg: "100",
-        },
-    ];
+    $(".pop-up-content").fadeOut();
+}
 
-    var activeBtn = false;
-    var audio = new Audio("./account/landing_page_images/assets/wheel-audio.mp3");
+function spin() {
+    activeBtn = true;
+    audio.play();
 
-    function randomNum() {
-        var prizeNum = Math.random() * 12;
-        prizeNum = Math.floor(prizeNum);
-        console.log(prizeNum);
-        return prizeNum;
+    //   document.getElementById("spinner").classList.remove("shake");
+    document.getElementById("arrow").classList.remove("float");
+    document.getElementById("spinner").classList.add("spin");
+    document.getElementById("spin-btn").disabled = true;
+
+    setTimeout(removeClass, 5000);
+}
+activeBtn = false;
+
+document.addEventListener("keydown", (event) => {
+    console.log(event);
+    if (event.key === " " && activeBtn === false) {
+        $("#spin-btn").trigger("click");
     }
+});
 
-    function removeClass() {
-        prize = randomNum();
+// START BACKGROUND ANIMATION
+const background = document.querySelector('.background');
 
-        document.getElementById("spinner").classList.remove("spin");
-        document.getElementById("spin-btn").classList.remove("disabled");
-        //   document.getElementById("spinner").classList.add("shake");
+// Function to generate random circles
+function createCircle() {
+    const circle = document.createElement('div');
+    circle.classList.add('circle');
 
-        document.getElementById("spinner").style.transform =
-            "rotate(" + prize * 30 + "deg)";
+    // Random size between 10px and 50px
+    const size = Math.random() * 40 + 10;
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
 
-        // $(".pop-up-content").fadeIn();
-        $(".pop-up-content").fadeIn(); // Show the modal
+    // Random horizontal position across the screen
+    const posX = Math.random() * window.innerWidth;
+    circle.style.left = `${posX}px`;
 
-        // Set a timeout to hide the modal after 5 seconds (5000 milliseconds)
-        setTimeout(function() {
-            handleModalClose();
-            $(".pop-up-content").fadeOut(); // Hide the modal with a fade out effect
-        }, 5000);
+    // Random animation duration between 3s and 10s
+    const duration = Math.random() * 7 + 3;
+    circle.style.animationDuration = `${duration}s`;
 
-        setTimeout(function() {
-            document.getElementById("spin-btn").disabled = false;
-            document.getElementById("arrow").classList.add("float");
-            activeBtn = false;
-        }, 2000);
+    // Append circle to the background container
+    background.appendChild(circle);
 
-        prizeText = prizes[prize].msg;
+    // Remove circle after animation is complete
+    setTimeout(() => {
+        circle.remove();
+    }, duration * 1000);
+}
 
-        // console.log("Current Prize Amount is: " +prizeText);
-        sessionStorage.setItem("prizeAmount", prizeText);
+// Generate circles at random intervals
+setInterval(createCircle, 300);
 
-
-        document.getElementsByClassName("pop-up-para")[0].innerHTML = prizeText;
-        document.getElementById("reward_tokens").value = prizeText;
-        $(".pop-up").fadeIn();
-    }
-    function handleModalClose(){
-            // event.preventDefault();
-            $userID = $('.spin_btn').data('user_id');
-            let prize_amount = sessionStorage.getItem('prizeAmount');
-            console.log($userID);
-            console.log("prize_amount: " + prize_amount);
-
-            $.ajax({
-                url: "{{ route('spinner-game-reward') }}",
-                method: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    user_id: $userID,
-                    prize_amount: prize_amount,
-                    source: 'web_app'
-                },
-                success: function(response) {
-                    console.log(response);
-                    if (response.status == true) {
-                        window.location.reload();
-                    } else {
-                        swal({
-                            title: "Oops",
-                            text: response.message,
-                            icon: "error",
-                            button: "OK",
-                        });
-                    }
-                },
-            });
-
-            $(".pop-up-content").fadeOut();
-        }
-
-    function spin() {
-        activeBtn = true;
-        audio.play();
-
-        //   document.getElementById("spinner").classList.remove("shake");
-        document.getElementById("arrow").classList.remove("float");
-        document.getElementById("spinner").classList.add("spin");
-        document.getElementById("spin-btn").disabled = true;
-
-        setTimeout(removeClass, 5000);
-    }
-    activeBtn = false;
-
-    document.addEventListener("keydown", (event) => {
-        console.log(event);
-        if (event.key === " " && activeBtn === false) {
-            $("#spin-btn").trigger("click");
-        }
-    });
-
-    // START BACKGROUND ANIMATION
-    const background = document.querySelector('.background');
-
-    // Function to generate random circles
-    function createCircle() {
-        const circle = document.createElement('div');
-        circle.classList.add('circle');
-
-        // Random size between 10px and 50px
-        const size = Math.random() * 40 + 10;
-        circle.style.width = `${size}px`;
-        circle.style.height = `${size}px`;
-
-        // Random horizontal position across the screen
-        const posX = Math.random() * window.innerWidth;
-        circle.style.left = `${posX}px`;
-
-        // Random animation duration between 3s and 10s
-        const duration = Math.random() * 7 + 3;
-        circle.style.animationDuration = `${duration}s`;
-
-        // Append circle to the background container
-        background.appendChild(circle);
-
-        // Remove circle after animation is complete
-        setTimeout(() => {
-            circle.remove();
-        }, duration * 1000);
-    }
-
-    // Generate circles at random intervals
-    setInterval(createCircle, 300);
-
-    // END BACKGROUND ANIMATION
+// END BACKGROUND ANIMATION
 
 
-    // START "COPY" JAVASCRIPT
-    function myFunction() {
-        // Get the text field
-        var copyText = document.getElementById("myInput");
+// START "COPY" JAVASCRIPT
+function myFunction() {
+    // Get the text field
+    var copyText = document.getElementById("myInput");
 
-        // Select the text field
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); // For mobile devices
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
 
-        // Copy the text inside the text field
-        navigator.clipboard.writeText(copyText.value);
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
 
-        // Alert the copied text
-        alert("Copied the text: " + copyText.value);
-    }
-    // END "COPY" JAVASCRIPT
+    // Alert the copied text
+    alert("Copied the text: " + copyText.value);
+}
+// END "COPY" JAVASCRIPT
 </script>
 
 
 {{-- spinner and timer code --}}
 <script>
-    $(document).ready(function() {
-        // default load time count down
-        let remaining_time = "{{ $timeRemaining }}";
-        let totalSeconds = timeStringToSeconds(remaining_time);
-        startCountdown(totalSeconds);
+$(document).ready(function() {
+    // default load time count down
+    let remaining_time = "{{ $timeRemaining }}";
+    let totalSeconds = timeStringToSeconds(remaining_time);
+    startCountdown(totalSeconds);
 
-        $('#spin-btn').click(function(event) {
-            event.preventDefault();
+    $('#spin-btn').click(function(event) {
+        event.preventDefault();
 
-            var userID = $(this).data('user_id');
+        var userID = $(this).data('user_id');
 
-            if (userID == null || userID == '') {
-                window.location.href = "{{ route('spinner-game-login') }}";
-                return;
-            }
+        if (userID == null || userID == '') {
+            window.location.href = "{{ route('spinner-game-login') }}";
+            return;
+        }
 
-            // AJAX request to check if the user has already spun
-            $.ajax({
-                url: "{{ route('verify-user-already-spinned') }}",
-                method: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    user_id: userID
-                },
-                success: function(response) {
-                    const totalSeconds = timeStringToSeconds(response.remaining_time);
-                    if (response.status == true) {
-                        swal({
-                            title: "Oops",
-                            text: response.next_spin_time,
-                            icon: "error",
-                            button: "OK",
-                        });
-                        startCountdown(totalSeconds);
-                    } else {
-                        spin();
-                    }
+        // AJAX request to check if the user has already spun
+        $.ajax({
+            url: "{{ route('verify-user-already-spinned') }}",
+            method: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                user_id: userID
+            },
+            success: function(response) {
+                const totalSeconds = timeStringToSeconds(response.remaining_time);
+                if (response.status == true) {
+                    swal({
+                        title: "Oops",
+                        text: response.next_spin_time,
+                        icon: "error",
+                        button: "OK",
+                    });
+                    startCountdown(totalSeconds);
+                } else {
+                    spin();
                 }
-            });
+            }
         });
-
-        function spin() {
-            // Your existing spin logic
-            activeBtn = true;
-            audio.play();
-            document.getElementById("arrow").classList.remove("float");
-            document.getElementById("spinner").classList.add("spin");
-            document.getElementById("spin-btn").disabled = true;
-            setTimeout(removeClass, 5000);
-        }
-
-        function startCountdown(seconds) {
-            const timerElement = document.getElementById('timer');
-            timerElement.style.visibility = 'visible'; // Show the timer
-
-            const hoursElement = document.getElementById('hours');
-            const minutesElement = document.getElementById('minutes');
-            const secondsElement = document.getElementById('seconds');
-
-            // Ensure seconds is a valid number
-            if (isNaN(seconds) || seconds === null || seconds < 0) {
-                console.error("Invalid seconds value:", seconds);
-                return; // Exit the function if seconds is invalid
-            }
-
-            // Declare timerInterval here to avoid 'before initialization' error
-            let timerInterval;
-
-            function updateTimer() {
-                const hours = Math.floor(seconds / 3600);
-                const minutes = Math.floor((seconds % 3600) / 60);
-                const remainingSeconds = seconds % 60;
-
-                // Update the timer elements with formatted values
-                hoursElement.textContent = hours.toString().padStart(2, '0') + 'h';
-                minutesElement.textContent = minutes.toString().padStart(2, '0') + 'm';
-                secondsElement.textContent = remainingSeconds.toString().padStart(2, '0') + 's';
-
-                // Decrease the seconds
-                seconds--;
-
-                // Stop the countdown when it reaches 0
-                if (seconds < 0) {
-                    clearInterval(timerInterval);
-                    timerElement.style.display = 'none'; // Hide the timer
-                    // Optionally, allow the user to spin again here
-                    document.getElementById("spin-btn").disabled = false; // Enable spin button
-                }
-            }
-
-            // Update the timer immediately
-            updateTimer();
-            // Update the timer every second
-            timerInterval = setInterval(updateTimer, 1000);
-        }
-
-        function timeStringToSeconds(timeString) {
-            if (!timeString || typeof timeString !== 'string') {
-                console.error("Invalid time string:", timeString);
-                return 0; // Return 0 or handle the error appropriately
-            }
-
-            const [hours, minutes, seconds] = timeString.split(':').map(Number);
-            return hours * 3600 + minutes * 60 + seconds;
-        }
     });
 
+    function spin() {
+        // Your existing spin logic
+        activeBtn = true;
+        audio.play();
+        document.getElementById("arrow").classList.remove("float");
+        document.getElementById("spinner").classList.add("spin");
+        document.getElementById("spin-btn").disabled = true;
+        setTimeout(removeClass, 5000);
+    }
 
-    $(document).ready(function() {
-        $('.social-link').click(function() {
-            const span = $(this);
-            const url = span.data('url');
-            const waitTime = span.data('wait-time');
-            const link_clicked = span.data('link_clicked');
+    function startCountdown(seconds) {
+        const timerElement = document.getElementById('timer');
+        timerElement.style.visibility = 'visible'; // Show the timer
 
-            if (link_clicked == 0) {
-                window.open(url, '_blank');
-                span.data('link_clicked', 1);
-                $('.badge').css('display', 'none');
+        const hoursElement = document.getElementById('hours');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+
+        // Ensure seconds is a valid number
+        if (isNaN(seconds) || seconds === null || seconds < 0) {
+            console.error("Invalid seconds value:", seconds);
+            return; // Exit the function if seconds is invalid
+        }
+
+        // Declare timerInterval here to avoid 'before initialization' error
+        let timerInterval;
+
+        function updateTimer() {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const remainingSeconds = seconds % 60;
+
+            // Update the timer elements with formatted values
+            hoursElement.textContent = hours.toString().padStart(2, '0') + 'h';
+            minutesElement.textContent = minutes.toString().padStart(2, '0') + 'm';
+            secondsElement.textContent = remainingSeconds.toString().padStart(2, '0') + 's';
+
+            // Decrease the seconds
+            seconds--;
+
+            // Stop the countdown when it reaches 0
+            if (seconds < 0) {
+                clearInterval(timerInterval);
+                timerElement.style.display = 'none'; // Hide the timer
+                // Optionally, allow the user to spin again here
+                document.getElementById("spin-btn").disabled = false; // Enable spin button
             }
+        }
 
-            let claimButton = span.closest('.social-link').find('.claim-button');
-            claimButton.prop('disabled', true).css('visibility', 'visible').text('Please wait...');
+        // Update the timer immediately
+        updateTimer();
+        // Update the timer every second
+        timerInterval = setInterval(updateTimer, 1000);
+    }
 
-            setTimeout(function() {
-                claimButton.prop('disabled', false).text('Claim Reward');
-            }, waitTime);
-        });
+    function timeStringToSeconds(timeString) {
+        if (!timeString || typeof timeString !== 'string') {
+            console.error("Invalid time string:", timeString);
+            return 0; // Return 0 or handle the error appropriately
+        }
 
-        // Handle the click on the claim button to send an AJAX request
-        $('.claim-button').click(function(event) {
-            event.preventDefault();
-            const button = $(this);
-            const container = button.closest('.social-link');
-            const userID = button.data('user_id');
-            const source = button.data('source');
-            const points = button.data('points');
+        const [hours, minutes, seconds] = timeString.split(':').map(Number);
+        return hours * 3600 + minutes * 60 + seconds;
+    }
+});
 
-            // Check if the user is logged in
-            if (!userID) {
-                window.location.href = "{{ route('spinner-game-login') }}";
-                return;
-            }
 
-            // AJAX request to claim the reward
-            $.ajax({
-                url: "{{ route('social-media-rewards') }}",
-                method: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    user_id: userID,
-                    source: source,
-                    points: points
-                },
-                success: function(response) {
-                    if (response.status) {
-                        // Disable the button and container after claiming the reward
-                        button.prop('disabled', true).text('Reward Claimed');
+$(document).ready(function() {
+    $('.social-link').click(function() {
+        const span = $(this);
+        const url = span.data('url');
+        const waitTime = span.data('wait-time');
+        const link_clicked = span.data('link_clicked');
 
-                        // Disable all interactions within the container
-                        container.find('span.social-text').off('click');
-                        container.find('.claim-button').off('click').prop('disabled', true);
+        if (link_clicked == 0) {
+            window.open(url, '_blank');
+            span.data('link_clicked', 1);
+            $('.badge').css('display', 'none');
+        }
 
-                        // Display claimed icon/message
-                        container.html(`
+        let claimButton = span.closest('.social-link').find('.claim-button');
+        claimButton.prop('disabled', true).css('visibility', 'visible').text('Please wait...');
+
+        setTimeout(function() {
+            claimButton.prop('disabled', false).text('Claim Reward');
+        }, waitTime);
+    });
+
+    // Handle the click on the claim button to send an AJAX request
+    $('.claim-button').click(function(event) {
+        event.preventDefault();
+        const button = $(this);
+        const container = button.closest('.social-link');
+        const userID = button.data('user_id');
+        const source = button.data('source');
+        const points = button.data('points');
+
+        // Check if the user is logged in
+        if (!userID) {
+            window.location.href = "{{ route('spinner-game-login') }}";
+            return;
+        }
+
+        // AJAX request to claim the reward
+        $.ajax({
+            url: "{{ route('social-media-rewards') }}",
+            method: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                user_id: userID,
+                source: source,
+                points: points
+            },
+            success: function(response) {
+                if (response.status) {
+                    // Disable the button and container after claiming the reward
+                    button.prop('disabled', true).text('Reward Claimed');
+
+                    // Disable all interactions within the container
+                    container.find('span.social-text').off('click');
+                    container.find('.claim-button').off('click').prop('disabled', true);
+
+                    // Display claimed icon/message
+                    container.html(`
                                 <div style="color:white; display: flex; justify-content: space-between; align-items: center;">
                                     <span class="social-text">
                                         Follow on Instagram
@@ -841,32 +869,32 @@
                                 </div>
                             `);
 
-                    } else {
-                        swal({
-                            title: "Oops",
-                            text: response.message,
-                            icon: "error",
-                            button: "OK",
-                        });
-                    }
-                },
-                error: function(xhr, status, error) {
+                } else {
                     swal({
-                        title: "Error",
-                        text: "There was an error claiming the reward. Please try again.",
+                        title: "Oops",
+                        text: response.message,
                         icon: "error",
                         button: "OK",
                     });
                 }
-            });
+            },
+            error: function(xhr, status, error) {
+                swal({
+                    title: "Error",
+                    text: "There was an error claiming the reward. Please try again.",
+                    icon: "error",
+                    button: "OK",
+                });
+            }
         });
-
-        $('#reward_modal_cls_btn').click(function() {
-            window.location.reload();
-        })
     });
 
-    setTimeout(function() {
-        document.getElementById('message').style.display = 'none';
-    }, 5000);
+    $('#reward_modal_cls_btn').click(function() {
+        window.location.reload();
+    })
+});
+
+setTimeout(function() {
+    document.getElementById('message').style.display = 'none';
+}, 5000);
 </script>
