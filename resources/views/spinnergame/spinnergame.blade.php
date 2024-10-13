@@ -397,7 +397,7 @@
                         </div>
                     @else
                         <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text">
                             Follow CEO on Nims<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
@@ -422,7 +422,7 @@
                         </div>
                     @else
                         <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text">
                             Follow CTO on Nims<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
@@ -451,7 +451,7 @@
                     </div>
                     @else
                     <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text">
                             Watch Video YouTube<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
@@ -471,7 +471,7 @@
                     </div>
                     @else
                     <div class="url-claim social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text">
                             ReTweet Link<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
@@ -743,9 +743,9 @@ function myFunction() {
                 const totalSeconds = timeStringToSeconds(response.remaining_time);
                 if (response.status == true) {
                     swal({
-                        title: "Oops",
+                        title: "Hang tight, your spin is next.",
                         text: response.next_spin_time,
-                        icon: "error",
+                        
                         button: "OK",
                     });
                     startCountdown(totalSeconds);
@@ -882,7 +882,7 @@ $(document).ready(function() {
                     container.html(`
                                 <div style="color:white; display: flex; justify-content: space-between; align-items: center;">
                                     <span class="social-text">
-                                        Follow on Instagram
+                                        Thanks for joining!
                                         <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 100</span>
                                     </span>
                                 </div>
