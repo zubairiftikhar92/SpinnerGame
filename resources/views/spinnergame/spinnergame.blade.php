@@ -455,7 +455,7 @@
                         window.location.reload();
                     } else {
                         swal({
-                            title: "Oops",
+                            title: "Wait for Spin Again",
                             text: response.message,
                             icon: "error",
                             button: "OK",
@@ -820,7 +820,7 @@
 
                     } else {
                         swal({
-                            title: "Oops",
+                            title: "Wait for Next Spin",
                             text: response.message,
                             icon: "error",
                             button: "OK",

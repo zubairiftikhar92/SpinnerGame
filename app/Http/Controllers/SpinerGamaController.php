@@ -154,7 +154,7 @@ class SpinerGamaController extends Controller
         $social_media_rewards = DB::table('game_rewards')->where('userid', $u_id)->sum('total_earn_tokens');
     
         $user_email = isset($results) ? $results->email : '';
-        $user_referral_link = "http://localhost:8000/spinner-game-login?user_email=" . $user_email;
+        $user_referral_link = "https://airdrop.nims.network/spinner-game-login?user_email=" . $user_email;
 
 
         $instagram_claimed = isset($social_sources) ? $social_sources->contains('instagram') : false;
