@@ -44,9 +44,9 @@
                 <div class="user_profile">
                     <img src="{{ asset('account/landing_page_images/assets/profile7.svg') }}"
                         alt><span style="margin-right:20px">{{ session('user_email') }}</span>
-                    <button type="button" class="sta_r">
+                    {{-- <button type="button" class="sta_r">
                             <span>Login</span>
-                        </button>
+                        </button> --}}
                 </div>
                 <!-- END PROFILE -->
                 <div class="items_3">
@@ -109,14 +109,16 @@
                     <img src="{{ asset('account/landing_page_images/assets/invite.svg') }}" alt><span>Friends</span>
                 </button>
 
-                <button data-bs-toggle="modal" data-bs-target="#walletModal">
-                    <img style="margin-bottom: 4px;" src="{{ asset('account/landing_page_images/assets/wallet.svg') }}"
-                        alt><span>Wallet</span>
-                </button>
-                <button data-bs-toggle="modal" data-bs-target="#example_Modal">
-                    <img style="width: 16px; margin-top: -5px;"
-                        src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}" alt><span>Rewards</span>
-                </button>
+                    <button data-bs-toggle="modal" data-bs-target="#walletModal">
+                        <img style="margin-bottom: 4px;"
+                            src="{{ asset('account/landing_page_images/assets/wallet.svg') }}" alt><span>Wallet</span>
+                    </button>
+                    <button data-bs-toggle="modal" data-bs-target="#example_Modal">
+                        <img style="width: 16px; margin-top: -5px;"
+                            src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}"
+                            alt><span>Rewards</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -244,9 +246,8 @@
                                             100</span>
                                         <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
                                             Claimed</span>
-                                   
-                                </span>
-                            </div>
+                                    </span>
+                                </div>
                             @endif
 
                             @if ($telegram_claimed != true)
@@ -379,87 +380,108 @@
                     </div>
                     @endif
 
-                    @if ($youtube_claimed != true)
-                    <div class="social-link" data-link_clicked="0"
-                        data-url="https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg" data-wait-time="5000">
-                        <span class="social-text d-flex">
-                            <i class="fa fa-youtube-square"
-                                style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                            <div>
+                    @if (@$FollowCEO != true)
+                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
+                            data-wait-time="5000">
+                            <span class="social-text d-flex">
+                                <i class="fa fa-youtube-play"
+                                    style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                <div>
+                                    Follow CEO on Nims<br>
+                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                </div>
+                            </span>
+                            <button id="ceo_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                data-source="FollowCEO" data-points="100" style="visibility: hidden">Follow</button>
+                        </div>
+                    @else
+                        <div class="social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                                <span class="social-text">
+                            Follow CEO on Nims<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                100</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
+                            </span>
+                        </div>
+                    @endif
 
-                                Subscribe YouTube channel<br>
+                    @if (@$FollowCTO != true)
+                        <div class="social-link" data-link_clicked="0"
+                            data-url="https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg" data-wait-time="5000">
+                            <span class="social-text">
+                                Follow CTO on Nims<br>
                                 <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
                                     100</span>
-                        </span>
-                    </div>
-                    <button id="youtube_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                        data-source="youtube_follow" data-points="100" style="visibility: hidden">Subscribe</button>
-                </div>
-                @else
-                <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                    Subscribe YouTube channel<br>
-                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                        100</span>
-                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                        Claimed</span>
-                    </span>
-                </div>
-                @endif
 
-                <div class="social-link">
-                                <span class="social-text d-flex"
-                                    onclick="window.open('https://x.com/RootBlockCEO')"
-                                    data-wait-time="5000">
-                                    <i class="fa fa-twitter-square" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                    <div>
-                                        Follow CEO on Nims<br>
-                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                            100</span>
-                                        </div>
-                                </span>
-                                <button id="ceo_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
-                data-source="FollowCEO" data-points="100" disabled>Follow</button>
-            </div>
-
-            <div class="social-link">
-                <span class="social-text d-flex"
-                    onclick="window.open('https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg', '_blank')"
-                    data-wait-time="5000">
-                    <i class="fa fa-twitter-square" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                    <div>
-
-                        Follow CIO on Nims<br>
-                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                            100</span>
+                            </span>
+                            <button id="cio_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                data-source="FollowCTO" data-points="100" style="visibility: hidden">Follow</button>
                         </div>
+                    @else
+                        <div class="social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                                <span class="social-text">
+                            Follow CTO on Nims<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                100</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
+                            </span>
+                        </div>
+                    @endif
 
-                </span>
-                <button id="cio_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
-                    data-source="FollowCIO" data-points="100" disabled>Follow</button>
-            </div>
-
-            <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com" data-wait-time="5000"
-                style="">
-                <span class="social-text d-flex">
-                    <i class="fa fa-youtube-play" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                    <div>
-
-                        Watch Video YouTube<br>
-                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                            100</span>
+                    @if (@$watchYouTubeVideo != true)
+                    <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com"
+                        data-wait-time="5000" style="">
+                        <span class="social-text d-flex">
+                            <i class="fa fa-youtube-play"
+                                style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                            <div>
+                                Watch Video YouTube<br>
+                                <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                    100</span>
+                            </div>
+                        </span>
+                        <button id="video_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                            data-source="watchYouTubeVideo" data-points="100" style="visibility: hidden">Watch
+                            Video</button>
                     </div>
-                </span>
-                <button id="video_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
-                    data-source="watchYouTubeVideo" data-points="100" style="visibility: hidden">Watch
-                    Video</button>
-            </div>
+                    @else
+                    <div class="social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                                <span class="social-text">
+                            Watch Video YouTube<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                100</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
+                            </span>
+                        </div>
+                    @endif
 
-            <div class="url-claim social-link">
-                <input type="text" id="url-input" placeholder="Paste retweet link" />
-                <button class="claim-button" data_user_id="{{ session('user_id') }}" data-source="ReTweetLink"
-                    data-points="200" id="claim-url-btn">Claim
-                </button>
+                    {{-- @if(@$ReTweetLink != true)
+                    <div class="url-claim social-link">
+                        <input type="text" id="url-input" placeholder="Paste retweet link" />
+                        <button class="claim-button" data-user_id="{{ session('user_id') }}"
+                            data-source="ReTweetLink" data-points="200" id="claim-url-btn">Claim
+                        </button>
+                    </div>
+                    @else
+                    <div class="url-claim social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                                <span class="social-text">
+                            ReTweet Link<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                200</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
+                            </span>
+                        </div>
+                    @endif --}}
+                </div>
             </div>
         </div>
     </div>
@@ -656,6 +678,11 @@ function createCircle() {
     // Random animation duration between 3s and 10s
     const duration = Math.random() * 7 + 3;
     circle.style.animationDuration = `${duration}s`;
+        // Set a timeout to hide the modal after 5 seconds (5000 milliseconds)
+        setTimeout(function() {
+            spinnerClaimReward();
+            $(".pop-up-content").fadeOut(); // Hide the modal with a fade out effect
+        }, 5000);
 
     // Append circle to the background container
     background.appendChild(circle);
@@ -693,11 +720,12 @@ function myFunction() {
 
 {{-- spinner and timer code --}}
 <script>
-$(document).ready(function() {
-    // default load time count down
-    let remaining_time = "{{ $timeRemaining }}";
-    let totalSeconds = timeStringToSeconds(remaining_time);
-    startCountdown(totalSeconds);
+    $(document).ready(function() {
+        // default load time count down
+        let remaining_time = "{{ $timeRemaining }}";
+        console.log("Remaining Time for Spin Again: " + remaining_time);
+        let totalSeconds = timeStringToSeconds(remaining_time);
+        startCountdown(totalSeconds);
 
     $('#spin-btn').click(function(event) {
         event.preventDefault();
