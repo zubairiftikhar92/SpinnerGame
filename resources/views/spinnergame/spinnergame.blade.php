@@ -177,10 +177,15 @@
                         @csrf
                         <div class="wallet_button">
                             <input type="text" name="wallet_address" id="wallet_address"
-                                placeholder="Enter your wallet address" required>
+                                placeholder="Enter your wallet address"
+                                value="{{ old('wallet_address', $walletAddress ?? '') }}"
+                                {{ isset($walletAddress) ? 'disabled' : '' }} required>
                         </div>
                         <div class="wallet_button">
-                            <button type="submit">Add Wallet</button>
+                            <button type="submit"
+                                {{ isset($walletAddress) && $walletAddress != '' ? 'disabled' : '' }}>
+                                Add Wallet
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -215,12 +220,14 @@
                                 <div class="social-link" data-link_clicked="0"
                                     data-url="https://www.instagram.com/join_nims/" data-wait-time="5000">
                                     <span class="social-text d-flex">
-                                    <i class="fa fa-instagram" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                        <i class="fa fa-instagram"
+                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                         <div>
                                             Follow on NIMS<br>
-                                            <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            <span class="muted-point-value"
+                                                style="font-size: 12px; color: gray;">Points:
                                                 100</span>
-                                            </div>
+                                        </div>
                                     </span>
 
                                     <button id="instagram_btn" class="claim-button"
@@ -244,15 +251,18 @@
                             @endif
 
                             @if ($telegram_claimed != true)
-                                <div class="social-link" data-link_clicked="0" data-url="https://t.me/join_NIMS" data-wait-time="5000">
+                                <div class="social-link" data-link_clicked="0" data-url="https://t.me/join_NIMS"
+                                    data-wait-time="5000">
                                     <span class="social-text d-flex">
-                                    <i class="fa fa-telegram" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                        <i class="fa fa-telegram"
+                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                         <div>
 
                                             Follow on NIMS<br>
-                                            <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                            100</span>
-                                            </div>
+                                            <span class="muted-point-value"
+                                                style="font-size: 12px; color: gray;">Points:
+                                                100</span>
+                                        </div>
                                     </span>
                                     <button id="telegram_btn" class="claim-button"
                                         data-user_id="{{ session('user_id') }}" data-source="telegram"
@@ -273,16 +283,20 @@
                             @endif
 
                             @if ($facebook_claimed != true)
-                                <div class="social-link" data-link_clicked="0" data-url="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" data-wait-time="5000">
+                                <div class="social-link" data-link_clicked="0"
+                                    data-url="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD"
+                                    data-wait-time="5000">
                                     <span class="social-text d-flex">
-                                    <i class="fa fa-facebook-square" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                        <i class="fa fa-facebook-square"
+                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                         <div>
 
                                             Follow on NIMS<br>
-                                            <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            <span class="muted-point-value"
+                                                style="font-size: 12px; color: gray;">Points:
                                                 50</span>
-                                            </div>
-                                            </span>
+                                        </div>
+                                    </span>
                                     <button id="facebook_btn" class="claim-button"
                                         data-user_id="{{ session('user_id') }}" data-source="facebook"
                                         data-points="50" style="visibility: hidden">Follow</button>
@@ -303,65 +317,71 @@
 
 
                             @if ($twitter_claimed != true)
-                                <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims" data-wait-time="5000">
+                                <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
+                                    data-wait-time="5000">
                                     <span class="social-text d-flex">
-                                       
-                                       <i class="fa fa-twitter-square" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                       <div>
-                                           Follow on NIMS
-                                           <br>
-                                           <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                               100</span>
-                                            </span>
-                                        </div>
-                                    
-                                        <button id="x_btn" class="claim-button"
-                                        data-user_id="{{ session('user_id') }}" data-source="x(twitter)"
-                                        data-points="100" style="visibility: hidden">Follow</button>
 
-                                </div>
-                            @else
-                                <div class="social-link"
-                                    style="color:white ; display: flex; justify-content: space-between; align-items: center;>
-                                <span class="social-text">
-                                    Follow on X<br>
-                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
-                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                        Claimed</span>
-                                    </span>
-                                </div>
-                            @endif
-
-                            @if ($youtube_claimed != true)
-                                <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg" data-wait-time="5000">
-                                    <span class="social-text d-flex">
-                                    <i class="fa fa-youtube-square" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                        <i class="fa fa-twitter-square"
+                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                         <div>
-
-                                            Follow on NIMS<br>
-                                            <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            Follow on NIMS
+                                            <br>
+                                            <span class="muted-point-value"
+                                                style="font-size: 12px; color: gray;">Points:
                                                 100</span>
-                                            </span>
-                                        </div>
-                                    <button id="youtube_btn" class="claim-button"
-                                        data-user_id="{{ session('user_id') }}" data-source="youtube_follow"
-                                        data-points="100" style="visibility: hidden">Follow</button>
-                                </div>
-                            @else
-                                <div class="social-link"
-                                    style="color:white ; display: flex; justify-content: space-between; align-items: center;>
-                                <span class="social-text">
-                                    Follow on YouTube<br>
-                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
-                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                        Claimed</span>
                                     </span>
                                 </div>
-                            @endif
 
-                            {{-- <div class="social-link">
+                                <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="x(twitter)" data-points="100"
+                                    style="visibility: hidden">Follow</button>
+
+                        </div>
+                    @else
+                        <div class="social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                                <span class="social-text">
+                            Follow on X<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                100</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
+                            </span>
+                        </div>
+                        @endif
+
+                        @if ($youtube_claimed != true)
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg"
+                                data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                    <i class="fa fa-youtube-square"
+                                        style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                    <div>
+
+                                        Follow on NIMS<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                </span>
+                            </div>
+                            <button id="youtube_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                data-source="youtube_follow" data-points="100"
+                                style="visibility: hidden">Follow</button>
+                    </div>
+                @else
+                    <div class="social-link"
+                        style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                                <span class="social-text">
+                        Follow on YouTube<br>
+                        <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                            100</span>
+                        <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                            Claimed</span>
+                        </span>
+                    </div>
+                    @endif
+
+                    {{-- <div class="social-link">
                                 <span class="social-text d-flex"
                                     onclick="window.open('https://x.com/RootBlockCEO')"
                                     data-wait-time="5000">
@@ -389,34 +409,36 @@
                                     data-source="FollowCIO" data-points="100" disabled>Follow</button>
                             </div> --}}
 
-                            <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com" data-wait-time="5000" style="">
-                                <span class="social-text d-flex">
-                                <i class="fa fa-youtube-play" style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                    <div>
+                    <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com"
+                        data-wait-time="5000" style="">
+                        <span class="social-text d-flex">
+                            <i class="fa fa-youtube-play"
+                                style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                            <div>
 
-                                        Watch Video YouTube<br>
-                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                            100</span>
-                                        </div>
-                                </span>
-                                <button id="video_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
-                                    data-source="watchYouTubeVideo" data-points="100"
-                                    style="visibility: hidden">Watch Video</button>
+                                Watch Video YouTube<br>
+                                <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                    100</span>
                             </div>
+                        </span>
+                        <button id="video_btn" class="claim-button" data_user_id="{{ session('user_id') }}"
+                            data-source="watchYouTubeVideo" data-points="100" style="visibility: hidden">Watch
+                            Video</button>
+                    </div>
 
-                            {{-- <div class="url-claim social-link">
+                    {{-- <div class="url-claim social-link">
                                 <input type="text" id="url-input" placeholder="Paste retweet link" />
                                 <button class="claim-button" data_user_id="{{ session('user_id') }}"
                                     data-source="ReTweetLink" data-points="200" id="claim-url-btn">Claim 200 Points
                                 </button>
                             </div> --}}
 
-                        </div>
-                    </div>
                 </div>
-
             </div>
         </div>
+
+    </div>
+    </div>
     </div>
     <!-- END REWARD MODAL -->
 
@@ -431,45 +453,11 @@
     $(document).ready(function() {
 
         $('#closePopup').click(function(event) {
-
             event.preventDefault();
-            $userID = $('.spin_btn').data('user_id');
-
-            $('.pop-up-content').hide();
-            let prize_amount = sessionStorage.getItem('prizeAmount');
-            console.log($userID);
-            console.log("prize_amount: " + prize_amount);
-
-            $.ajax({
-                url: "{{ route('spinner-game-reward') }}",
-                method: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    user_id: $userID,
-                    prize_amount: prize_amount,
-                    source: 'web_app'
-                },
-                success: function(response) {
-                    console.log(response);
-                    if (response.status == true) {
-                        window.location.reload();
-                    } else {
-                        swal({
-                            title: "Wait for Spin Again",
-                            text: response.message,
-                            icon: "error",
-                            button: "OK",
-                        });
-                    }
-                },
-            });
-
+            handleModalClose();
         });
     });
-</script>
 
-
-<script>
     const prizes = [{
             id: 0,
             msg: "0",
@@ -545,6 +533,7 @@
 
         // Set a timeout to hide the modal after 5 seconds (5000 milliseconds)
         setTimeout(function() {
+            handleModalClose();
             $(".pop-up-content").fadeOut(); // Hide the modal with a fade out effect
         }, 5000);
 
@@ -564,6 +553,39 @@
         document.getElementById("reward_tokens").value = prizeText;
         $(".pop-up").fadeIn();
     }
+    function handleModalClose(){
+            // event.preventDefault();
+            $userID = $('.spin_btn').data('user_id');
+            let prize_amount = sessionStorage.getItem('prizeAmount');
+            console.log($userID);
+            console.log("prize_amount: " + prize_amount);
+
+            $.ajax({
+                url: "{{ route('spinner-game-reward') }}",
+                method: "POST",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    user_id: $userID,
+                    prize_amount: prize_amount,
+                    source: 'web_app'
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == true) {
+                        window.location.reload();
+                    } else {
+                        swal({
+                            title: "Oops",
+                            text: response.message,
+                            icon: "error",
+                            button: "OK",
+                        });
+                    }
+                },
+            });
+
+            $(".pop-up-content").fadeOut();
+        }
 
     function spin() {
         activeBtn = true;
@@ -820,7 +842,7 @@
 
                     } else {
                         swal({
-                            title: "Wait for Next Spin",
+                            title: "Oops",
                             text: response.message,
                             icon: "error",
                             button: "OK",
