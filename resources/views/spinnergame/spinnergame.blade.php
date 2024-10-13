@@ -110,7 +110,7 @@
                     </button>
 
                     <button data-bs-toggle="modal" data-bs-target="#walletModal">
-                        <img src="{{ asset('account/landing_page_images/assets/wallet.svg') }}" alt><span>Wallet</span>
+                        <img style="margin-bottom: 4px;" src="{{ asset('account/landing_page_images/assets/wallet.svg') }}" alt><span>Wallet</span>
                     </button>
                     <button data-bs-toggle="modal" data-bs-target="#example_Modal">
                         <img style="width: 16px; margin-top: -5px;"
@@ -431,7 +431,7 @@
                     <div class="url-claim social-link">
                                 <input type="text" id="url-input" placeholder="Paste retweet link" />
                                 <button class="claim-button" data_user_id="{{ session('user_id') }}"
-                                    data-source="ReTweetLink" data-points="200" id="claim-url-btn">Claim 200 Points
+                                    data-source="ReTweetLink" data-points="200" id="claim-url-btn">Claim
                                 </button>
                             </div> 
                 </div>
