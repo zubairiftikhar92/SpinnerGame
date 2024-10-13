@@ -289,7 +289,7 @@
                                         style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                     <div>
 
-                                        Follow NIMS<br>
+                                        Follow on Facebook<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
                                             50</span>
                                     </div>
@@ -313,7 +313,7 @@
                             @endif
 
 
-                            @if ($twitter_claimed != true)
+                            @if ($twitter_join_claimed != true)
                             <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
@@ -329,7 +329,7 @@
                             </div>
 
                             <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                data-source="x(twitter)" data-points="100" style="visibility: hidden">Follow</button>
+                                data-source="x_join(twitter)" data-points="100" style="visibility: hidden">Follow</button>
 
                         </div>
                         @else
@@ -346,7 +346,7 @@
                             </span>
                         </div>
                         @endif
-                        @if ($twitter_claimed != true)
+                        @if ($twitter_like_claimed != true)
                         <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
                             data-wait-time="5000">
                             <span class="social-text d-flex">
@@ -362,7 +362,7 @@
                         </div>
 
                         <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                            data-source="x(twitter)" data-points="100" style="visibility: hidden">Like</button>
+                            data-source="x_like(twitter)" data-points="100" style="visibility: hidden">Like</button>
 
                     </div>
                     @else
@@ -504,7 +504,7 @@ $(document).ready(function() {
 
     $('#closePopup').click(function(event) {
         event.preventDefault();
-        handleModalClose();
+        spinnerClaimReward();
     });
 });
 
@@ -583,7 +583,7 @@ function removeClass() {
 
     // Set a timeout to hide the modal after 5 seconds (5000 milliseconds)
     setTimeout(function() {
-        handleModalClose();
+        spinnerClaimReward();
         $(".pop-up-content").fadeOut(); // Hide the modal with a fade out effect
     }, 5000);
 
@@ -604,7 +604,7 @@ function removeClass() {
     $(".pop-up").fadeIn();
 }
 
-function handleModalClose() {
+function spinnerClaimReward() {
     // event.preventDefault();
     $userID = $('.spin_btn').data('user_id');
     let prize_amount = sessionStorage.getItem('prizeAmount');
@@ -678,12 +678,6 @@ function createCircle() {
     // Random animation duration between 3s and 10s
     const duration = Math.random() * 7 + 3;
     circle.style.animationDuration = `${duration}s`;
-        // Set a timeout to hide the modal after 5 seconds (5000 milliseconds)
-        setTimeout(function() {
-            spinnerClaimReward();
-            $(".pop-up-content").fadeOut(); // Hide the modal with a fade out effect
-        }, 5000);
-
     // Append circle to the background container
     background.appendChild(circle);
 
