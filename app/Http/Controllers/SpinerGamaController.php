@@ -6,6 +6,7 @@ use App\Models\Register;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class SpinerGamaController extends Controller
 {
@@ -64,18 +65,30 @@ class SpinerGamaController extends Controller
         ]);
     }
 
-
     public function spinerGameRegisteration(Request $request)
     {
+        $userEmail = $request->email;
+
+        // Check if the email is already registered
+        $alreadyRegisterUser = DB::table('game_registrations')->where('email', $userEmail)->first();
+        if ($alreadyRegisterUser) {
+            Log::info("Registration attempt for already registered email: $userEmail");
+            return redirect()->back()->with('message', "User $userEmail is already registered");
+        }
+
         // Check if the referral email (dsponserid) is provided
         if (!empty($request->dsponserid)) {
-            // Fetch the sponsor's record by username (email)
+            // Fetch the sponsor's record by email
             $res = DB::table('game_registrations')->where('email', $request->dsponserid)->first();
 
             // If no matching sponsor record is found, return with an error message
             if (!$res) {
-                return redirect()->back()->with('message', "Referral email '$request->dsponserid' not in use.");
+                Log::warning("Referral email not found: " . $request->dsponserid);
+                return redirect()->back()->with('message', "Referral email '$request->dsponserid' not found.");
             }
+
+            // Log sponsor details
+            Log::info("Referral found. Sponsor ID: {$res->userid}, Sponsor Email: {$res->email}");
 
             // Set sponsor details
             $dsponserid = $res->userid;
@@ -83,41 +96,53 @@ class SpinerGamaController extends Controller
             $upsponserid = $res->upsponserid;
             $upsponserid_username = $res->upsponserid_username;
         } else {
-            // If no referral email is provided, set sponsor-related fields to null
+            // No referral email provided
             $dsponserid = null;
             $dsponserid_username = null;
             $upsponserid = null;
             $upsponserid_username = null;
+            Log::info("No referral email provided for registration.");
         }
+
         // Get the next available user ID for the new registration
-        $id = DB::table('game_registrations')->max('id');
+        $nextId = DB::table('game_registrations')->max('userid') + 1;
+        Log::info("Next available user ID: $nextId");
 
         // Insert the new user into the game_registrations table
         $response = DB::table('game_registrations')->insertGetId([
-            'userid' => $id + 1,
+            'userid' => $nextId,
             'username' => $request->fullName,
             'email' => $request->email,
-            'password' => $request->password1,  // Note: You should hash the password before storing it
-            'dsponserid' => isset($dsponserid) ? $dsponserid : 0,
-            'dsponserid_username' => isset($dsponserid_username) ? $dsponserid_username : '',
-            'upsponserid' => isset($upsponserid) ? $upsponserid : 0,
-            'upsponserid_username' => isset($upsponserid_username) ? $upsponserid_username : '',
-            'created_at' => date('Y-m-d H:i:s'),
+            'password' => $request->password1,  // Hash the password
+            'dsponserid' => $dsponserid ?? 0,
+            'dsponserid_username' => $dsponserid_username ?? '',
+            'upsponserid' => $upsponserid ?? 0,
+            'upsponserid_username' => $upsponserid_username ?? '',
+            'created_at' => now(),
         ]);
 
-        $current_user = DB::table('game_registrations')->where('userid', $response)->latest()->first();
         if ($response) {
+            // Fetch the newly registered user
+            $current_user = DB::table('game_registrations')->where('userid', $nextId)->first();
+
+            // Log successful registration
+            Log::info("New user registered successfully. User ID: {$current_user->userid}, Email: {$current_user->email}");
+
+            // Store user details in session
             session()->put('user_id', $current_user->userid);
             session()->put('user_email', $current_user->email);
+
             return redirect()->route('spinner-game')->with('message', 'Registration Successful');
         } else {
+            // Log registration failure
+            Log::error("User registration failed for email: $userEmail");
             return redirect()->back()->with('message', 'Registration Failed');
         }
     }
     public function spinerGameLoginView(Request $request)
     {
         $user_email = $request->user_email;
-        return view('spinnergame.gamelogin' , compact('user_email'));
+        return view('spinnergame.gamelogin', compact('user_email'));
     }
 
     public function spinerGameLoginStore(Request $request)
@@ -140,9 +165,10 @@ class SpinerGamaController extends Controller
         // dd(session()->all());
         $u_id = session()->get('user_id');
         $results = DB::table('game_registrations')
-            ->select('email','total_reward_tokens', 'created_at', 'updated_at')
+            ->select('email', 'total_reward_tokens', 'wallet_address', 'created_at', 'updated_at')
             ->where('userid', $u_id)->first();
         $prize_tokens = isset($results) ? $results->total_reward_tokens : 0;
+        $walletAddress = isset($results) ? $results->wallet_address : '';
 
         $direct_referral = DB::table('game_registrations')->where('dsponserid', $u_id)->get();
         $direct_referral_count = $direct_referral->count();
@@ -151,10 +177,9 @@ class SpinerGamaController extends Controller
         $timeRemaining = $timerCountDown_Result;
         $social_sources = DB::table('game_rewards')->where('userid', $u_id)->pluck('source');
 
-        $social_media_rewards = DB::table('game_rewards')->where('userid', $u_id)->sum('total_earn_tokens');
-    
+        $social_media_rewards = DB::table('game_rewards')->where('userid', $u_id)->whereNotIn('source', ['web_app'])->sum('total_earn_tokens');
         $user_email = isset($results) ? $results->email : '';
-        $user_referral_link = "https://airdrop.nims.network/spinner-game-login?user_email=" . $user_email;
+        $user_referral_link = "http://localhost:8000/spinner-game-login?user_email=" . $user_email;
 
 
         $instagram_claimed = isset($social_sources) ? $social_sources->contains('instagram') : false;
@@ -163,7 +188,7 @@ class SpinerGamaController extends Controller
         $twitter_claimed = isset($social_sources) ? $social_sources->contains('x(twitter)') : false;
         $youtube_claimed = isset($social_sources) ? $social_sources->contains('youtube_follow') : false;
 
-        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_claimed', 'youtube_claimed' , 'social_media_rewards' , 'user_referral_link'));
+        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_claimed', 'youtube_claimed', 'social_media_rewards', 'user_referral_link', 'walletAddress'));
     }
 
     public function spinnerGameReward(Request $request)
@@ -243,7 +268,7 @@ class SpinerGamaController extends Controller
         $currentTime = Carbon::now();
         $date = isset($response) ? $response->updated_at : (isset($response) ? $response->created_at : $currentTime);
         $lastSpinTime = Carbon::parse($date); // Parse the last spin time
-        $nextAllowedSpinTime = $lastSpinTime->addHours(24);   // Next spin allowed 24 hours later
+        $nextAllowedSpinTime = $lastSpinTime->addHours(6);   // Next spin allowed 6 hours later
 
         $currentTime = Carbon::now();
 
@@ -258,7 +283,8 @@ class SpinerGamaController extends Controller
             return $timeRemaining;
         }
     }
-    public function addWalletAddress(Request $request){
+    public function addWalletAddress(Request $request)
+    {
         $u_id = session()->get('user_id');
         $response = DB::table('game_registrations')->where('userid', $u_id)->update([
             'wallet_address' => $request->wallet_address,
@@ -268,6 +294,5 @@ class SpinerGamaController extends Controller
         } else {
             return redirect()->route('spinner-game')->with('message', 'Wallet Address Added Failed');
         }
-
     }
 }
