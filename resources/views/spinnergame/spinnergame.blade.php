@@ -110,7 +110,7 @@
                     </button>
 
                     <button data-bs-toggle="modal" data-bs-target="#walletModal">
-                        <img src="{{ asset('account/landing_page_images/assets/invite.svg') }}" alt><span>Wallet</span>
+                        <img src="{{ asset('account/landing_page_images/assets/wallet.svg') }}" alt><span>Wallet</span>
                     </button>
                     <button data-bs-toggle="modal" data-bs-target="#example_Modal">
                         <img style="width: 16px; margin-top: -5px;"
@@ -223,7 +223,7 @@
                                         <i class="fa fa-instagram"
                                             style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                         <div>
-                                            Follow on NIMS<br>
+                                            Follow NIMS<br>
                                             <span class="muted-point-value"
                                                 style="font-size: 12px; color: gray;">Points:
                                                 100</span>
@@ -239,7 +239,9 @@
                                 </div>
                             @else
                                 <div class="social-link"
-                                    style="color:white ; display: flex; justify-content: space-between; align-items: center;>
+                                    style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                    <i class="fa fa-instagram"
+                                            style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                 <span class="social-text">
                                     Follow on Instagram<br>
                                     <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
@@ -258,7 +260,7 @@
                                             style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                         <div>
 
-                                            Follow on NIMS<br>
+                                            Follow NIMS<br>
                                             <span class="muted-point-value"
                                                 style="font-size: 12px; color: gray;">Points:
                                                 100</span>
@@ -291,7 +293,7 @@
                                             style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                         <div>
 
-                                            Follow on NIMS<br>
+                                            Follow NIMS<br>
                                             <span class="muted-point-value"
                                                 style="font-size: 12px; color: gray;">Points:
                                                 50</span>
@@ -324,7 +326,7 @@
                                         <i class="fa fa-twitter-square"
                                             style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                         <div>
-                                            Follow on NIMS
+                                            Follow NIMS
                                             <br>
                                             <span class="muted-point-value"
                                                 style="font-size: 12px; color: gray;">Points:
@@ -359,7 +361,7 @@
                                         style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
                                     <div>
 
-                                        Follow on NIMS<br>
+                                        Follow NIMS<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
                                             100</span>
                                 </span>
@@ -426,13 +428,12 @@
                             Video</button>
                     </div>
 
-                    {{-- <div class="url-claim social-link">
+                    <div class="url-claim social-link">
                                 <input type="text" id="url-input" placeholder="Paste retweet link" />
                                 <button class="claim-button" data_user_id="{{ session('user_id') }}"
                                     data-source="ReTweetLink" data-points="200" id="claim-url-btn">Claim 200 Points
                                 </button>
-                            </div> --}}
-
+                            </div> 
                 </div>
             </div>
         </div>
