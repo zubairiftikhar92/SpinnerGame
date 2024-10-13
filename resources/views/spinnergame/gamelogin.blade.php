@@ -57,12 +57,16 @@
         <section class="wrapper">
             <div class="form signup">
                 <header style="margin-bottom: 20px;">Login</header>
-                <form action="#">
-                    <input type="text" placeholder="Email address" required />
-                    <input type="password" placeholder="Password" required />
+                
+                <form id="loginForm" action="{{ route('spinner-game-login-store') }}" method="POST">
+                    @csrf
+
+                    <input type="text" id="email" name="email" placeholder="Email address" required />
+                    <input type="password" id="password" name="password" placeholder="Password" required />
                     <a href="#">Forgot password?</a>
                     <input type="submit" value="Login" />
                 </form>
+
             </div>
             <div class="form login">
                 <header style="margin-bottom: 15px;">Register</header>
@@ -116,14 +120,6 @@
                     <button type="submit" value="Signup" id="registration_form_btn"
                         class="btn btn-secondary center spinner_signup_btn" style="margin-top: 0rem">Register</button>
                 </form>
-                {{-- <form id="loginForm" action="{{ route('spinner-game-login-store') }}" method="POST">
-                @csrf
-
-                <input type="text" id="email" name="email" placeholder="Email address" required />
-                <input type="password" id="password" name="password" placeholder="Password" required />
-                <a href="#">Forgot password?</a>
-                <input type="submit" value="Login" />
-                </form> --}}
             </div>
 
             <script>
