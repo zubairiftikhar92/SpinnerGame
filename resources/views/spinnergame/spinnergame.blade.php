@@ -467,10 +467,10 @@
                             <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/@NimsNetwork"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                     <div>
 
-                                        Follow NIMS<br>
+                                        Subscribe NIMS<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
                                             100</span>
                                     </div>
@@ -482,7 +482,7 @@
                             @else
                             <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                 Subscribe Our Channel<br>
                                 <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                     100</span>
@@ -497,7 +497,7 @@
                     <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/watch?v=H3-qw3olnB4&ab_channel=NimsNetwork"
                         data-wait-time="5000" style="">
                         <span class="social-text d-flex">
-                        <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                        <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
                             <div>
                                 Watch Video YouTube<br>
                                 <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
@@ -512,7 +512,7 @@
                     <div class="social-link"
                             style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text d-flex"  style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                             Watch Video YouTube<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                 100</span>
