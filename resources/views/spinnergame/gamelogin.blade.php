@@ -74,7 +74,7 @@
                     @csrf
 
                     <input style="margin-top:10px " type="text" class="form-control" id="dsponserid" name="dsponserid"
-                        placeholder="Referral Email ID" value="{{ $user_email }}" readonly>
+                        placeholder="Referral Email (Optional)" value="{{ $user_email }}" readonly>
                     @error('dsponserid')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror

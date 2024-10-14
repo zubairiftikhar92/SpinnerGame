@@ -195,6 +195,7 @@ class SpinerGamaController extends Controller
 
         $instagram_claimed = isset($social_sources) ? $social_sources->contains('instagram') : false;
         $telegram_claimed = isset($social_sources) ? $social_sources->contains('telegram') : false;
+        $linkedIn_claimed = isset($social_sources) ? $social_sources->contains('linkedIn') : false;
         $facebook_claimed = isset($social_sources) ? $social_sources->contains('facebook') : false;
         $twitter_join_claimed = isset($social_sources) ? $social_sources->contains('x_join(twitter)') : false;
         $twitter_like_claimed = isset($social_sources) ? $social_sources->contains('x_like(twitter)') : false;
@@ -204,7 +205,7 @@ class SpinerGamaController extends Controller
         $watchYouTubeVideo = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo') : false;
         $ReTweetLink = isset($social_sources) ? $social_sources->contains('ReTweetLink') : false;
 
-        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed','twitter_like_claimed', 'youtube_claimed' , 'FollowCEO' , 'FollowCTO' , 'watchYouTubeVideo' , 'ReTweetLink', 'social_media_rewards', 'user_referral_link', 'walletAddress'));
+        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed','telegram_claimed', 'facebook_claimed', 'twitter_join_claimed','twitter_like_claimed', 'youtube_claimed' , 'FollowCEO' , 'FollowCTO' , 'watchYouTubeVideo' , 'ReTweetLink', 'social_media_rewards', 'user_referral_link', 'walletAddress'));
     }
 
     public function spinnerGameReward(Request $request)
