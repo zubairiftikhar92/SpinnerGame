@@ -238,7 +238,7 @@
                                 style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
                                 <img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                        Follow on Instagram<br>
+                                        Follow NIMS<br>
                                         <span class="muted-point-value ml-3"
                                             style="font-size: 12px; color: gray;">Points:
                                             100</span>
@@ -268,7 +268,7 @@
                             <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
                                 <img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                Follow on Telegram<br>
+                                Follow NIMS<br>
                                 <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                     200</span>
                                 <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
@@ -297,7 +297,7 @@
                             <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
                                 <img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                Follow on LinkedIn<br>
+                                Follow NIMS<br>
                                 <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                     100</span>
                                 <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
@@ -325,7 +325,7 @@
                             <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
                                 <img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                Follow on Facebook<br>
+                                Follow NIMS<br>
                                 <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                     100</span>
                                 <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
@@ -358,7 +358,7 @@
                             style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                             <span class="social-text" style="display:flex; align-items: center; width: 100%;">
                             <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                Follow on X<br>
+                                Follow NIMS<br>
                                 <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                     200</span>
                                 <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
@@ -367,7 +367,7 @@
                             </span>
                         @endif
                         @if ($twitter_like_claimed != true)
-                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
+                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims/status/1845443105220428214?s=46"
                             data-wait-time="5000">
                             <span class="social-text d-flex">
 
@@ -483,7 +483,7 @@
                             <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
                                 <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                Subscribe Our YouTube Channel<br>
+                                Subscribe Our Channel<br>
                                 <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                     100</span>
                                 <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
@@ -512,6 +512,7 @@
                     <div class="social-link"
                             style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text d-flex"  style="display:flex; align-items: center; width: 100%;">
+                                <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                             Watch Video YouTube<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                 100</span>
