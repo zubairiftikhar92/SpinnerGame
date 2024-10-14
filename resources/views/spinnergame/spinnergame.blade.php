@@ -145,10 +145,10 @@
                         </ul>
                     </div>
                     <div class="invite_button">
-                        <button>
+                        <button onclick="myFunction()">
                             Invite Friends...
                             <input type="text" value="{{ $user_referral_link }}" id="myInput" style="display: none">
-                            <i onclick="myFunction()" class="fa fa-clone"></i>
+                            <i class="fa fa-clone"></i>
                         </button>
                         <button>
                             <span>Your Referal</span><span>{{ $direct_referral_count }}</span>
