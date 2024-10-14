@@ -463,7 +463,7 @@
 
 
 
-                    @if ($telegram_claimed != true)
+                    @if ($youtube_claimed != true)
                             <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/@NimsNetwork"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
@@ -475,8 +475,8 @@
                                             100</span>
                                     </div>
                                 </span>
-                                <button id="telegram_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                    data-source="telegram" data-points="100" style="visibility: hidden">Follow</button>
+                                <button id="youtube_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="youtube_follow" data-points="100" style="visibility: hidden">Follow</button>
 
                             </div>
                             @else
