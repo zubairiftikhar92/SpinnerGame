@@ -219,8 +219,7 @@
                             <div class="social-link" data-link_clicked="0"
                                 data-url="https://www.instagram.com/join_nims/" data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                    <i class="fa fa-instagram"
-                                        style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                <img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
                                     <div>
                                         Follow NIMS<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
@@ -238,8 +237,7 @@
                             <div class="social-link"
                                 style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                                    <i class="fa fa-instagram"
-                                        style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
+                                <img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
                                         Follow on Instagram<br>
                                         <span class="muted-point-value ml-3"
                                             style="font-size: 12px; color: gray;">Points:
@@ -254,8 +252,215 @@
                             <div class="social-link" data-link_clicked="0" data-url="https://t.me/join_NIMS"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                    <i class="fa fa-telegram"
-                                        style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                                <img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+
+                                        Follow NIMS<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            200</span>
+                                    </div>
+                                </span>
+                                <button id="telegram_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="telegram" data-points="200" style="visibility: hidden">Follow</button>
+
+                            </div>
+                            @else
+                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                                <img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                Follow on Telegram<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                    200</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                    Claimed</span>
+                                </span>
+                            </div>
+                            @endif
+
+                            @if ($telegram_claimed != true)
+                            <div class="social-link" data-link_clicked="0" data-url="https://www.linkedin.com/company/nims-network/mycompany/"
+                                data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                <img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+
+                                        Follow NIMS<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+                                </span>
+                                <button id="linkedIn_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="linkedIn" data-points="100" style="visibility: hidden">Follow</button>
+
+                            </div>
+                            @else
+                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                                <img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                Follow on LinkedIn<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                    100</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                    Claimed</span>
+                                </span>
+                            </div>
+                            @endif
+
+                            @if ($facebook_claimed != true)
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+                                        Follow NIMS<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+                                </span>
+                                <button id="facebook_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="facebook" data-points="100" style="visibility: hidden">Follow</button>
+
+                            </div>
+                            @else
+                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                                <img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                Follow on Facebook<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                    100</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                    Claimed</span>
+                                </span>
+                            </div>
+                            @endif
+
+
+                            @if ($twitter_join_claimed != true)
+                            <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
+                                data-wait-time="5000">
+                                <span class="social-text d-flex">
+
+                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+                                        Follow NIMS
+                                        <br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            200</span>
+                                </span>
+                            </div>
+
+                            <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                data-source="x_join(twitter)" data-points="200" style="visibility: hidden">Follow</button>
+
+                        </div>
+                        @else
+                        <div class="social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                            <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                Follow on X<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                    200</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                    Claimed</span>
+                                </div>
+                            </span>
+                        @endif
+                        @if ($twitter_like_claimed != true)
+                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
+                            data-wait-time="5000">
+                            <span class="social-text d-flex">
+
+                            <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                <div>
+                                    Like our Tweet
+                                    <br>
+                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    </div>
+                            </span>
+
+                        <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                            data-source="x_like(twitter)" data-points="100" style="visibility: hidden">Like</button>
+
+                    </div>
+                    @else
+                    <div class="social-link"
+                        style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                        <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                            Liked<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                100</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
+                        </span>
+                    </div>
+                    @endif
+
+                    @if (@$FollowCEO != true)
+                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
+                            data-wait-time="5000">
+                            <span class="social-text d-flex">
+                            <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                <div>
+                                    Follow Nims CEO<br>
+                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                </div>
+                            </span>
+                            <button id="ceo_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                data-source="FollowCEO" data-points="100" style="visibility: hidden">Follow</button>
+                        </div>
+                    @else
+                        <div class="social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text">
+                            Follow Nims CEO<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                100</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
+                            </span>
+                        </div>
+                    @endif
+
+                    @if (@$FollowCTO != true)
+                        <div class="social-link" data-link_clicked="0"
+                            data-url="https://x.com/@kalzsm" data-wait-time="5000">
+                            <span class="social-text d-flex">
+                            <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                            <div>
+
+                                Follow Nims CTO<br>
+                                <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                    100</span>
+                                </div>
+
+                            </span>
+                            <button id="cio_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                data-source="FollowCTO" data-points="100" style="visibility: hidden">Follow</button>
+                        </div>
+                    @else
+                        <div class="social-link"
+                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text">
+                            Follow Nims CTO<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                100</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                Claimed</span>
+                            </span>
+                        </div>
+                    @endif
+
+
+
+                    @if ($telegram_claimed != true)
+                            <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/@NimsNetwork"
+                                data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                     <div>
 
                                         Follow NIMS<br>
@@ -270,9 +475,8 @@
                             @else
                             <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                                <i class="fa fa-telegram"
-                                style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
-                                Follow on Telegram<br>
+                                <img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                Subscribe Our YouTube Channel<br>
                                 <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                     100</span>
                                 <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
@@ -281,164 +485,12 @@
                             </div>
                             @endif
 
-                            @if ($facebook_claimed != true)
-                            <div class="social-link" data-link_clicked="0"
-                                data-url="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" data-wait-time="5000">
-                                <span class="social-text d-flex">
-                                    <i class="fa fa-facebook-square"
-                                        style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                    <div>
-
-                                        Follow on Facebook<br>
-                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                            50</span>
-                                    </div>
-                                </span>
-                                <button id="facebook_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                    data-source="facebook" data-points="50" style="visibility: hidden">Follow</button>
-
-                            </div>
-                            @else
-                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                                <i class="fa fa-facebook-square"
-                                style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
-                                Follow on Facebook<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                    50</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                    Claimed</span>
-                                </span>
-                            </div>
-                            @endif
-
-
-                            @if ($twitter_join_claimed != true)
-                            <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
-                                data-wait-time="5000">
-                                <span class="social-text d-flex">
-
-                                    <i class="fa fa-twitter-square"
-                                        style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                    <div>
-                                        Follow NIMS
-                                        <br>
-                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                            100</span>
-                                </span>
-                            </div>
-
-                            <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                data-source="x_join(twitter)" data-points="100" style="visibility: hidden">Follow</button>
-
-                        </div>
-                        @else
-                        <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                            <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                            <i class="fa fa-twitter-square"
-                            style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
-                                Follow on X<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                    100</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                    Claimed</span>
-                            </span>
-                        </div>
-                        @endif
-                        @if ($twitter_like_claimed != true)
-                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims"
-                            data-wait-time="5000">
-                            <span class="social-text d-flex">
-
-                                <i class="fa fa-twitter-square"
-                                    style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                <div>
-                                    Like our Tweet
-                                    <br>
-                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
-                            </span>
-                        </div>
-
-                        <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                            data-source="x_like(twitter)" data-points="100" style="visibility: hidden">Like</button>
-
-                    </div>
-                    @else
-                    <div class="social-link"
-                        style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                        <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                        <i class="fa fa-twitter-square"
-                        style="font-size:30px;font-size: 30px;margin: 0px 10px 0px 0px;"></i>
-                            Liked<br>
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                100</span>
-                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                Claimed</span>
-                        </span>
-                    </div>
-                    @endif
-
-                    @if (@$FollowCEO != true)
-                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
-                            data-wait-time="5000">
-                            <span class="social-text d-flex">
-                                <i class="fa fa-youtube-play"
-                                    style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
-                                <div>
-                                    Follow CEO on Nims<br>
-                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
-                                </div>
-                            </span>
-                            <button id="ceo_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                data-source="FollowCEO" data-points="100" style="visibility: hidden">Follow</button>
-                        </div>
-                    @else
-                        <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text">
-                            Follow CEO on Nims<br>
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                100</span>
-                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                Claimed</span>
-                            </span>
-                        </div>
-                    @endif
-
-                    @if (@$FollowCTO != true)
-                        <div class="social-link" data-link_clicked="0"
-                            data-url="https://www.youtube.com/channel/UC8d_QJnOhu1DRsXuQ4ypeUg" data-wait-time="5000">
-                            <span class="social-text">
-                                Follow CTO on Nims<br>
-                                <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                    100</span>
-
-                            </span>
-                            <button id="cio_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                data-source="FollowCTO" data-points="100" style="visibility: hidden">Follow</button>
-                        </div>
-                    @else
-                        <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text">
-                            Follow CTO on Nims<br>
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                100</span>
-                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                Claimed</span>
-                            </span>
-                        </div>
-                    @endif
 
                     @if (@$watchYouTubeVideo != true)
-                    <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com"
+                    <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/watch?v=H3-qw3olnB4&ab_channel=NimsNetwork"
                         data-wait-time="5000" style="">
                         <span class="social-text d-flex">
-                            <i class="fa fa-youtube-play"
-                                style="font-size:30px;font-size: 30px;margin: 10px 18px 0px 0px;"></i>
+                        <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
                             <div>
                                 Watch Video YouTube<br>
                                 <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
