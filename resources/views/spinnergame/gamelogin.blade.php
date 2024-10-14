@@ -6,7 +6,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login & Signup Form</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('account/landing_page_images/assets/NIMS.png') }}">
+    <title>Nims Login</title>
     <link rel="stylesheet" href="{{ asset('account/css/spinnergame.css') }}" />
     <style>
     /* width */
