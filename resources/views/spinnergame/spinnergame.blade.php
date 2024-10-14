@@ -80,7 +80,7 @@
                     <h1>You Won!!</h1>
                     <p class="pop-up-para"></p>
                     <input type="hidden" value="" id="reward_tokens">
-                    <button class="pop-up-btn" id="closePopup">Activate Bonus</button>
+                    {{-- <button class="pop-up-btn" id="closePopup">Activate Bonus</button> --}}
                 </div>
 
                 <!-- START RANKING -->
@@ -101,7 +101,7 @@
                 {{-- <div id="spin-btn" class="spin_btn" onclick="spin()" data-user_id="{{ session('user_id') }}">
                 <img class="spin-btn" src="{{ asset('account/landing_page_images/assets/blue_button.png') }}" alt />
             </div> --}}
-            <div id="spin-btn" class="spin_btn" data-user_id="{{ session('user_id') }}">
+            <div id="spin-btn" class="spin_btn" data-user_id="{{ session('user_id') }}" data-button_click_val="0">
                 <img class="spin-btn" src="{{ asset('account/landing_page_images/assets/blue_button.png') }}" alt />
             </div>
             <div class="invite_reward">
@@ -170,7 +170,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal_body_invite">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="walletModalLabel">Wallet Adress</h5>
+                    <h5 class="modal-title" id="walletModalLabel">BEP20 Wallet Address</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -562,10 +562,10 @@
 <script>
 $(document).ready(function() {
 
-    $('#closePopup').click(function(event) {
-        event.preventDefault();
-        spinnerClaimReward();
-    });
+    // $('#closePopup').click(function(event) {
+    //     event.preventDefault();
+    //     spinnerClaimReward();
+    // });
 });
 
 const prizes = [{
@@ -783,38 +783,50 @@ function myFunction() {
 
     $('#spin-btn').click(function(event) {
         event.preventDefault();
+        let btn_clicked = $(this).data('button_click_val');
 
-        var userID = $(this).data('user_id');
+        if (btn_clicked == '0') {
+            var userID = $(this).data('user_id');
 
-        if (userID == null || userID == '') {
-            window.location.href = "{{ route('spinner-game-login') }}";
-            return;
-        }
-
-        // AJAX request to check if the user has already spun
-        $.ajax({
-            url: "{{ route('verify-user-already-spinned') }}",
-            method: "POST",
-            data: {
-                _token: '{{ csrf_token() }}',
-                user_id: userID
-            },
-            success: function(response) {
-                const totalSeconds = timeStringToSeconds(response.remaining_time);
-                if (response.status == true) {
-                    swal({
-                        title: "Hang tight, your spin is next.",
-                        text: response.next_spin_time,
-                        
-                        button: "OK",
-                    });
-                    startCountdown(totalSeconds);
-                } else {
-                    spin();
-                }
+            if (userID == null || userID == '') {
+                window.location.href = "{{ route('spinner-game-login') }}";
+                return;
             }
-        });
+
+            // Disable further clicks
+            $(this).data('button_click_val', '1');
+            
+            // AJAX request to check if the user has already spun
+            $.ajax({
+                url: "{{ route('verify-user-already-spinned') }}",
+                method: "POST",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    user_id: userID
+                },
+                success: function(response) {
+                    const totalSeconds = timeStringToSeconds(response.remaining_time);
+                    
+                    if (response.status == true) {
+                        swal({
+                            title: "Hang tight, your spin is next.",
+                            text: response.next_spin_time,
+                            button: "OK",
+                        });
+                        startCountdown(totalSeconds);
+                    } else {
+                        spin();
+                    }
+                    
+                    // Re-enable the button for next use (if needed)
+                    setTimeout(function() {
+                        $('#spin-btn').data('button_click_val', '0');
+                    }, 3000);
+                }
+            });
+        }
     });
+
 
     function spin() {
         // Your existing spin logic
@@ -861,7 +873,7 @@ function myFunction() {
                 clearInterval(timerInterval);
                 timerElement.style.display = 'none'; // Hide the timer
                 // Optionally, allow the user to spin again here
-                document.getElementById("spin-btn").disabled = false; // Enable spin button
+                // document.getElementById("spin-btn").disabled = false; // Enable spin button
             }
         }
 
