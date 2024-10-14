@@ -64,7 +64,7 @@
                     <input type="text" id="email" name="email" placeholder="Email address" required />
                     <input type="password" id="password" name="password" placeholder="Password" required />
                     <a href="#">Forgot password?</a>
-                    <input type="submit" value="Login" />
+                    <input type="submit" class="login_buton" value="Login" />
                 </form>
 
             </div>

@@ -87,6 +87,9 @@ body {
 .spin-btn {
   height: 146px;
 }
+.spin-btn:hover {
+  cursor: pointer;
+}
 
 #spinner {
   height: 500px;
@@ -640,6 +643,13 @@ body {
   justify-content: center;
   background: #000000;
 }
+.login_buton{
+  cursor: pointer;
+}
+.login_buton:hover{
+  box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
+  transition: .5s;
+}
 
 .wrapper {
   height: 96vh;
@@ -657,7 +667,7 @@ body {
 .form.login {
   position: absolute;
   left: 50%;
-  bottom: -86%;
+  bottom: -60%;
   transform: translateX(-50%);
   width: calc(100% + 220px);
   padding: 15px 140px;
@@ -728,6 +738,11 @@ color: #fffefe;
 border-radius: 8px;
 background-color: #04011360;
 border: 1px solid rgb(255 255 255 / 46%);
+cursor: pointer;
+}
+.spinner_signup_btn:hover {
+  box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
+  transition: .5s;
 }
 .form.login input {
   border: 1px solid #aaa;
