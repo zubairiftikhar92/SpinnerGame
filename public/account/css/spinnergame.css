@@ -91,6 +91,38 @@ body {
   cursor: pointer;
 }
 
+.form .regis_ter_button{
+  /* margin-top: 15px;
+  padding: 10px 0;
+  width: 215px;
+  text-align: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box;
+  animation: 2s rotate linear infinite; */
+}
+.form .log_in_button{
+
+}
+@keyframes blink {
+  0% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+.blinking-text {
+  text-align: center;
+  animation: blink 1s infinite; 
+}
+
 #spinner {
   height: 500px;
   position: relative;
@@ -718,7 +750,7 @@ body {
 }
 
 form input {
-  height: 45px;
+  height: 42px;
   outline: none;
   padding: 0 15px;
   font-size: 16px;
