@@ -20,6 +20,10 @@ class SpinerGamaController extends Controller
             ->where('userid', $u_id)
             ->first();
 
+        $lastSpinTime = $response->updated_at;
+        $currentTime = now();
+        $hoursDifference = $currentTime->diffInHours($lastSpinTime);
+
         // Count direct referrals for the user
         $direct_referral_count = DB::table('game_registrations')
             ->where('dsponserid', $u_id)
@@ -38,6 +42,13 @@ class SpinerGamaController extends Controller
             ]);
         }
 
+        if ($hoursDifference >= 6) {
+            // Allow the user to spin again
+            return response()->json([
+                'status' => false,
+                'message' => 'You can spin again!'
+            ]);
+        }
         // Check if the user has spun before
         if ($response) {
             if (is_null($response->updated_at) || $response->updated_at === "0000-00-00 00:00:00") {
