@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spin Wheel</title>
+    <title>Nims</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('account/landing_page_images/assets/NIMS.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -145,10 +146,10 @@
                         </ul>
                     </div>
                     <div class="invite_button">
-                        <button>
+                        <button onclick="myFunction()">
                             Invite Friends...
                             <input type="text" value="{{ $user_referral_link }}" id="myInput" style="display: none">
-                            <i onclick="myFunction()" class="fa fa-clone"></i>
+                            <i class="fa fa-clone"></i>
                         </button>
                         <button>
                             <span>Your Referal</span><span>{{ $direct_referral_count }}</span>
@@ -467,10 +468,10 @@
                             <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/@NimsNetwork"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                     <div>
 
-                                        Follow NIMS<br>
+                                        Subscribe NIMS<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
                                             100</span>
                                     </div>
@@ -482,7 +483,7 @@
                             @else
                             <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                 Subscribe Our Channel<br>
                                 <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                     100</span>
@@ -497,7 +498,7 @@
                     <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/watch?v=H3-qw3olnB4&ab_channel=NimsNetwork"
                         data-wait-time="5000" style="">
                         <span class="social-text d-flex">
-                        <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                        <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
                             <div>
                                 Watch Video YouTube<br>
                                 <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
@@ -512,7 +513,7 @@
                     <div class="social-link"
                             style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text d-flex"  style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/youtube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                             Watch Video YouTube<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                 100</span>

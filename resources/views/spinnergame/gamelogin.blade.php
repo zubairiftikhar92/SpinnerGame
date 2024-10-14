@@ -6,7 +6,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login & Signup Form</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('account/landing_page_images/assets/NIMS.png') }}">
+    <title>Nims Login</title>
     <link rel="stylesheet" href="{{ asset('account/css/spinnergame.css') }}" />
     <style>
     /* width */
@@ -56,7 +57,7 @@
     <div class="signup_login">
         <section class="wrapper">
             <div class="form signup">
-                <header style="margin-bottom: 20px;">Login</header>
+                <header class="log_in_button" style="margin-bottom: 20px;">Login</header>
                 
                 <form id="loginForm" action="{{ route('spinner-game-login-store') }}" method="POST">
                     @csrf
@@ -68,8 +69,14 @@
                 </form>
 
             </div>
-            <div class="form login">
-                <header style="margin-bottom: 15px;">Register</header>
+            <div class="form login" >
+                
+                <div style="text-align: center; margin-top:12px" class="center">
+                    <span class="blinking-text" style="color: aliceblue; margin: 10px 0">
+                    👇 For Registration click here 👇
+                    </span>
+                    <header class="regis_ter_button" style="margin: 6px 0;">Register</header>
+                </div>
                 <form id="registrationForm" action="{{ route('spinner-game-registeration') }}" method="POST">
                     @csrf
 
@@ -103,7 +110,7 @@
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div id="passwordError" style="color: red;"></div>
+                    <!-- <div id="passwordError" style="color: red;"></div> -->
 
                     <div class="checkbox">
                         <input type="checkbox" id="signupCheck" />
@@ -124,8 +131,8 @@
 
             <script>
             const wrapper = document.querySelector(".wrapper"),
-                signupHeader = document.querySelector(".signup header"),
-                loginHeader = document.querySelector(".login header");
+                signupHeader = document.querySelector(".signup"),
+                loginHeader = document.querySelector(".login");
 
             loginHeader.addEventListener("click", () => {
                 wrapper.classList.add("active");

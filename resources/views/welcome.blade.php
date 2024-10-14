@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Nims Airdrop</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('account/landing_page_images/assets/NIMS.png') }}">
+    <title>Nims Login</title>
+    <link rel="stylesheet" href="{{ asset('account/css/spinnergame.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -21,53 +23,61 @@
     <link rel="stylesheet" href="{{ asset('account/css/spinnergame.css') }}" />
 
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&display=swap" rel="stylesheet">
 
-        <style>
+    <style>
+    body {
+        font-family: 'Bodoni Moda', serif;
+        background-size: cover;
+        font-weight: bold;
+    }
 
-body{
-  font-family: 'Bodoni Moda', serif;
-  background-size: cover;
-  font-weight: bold;
-}
-.gold {
-  font-size: 5vw;
-  text-transform: uppercase;
-  line-height:1;
-  text-align: center;
-  background: linear-gradient(90deg, rgba(186,148,62,1) 0%, rgba(236,172,32,1) 20%, rgba(186,148,62,1) 39%, rgba(249,244,180,1) 50%, rgba(186,148,62,1) 60%, rgba(236,172,32,1) 80%, rgba(186,148,62,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;	
-  animation: shine 3s infinite;
-  background-size: 200%;
-  background-position: left;
-margin-top: 20%;
-}
-@keyframes shine {
-  to{background-position: right}
- 
-}
-        </style>
-        <style>
-        .disabled {
-            pointer-events: none;
-            opacity: 0.5;
+    .gold {
+        font-size: 5vw;
+        text-transform: uppercase;
+        line-height: 1;
+        text-align: center;
+        background: linear-gradient(90deg, rgba(186, 148, 62, 1) 0%, rgba(236, 172, 32, 1) 20%, rgba(186, 148, 62, 1) 39%, rgba(249, 244, 180, 1) 50%, rgba(186, 148, 62, 1) 60%, rgba(236, 172, 32, 1) 80%, rgba(186, 148, 62, 1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 3s infinite;
+        background-size: 200%;
+        background-position: left;
+        margin-top: 20%;
+    }
+
+    @keyframes shine {
+        to {
+            background-position: right
         }
+
+    }
     </style>
-    </head>
-    <body class="antialiased">
+    <style>
+    .disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+    </style>
+</head>
+
+<body class="antialiased">
     <video class="coin_video" width="100%" autoplay loop muted>
         <source src="./assets/falling_coin.mp4" type="video/mp4" />
     </video>
     <div class="background"></div>
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-           <h1 class="gold">Spin To Win Nims</h1>
-        </div>
-    </body>
-    <script>
-         // START BACKGROUND ANIMATION
-    const background = document.querySelector('.background');
+    <div
+        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <h1 class="gold">Spin To Win Nims</h1>
+        <a href="{{ route('spinner-game') }}">
+        <img style="text-align: center; position: relative; left: 37%; width: 27%;" src="{{ asset('account/landing_page_images/assets/spinner_button.png') }}" alt="">
+        </a>
+    </div>
+</body>
+<script>
+// START BACKGROUND ANIMATION
+const background = document.querySelector('.background');
 
 // Function to generate random circles
 function createCircle() {
@@ -100,5 +110,6 @@ function createCircle() {
 setInterval(createCircle, 300);
 
 // END BACKGROUND ANIMATION
-    </script>
+</script>
+
 </html>
