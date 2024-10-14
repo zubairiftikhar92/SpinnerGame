@@ -588,9 +588,12 @@ body {
   }
 
   .invite_reward {
-    width: 310px;
+    width: 320px;
     padding: 8px 5px;
     border-radius: 8px;
+  }
+  .invite_reward button{
+    padding: 7px 6px;
   }
 
   .coun_down img {
@@ -644,6 +647,7 @@ body {
 
   .sta_r .icon img {
     width: 16px;
+    margin-top: 0px;
   }
 
   .sta_r .icon span {
