@@ -70,6 +70,7 @@
 
             </div>
             <div class="form login" >
+                
                 <div style="text-align: center; margin-top:12px" class="center">
                     <span class="blinking-text" style="color: aliceblue; margin: 10px 0">
                     👇 For Registration click here 👇
