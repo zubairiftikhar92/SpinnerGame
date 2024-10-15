@@ -122,7 +122,7 @@
             </div>
             <div class="spin_rule">
                 <button data-bs-toggle="modal" data-bs-target="#exampleModalrule">
-                    <span>Playing field rules</span>
+                    <span>Playing Field Rules</span>
                 </button>
             </div>
             <div class="spin_rule">
