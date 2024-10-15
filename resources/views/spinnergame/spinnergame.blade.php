@@ -614,17 +614,19 @@
                     <h5 class="modal-title" id="exampleModalLabel">Playing field rules</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body rule_modal">
-                    <h3>Game Rules and Participation</h3>
-                    <h5>1. Eligibility: <span> All participants with a valid email address are welcome.</span></h5>
-                    <h5>2. Spinning: <span> Participants can spin the wheel every 6 hours and earn an extra spin for inviting three friends.</span></h5>
-                    <h5>3. Points: <span> Players accumulate points based on spin outcomes and quest completion.</span></h5>
-                    <h5>4. Airdrop: <span> Quest completion is essential for eligibility to maximize airdrop rewards.</span></h5>
-                    <h5>5. Fair Play: <span> The use of bots, multiple accounts, or any form of cheating is strictly prohibited.</span></h5>
-                    <h5>6. Dispute Resolution: <span> The NIMS team reserves the right to resolve any disputes.</span></h5>
-                    <h3>Additional Requirements</h3>
-                    <h5>7. Social Media Engagement: <span> Following, liking, or subscribing to our social media channels is mandatory for full point accumulation.</span></h5>
-                    <h5>8. Quest Answers: <span> Daily quest answers can be found on our social media platforms.</span></h5>
+                <div class="modal-body">
+                    <div class="rule_modal">
+                        <h3>Game Rules and Participation</h3>
+                        <h5>1. Eligibility: <span> All participants with a valid email address are welcome.</span></h5>
+                        <h5>2. Spinning: <span> Participants can spin the wheel every 6 hours and earn an extra spin for inviting three friends.</span></h5>
+                        <h5>3. Points: <span> Players accumulate points based on spin outcomes and quest completion.</span></h5>
+                        <h5>4. Airdrop: <span> Quest completion is essential for eligibility to maximize airdrop rewards.</span></h5>
+                        <h5>5. Fair Play: <span> The use of bots, multiple accounts, or any form of cheating is strictly prohibited.</span></h5>
+                        <h5>6. Dispute Resolution: <span> The NIMS team reserves the right to resolve any disputes.</span></h5>
+                        <h3>Additional Requirements</h3>
+                        <h5>7. Social Media Engagement: <span> Following, liking, or subscribing to our social media channels is mandatory for full point accumulation.</span></h5>
+                        <h5>8. Quest Answers: <span> Daily quest answers can be found on our social media platforms.</span></h5>
+                    </div>
                 </div>
             </div>
         </div>
