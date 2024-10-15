@@ -111,16 +111,34 @@
                     <img src="{{ asset('account/landing_page_images/assets/invite.svg') }}" alt><span>Friends</span>
                 </button>
 
-                    <button data-bs-toggle="modal" data-bs-target="#walletModal">
-                        <img style="margin-bottom: 4px;"
-                            src="{{ asset('account/landing_page_images/assets/wallet.svg') }}" alt><span>Wallet</span>
-                    </button>
-                    <button data-bs-toggle="modal" data-bs-target="#example_Modal">
-                        <img style="width: 16px; margin-top: -5px;"
-                            src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}"
-                            alt><span>Quest</span>
-                    </button>
-                </div>
+                <button data-bs-toggle="modal" data-bs-target="#walletModal">
+                    <img style="margin-bottom: 4px;" src="{{ asset('account/landing_page_images/assets/wallet.svg') }}"
+                        alt><span>Wallet</span>
+                </button>
+                <button data-bs-toggle="modal" data-bs-target="#example_Modal">
+                    <img style="width: 16px; margin-top: -5px;"
+                        src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}" alt><span>Rewards</span>
+                </button>
+            </div>
+            <div class="spin_rule">
+                <button data-bs-toggle="modal" data-bs-target="#exampleModalrule">
+                    <span>Playing field rules</span>
+                </button>
+            </div>
+            <div class="spin_rule">
+                <a href="https://www.instagram.com/join_nims/" target="_blank"><img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
+                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://t.me/join_NIMS" target="_blank"><img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"
+                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://www.linkedin.com/company/nims-network/mycompany/" target="_blank"><img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"
+                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" target="_blank"><img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"
+                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://x.com/join_nims" target="_blank"><img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://www.youtube.com/@NimsNetwork" target="_blank"><img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                
             </div>
         </div>
     </div>
@@ -556,8 +574,6 @@
                             </div>
                             @endif
 
-{{-- @dd($ReTweetLink) --}}
-                    {{-- new code start --}}
                     @if (@$ReTweetLink != true)
                         <div class="social-link" id="retweet-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
                             data-wait-time="5000">
@@ -579,7 +595,6 @@
                             </span>
                         </div>
                     @endif
-                    {{-- new code end --}}
                     
                 </div>
             </div>
