@@ -236,6 +236,28 @@
                         <!-- Social Media Buttons -->
                         <div class="social-links">
 
+                            @if (@$ReTweetLink != true)
+                        <div class="social-link" id="retweet-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
+                            data-wait-time="5000">
+                            <span class="social-text d-flex">
+                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                <div>
+                                    Re-Tweet Post<br>
+                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points: 200</span>
+                                </div>
+                            </span>
+                        </div>
+                    @else
+                        <div class="url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
+                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                ReTweet Link<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
+                            </span>
+                        </div>
+                    @endif
+                    
                             @if ($instagram_claimed != true)
                             <div class="social-link" data-link_clicked="0"
                                 data-url="https://www.instagram.com/join_nims/" data-wait-time="5000">
@@ -573,28 +595,6 @@
                                 </span>
                             </div>
                             @endif
-
-                    @if (@$ReTweetLink != true)
-                        <div class="social-link" id="retweet-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
-                            data-wait-time="5000">
-                            <span class="social-text d-flex">
-                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                <div>
-                                    Re-Tweet Post<br>
-                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points: 200</span>
-                                </div>
-                            </span>
-                        </div>
-                    @else
-                        <div class="url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                            <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                ReTweet Link<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
-                            </span>
-                        </div>
-                    @endif
                     
                 </div>
             </div>
