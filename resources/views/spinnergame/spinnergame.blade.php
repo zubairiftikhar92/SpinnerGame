@@ -43,8 +43,8 @@
             <div class="col">
                 <!-- START PROFILE -->
                 <div class="user_profile">
-                    <img src="{{ asset('account/landing_page_images/assets/profile7.svg') }}"
-                        alt><span style="margin-right:20px">{{ session('user_email') }}</span>
+                    <img src="{{ asset('account/landing_page_images/assets/profile7.svg') }}" alt><span
+                        style="margin-right:20px">{{ session('user_email') }}</span>
                     {{-- <button type="button" class="sta_r">
                             <span>Login</span>
                         </button> --}}
@@ -66,6 +66,33 @@
                     </div>
                     <!-- COWNDOWN -->
                 </div>
+
+
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
                 @if (session('message'))
                 <div class="custom-alert" id="message">
                     {{ session('message') }}
@@ -110,18 +137,17 @@
                     <img src="{{ asset('account/landing_page_images/assets/invite.svg') }}" alt><span>Friends</span>
                 </button>
 
-                    <button data-bs-toggle="modal" data-bs-target="#walletModal">
-                        <img style="margin-bottom: 4px;"
-                            src="{{ asset('account/landing_page_images/assets/wallet.svg') }}" alt><span>Wallet</span>
-                    </button>
-                    <button data-bs-toggle="modal" data-bs-target="#example_Modal">
-                        <img style="width: 16px; margin-top: -5px;"
-                            src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}"
-                            alt><span>Rewards</span>
-                    </button>
-                </div>
+                <button data-bs-toggle="modal" data-bs-target="#walletModal">
+                    <img style="margin-bottom: 4px;" src="{{ asset('account/landing_page_images/assets/wallet.svg') }}"
+                        alt><span>Wallet</span>
+                </button>
+                <button data-bs-toggle="modal" data-bs-target="#example_Modal">
+                    <img style="width: 16px; margin-top: -5px;"
+                        src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}" alt><span>Rewards</span>
+                </button>
             </div>
         </div>
+    </div>
     </div>
     </div>
     <!-- <div class="pop-up">
@@ -220,7 +246,8 @@
                             <div class="social-link" data-link_clicked="0"
                                 data-url="https://www.instagram.com/join_nims/" data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                <img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    <img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
                                     <div>
                                         Follow NIMS<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
@@ -238,22 +265,23 @@
                             <div class="social-link"
                                 style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                        Follow NIMS<br>
-                                        <span class="muted-point-value ml-3"
-                                            style="font-size: 12px; color: gray;">Points:
-                                            100</span>
-                                        <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                            Claimed</span>
-                                    </span>
-                                </div>
+                                    <img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    Follow NIMS<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
+                                </span>
+                            </div>
                             @endif
 
                             @if ($telegram_claimed != true)
                             <div class="social-link" data-link_clicked="0" data-url="https://t.me/join_NIMS"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                <img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    <img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                     <div>
 
                                         Follow NIMS<br>
@@ -266,23 +294,27 @@
 
                             </div>
                             @else
-                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                Follow NIMS<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                    200</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                    Claimed</span>
+                                    <img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    Follow NIMS<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        200</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
                                 </span>
                             </div>
                             @endif
 
                             @if ($linkedIn_claimed != true)
-                            <div class="social-link" data-link_clicked="0" data-url="https://www.linkedin.com/company/nims-network/mycompany/"
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://www.linkedin.com/company/nims-network/mycompany/"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                <img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    <img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                     <div>
 
                                         Follow NIMS<br>
@@ -295,14 +327,16 @@
 
                             </div>
                             @else
-                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                Follow NIMS<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                    100</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                    Claimed</span>
+                                    <img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    Follow NIMS<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
                                 </span>
                             </div>
                             @endif
@@ -311,7 +345,8 @@
                             <div class="social-link" data-link_clicked="0"
                                 data-url="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                    <img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    <img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                     <div>
                                         Follow NIMS<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
@@ -323,14 +358,16 @@
 
                             </div>
                             @else
-                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                Follow NIMS<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                    100</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                    Claimed</span>
+                                    <img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    Follow NIMS<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
                                 </span>
                             </div>
                             @endif
@@ -341,134 +378,146 @@
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
 
-                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                     <div>
                                         Follow NIMS
                                         <br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
                                             200</span>
-                                        </div>
+                                    </div>
                                 </span>
 
-                            <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                data-source="x_join(twitter)" data-points="200" style="visibility: hidden">Follow</button>
+                                <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="x_join(twitter)" data-points="200"
+                                    style="visibility: hidden">Follow</button>
 
-                        </div>
-                        @else
-                        <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                            <span class="social-text" style="display:flex; align-items: center; width: 100%;">
-                            <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                Follow NIMS<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                    200</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                    Claimed</span>
-                                </div>
+                            </div>
+                            @else
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text" style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    Follow NIMS<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        200</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
+                            </div>
                             </span>
-                        @endif
-                        @if ($twitter_like_claimed != true)
-                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/join_nims/status/1845443105220428214?s=46"
-                            data-wait-time="5000">
-                            <span class="social-text d-flex">
-
-                            <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                <div>
-                                    Like pined Tweet on X
-                                    <br>
-                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
-                                    </div>
-                            </span>
-
-                        <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                            data-source="x_like(twitter)" data-points="100" style="visibility: hidden">Like</button>
-
-                    </div>
-                    @else
-                    <div class="social-link"
-                        style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                        <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                        <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                             Like pined Tweet on X<br>
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                100</span>
-                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                Claimed</span>
-                        </span>
-                    </div>
-                    @endif
-
-                    @if (@$FollowCEO != true)
-                        <div class="social-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
-                            data-wait-time="5000">
-                            <span class="social-text d-flex">
-                            <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                <div>
-                                    Follow Nims CEO<br>
-                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
-                                </div>
-                            </span>
-                            <button id="ceo_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                data-source="FollowCEO" data-points="100" style="visibility: hidden">Follow</button>
-                        </div>
-                    @else
-                        <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                    
-                                        Follow Nims CEO<br>
-                                        <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                            100</span>
-                                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                                Claimed</span>
-                                       
-                            </span>
-                        </div>
-                    @endif
-
-                    @if (@$FollowCTO != true)
-                        <div class="social-link" data-link_clicked="0"
-                            data-url="https://x.com/@kalzsm" data-wait-time="5000">
-                            <span class="social-text d-flex">
-                            <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                            <div>
-
-                                Follow Nims CTO<br>
-                                <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                    100</span>
-                                </div>
-
-                            </span>
-                            <button id="cio_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                data-source="FollowCTO" data-points="100" style="visibility: hidden">Follow</button>
-                        </div>
-                    @else
-                        <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"  style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                             
-
-                                        Follow Nims CTO<br>
-                                        <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                            100</span>
-                                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                                Claimed</span>
-                                                
-                            </span>
-                        </div>
-                    @endif
-
-
-
-                    @if ($youtube_claimed != true)
-                            <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/@NimsNetwork"
+                            @endif
+                            @if ($twitter_like_claimed != true)
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://x.com/join_nims/status/1845443105220428214?s=46"
                                 data-wait-time="5000">
                                 <span class="social-text d-flex">
-                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+                                        Like pined Tweet on X
+                                        <br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+                                </span>
+
+                                <button id="x_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="x_like(twitter)" data-points="100"
+                                    style="visibility: hidden">Like</button>
+
+                            </div>
+                            @else
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    Like pined Tweet on X<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
+                                </span>
+                            </div>
+                            @endif
+
+                            @if (@$FollowCEO != true)
+                            <div class="social-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
+                                data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+                                        Follow Nims CEO<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+                                </span>
+                                <button id="ceo_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="FollowCEO" data-points="100" style="visibility: hidden">Follow</button>
+                            </div>
+                            @else
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+
+                                    Follow Nims CEO<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
+
+                                </span>
+                            </div>
+                            @endif
+
+                            @if (@$FollowCTO != true)
+                            <div class="social-link" data-link_clicked="0" data-url="https://x.com/@kalzsm"
+                                data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+
+                                        Follow Nims CTO<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+
+                                </span>
+                                <button id="cio_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="FollowCTO" data-points="100" style="visibility: hidden">Follow</button>
+                            </div>
+                            @else
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    Follow Nims CTO<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
+                                </span>
+                            </div>
+                            @endif
+
+
+
+                            @if ($youtube_claimed != true)
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://www.youtube.com/@NimsNetwork" data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                                     <div>
 
                                         Subscribe NIMS<br>
@@ -477,75 +526,83 @@
                                     </div>
                                 </span>
                                 <button id="youtube_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                    data-source="youtube_follow" data-points="100" style="visibility: hidden">Follow</button>
+                                    data-source="youtube_follow" data-points="100"
+                                    style="visibility: hidden">Follow</button>
 
                             </div>
                             @else
-                            <div class="social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                Subscribe Our Channel<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                    100</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                    Claimed</span>
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    Subscribe Our Channel<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
                                 </span>
                             </div>
                             @endif
 
 
-                    @if (@$watchYouTubeVideo != true)
-                    <div class="social-link" data-link_clicked="0" data-url="https://www.youtube.com/watch?v=H3-qw3olnB4&ab_channel=NimsNetwork"
-                        data-wait-time="5000" style="">
-                        <span class="social-text d-flex">
-                        <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
-                            <div>
-                                Watch Video YouTube<br>
-                                <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                    100</span>
+                            @if (@$watchYouTubeVideo != true)
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://www.youtube.com/watch?v=H3-qw3olnB4&ab_channel=NimsNetwork"
+                                data-wait-time="5000" style="">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+                                        Watch Video YouTube<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+                                </span>
+                                <button id="video_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="watchYouTubeVideo" data-points="100" style="visibility: hidden">Watch
+                                    Video</button>
                             </div>
-                        </span>
-                        <button id="video_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                            data-source="watchYouTubeVideo" data-points="100" style="visibility: hidden">Watch
-                            Video</button>
-                    </div>
-                    @else
-                    <div class="social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text d-flex"  style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"  style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                            Watch Video YouTube<br>
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                100</span>
-                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                Claimed</span>
-                            </span>
-                        </div>
-                    @endif
+                            @else
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                    Watch Video YouTube<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
+                                </span>
+                            </div>
+                            @endif
 
-                    {{-- @if(@$ReTweetLink != true)
+                            {{-- @if(@$ReTweetLink != true)
                     <div class="url-claim social-link">
                         <input type="text" id="url-input" placeholder="Paste retweet link" />
                         <button class="claim-button" data-user_id="{{ session('user_id') }}"
                             data-source="ReTweetLink" data-points="200" id="claim-url-btn">Claim
-                        </button>
-                    </div>
-                    @else
-                    <div class="url-claim social-link"
+                            </button>
+                        </div>
+                        @else
+                        <div class="url-claim social-link"
                             style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text">
-                            ReTweet Link<br>
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                200</span>
-                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                Claimed</span>
+                            <span class="social-text">
+                                ReTweet Link<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                    200</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                    Claimed</span>
                             </span>
                         </div>
-                    @endif --}}
+                        @endif --}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     </div>
@@ -775,12 +832,12 @@ function myFunction() {
 
 {{-- spinner and timer code --}}
 <script>
-    $(document).ready(function() {
-        // default load time count down
-        let remaining_time = "{{ $timeRemaining }}";
-        console.log("Remaining Time for Spin Again: " + remaining_time);
-        let totalSeconds = timeStringToSeconds(remaining_time);
-        startCountdown(totalSeconds);
+$(document).ready(function() {
+    // default load time count down
+    let remaining_time = "{{ $timeRemaining }}";
+    console.log("Remaining Time for Spin Again: " + remaining_time);
+    let totalSeconds = timeStringToSeconds(remaining_time);
+    startCountdown(totalSeconds);
 
     $('#spin-btn').click(function(event) {
         event.preventDefault();
@@ -796,7 +853,7 @@ function myFunction() {
 
             // Disable further clicks
             $(this).data('button_click_val', '1');
-            
+
             // AJAX request to check if the user has already spun
             $.ajax({
                 url: "{{ route('verify-user-already-spinned') }}",
@@ -807,7 +864,7 @@ function myFunction() {
                 },
                 success: function(response) {
                     const totalSeconds = timeStringToSeconds(response.remaining_time);
-                    
+
                     if (response.status == true) {
                         swal({
                             title: "Hang tight, your spin is next.",
@@ -818,7 +875,7 @@ function myFunction() {
                     } else {
                         spin();
                     }
-                    
+
                     // Re-enable the button for next use (if needed)
                     setTimeout(function() {
                         $('#spin-btn').data('button_click_val', '0');
