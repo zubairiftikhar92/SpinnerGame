@@ -126,17 +126,17 @@
                 </button>
             </div>
             <div class="spin_rule">
-                <a href="https://www.instagram.com/join_nims/"><img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
+                <a href="https://www.instagram.com/join_nims/" target="_blank"><img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
                     style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://t.me/join_NIMS"><img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"
+                <a href="https://t.me/join_NIMS" target="_blank"><img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"
                     style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://www.linkedin.com/company/nims-network/mycompany/"><img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"
+                <a href="https://www.linkedin.com/company/nims-network/mycompany/" target="_blank"><img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"
                     style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD"><img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"
+                <a href="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" target="_blank"><img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"
                     style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://x.com/join_nims"><img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                <a href="https://x.com/join_nims" target="_blank"><img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
                     style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://www.youtube.com/@NimsNetwork"><img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                <a href="https://www.youtube.com/@NimsNetwork" target="_blank"><img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
                     style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
                 
             </div>
@@ -614,15 +614,15 @@
                 </div>
                 <div class="modal-body rule_modal">
                     <h3>Game Rules and Participation</h3>
-                    <span><h5>1. Eligibility:</h5><p>All participants with a valid email address and a BEP20 wallet connected to the game are welcome.</p></span>
-                    <span><h5>2. Spinning:</h5><p>Participants can spin the wheel every 6 hours and earn an extra spin for inviting three friends.</p></span>
-                    <span><h5>3. Points:</h5><p>Players accumulate points based on spin outcomes and quest completion.</p></span>
-                    <span><h5>4. Airdrop:</h5><p>Quest completion is essential to maximize airdrop rewards.</p></span>
-                    <span><h5>5. Fair Play:</h5><p>The use of bots, multiple accounts, or any form of cheating is strictly prohibited.</p></span>
-                    <span><h5>6. Dispute Resolution:</h5><p>The NIMS team reserves the right to resolve any disputes.</p></span>
+                    <h5>1. Eligibility: <span> All participants with a valid email address and a BEP20 wallet connected to the game are welcome.</span></h5>
+                    <h5>2. Spinning: <span> Participants can spin the wheel every 6 hours and earn an extra spin for inviting three friends.</span></h5>
+                    <h5>3. Points: <span> Players accumulate points based on spin outcomes and quest completion.</span></h5>
+                    <h5>4. Airdrop: <span> Quest completion is essential to maximize airdrop rewards.</span></h5>
+                    <h5>5. Fair Play: <span> The use of bots, multiple accounts, or any form of cheating is strictly prohibited.</span></h5>
+                    <h5>6. Dispute Resolution: <span> The NIMS team reserves the right to resolve any disputes.</span></h5>
                     <h3>Additional Requirements</h3>
-                    <span><h5>7. Social Media Engagement:</h5><p>Following, liking, or subscribing to our social media channels is mandatory for full point accumulation.</p></span>
-                    <span><h5>8. Quest Answers:</h5><p>Daily quest answers can be found on our social media platforms.</p></span>
+                    <h5>7. Social Media Engagement: <span> Following, liking, or subscribing to our social media channels is mandatory for full point accumulation.</span></h5>
+                    <h5>8. Quest Answers: <span> Daily quest answers can be found on our social media platforms.</span></h5>
                 </div>
             </div>
         </div>

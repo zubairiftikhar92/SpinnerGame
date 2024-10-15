@@ -508,8 +508,14 @@ body {
 .rule_modal h3{
   color: #fff;
 }
-.rule_modal h5 p{
+.rule_modal h5{
   color: #fff;
+  padding: 10px;
+  color: #eb6ec3
+}
+.rule_modal span{
+  font-size: 15px;
+color: #fff;
 }
 /* END RULE CSS */
 
@@ -625,6 +631,15 @@ body {
     width: 320px;
     padding: 8px 5px;
     border-radius: 8px;
+    margin-top: -4rem;
+  }
+  .spin_rule {
+    width: 320px;
+    padding: 8px 5px;
+    border-radius: 8px;
+  }
+  .spin_rule button {
+    width: 300px !important;
   }
   .invite_reward button{
     padding: 7px 6px;
