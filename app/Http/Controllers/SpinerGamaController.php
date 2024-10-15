@@ -314,4 +314,52 @@ class SpinerGamaController extends Controller
             return redirect()->route('spinner-game')->with('message', 'Wallet Address Added Failed');
         }
     }
+    public function claimRetweetLink(Request $request){
+        $u_id = $request->user_id;
+        $source = $request->source;
+        $points = $request->points;
+        $retweetLink = $request->retweet_link;
+
+        // Validate retweet link
+        if (!preg_match('/^https:\/\/x\.com\/.+/', $retweetLink) || strpos($retweetLink, 'join_nims') === false) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid Retweet URL',
+            ]);
+        }
+
+        $user = DB::table('game_registrations')->where('userid', $u_id)->first();
+        $response = DB::table('game_rewards')
+            ->where('userid', $u_id)
+            ->where('source', $source)
+            ->first();
+
+        if ($response == null) {
+            DB::table('game_rewards')->insert([
+                'userid' => $user->userid,
+                'username' => $user->username,
+                'email' => $user->email,
+                'total_earn_tokens' => $points,
+                'source' => $source,
+                'retweet_link' => $retweetLink,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
+
+            // Update user's total reward tokens
+            DB::table('game_registrations')->where('userid', $u_id)->update([
+                'total_reward_tokens' => DB::raw('total_reward_tokens + ' . $points),
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Reward Claimed',
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Reward Already Claimed',
+            ]);
+        }
+    }
 }

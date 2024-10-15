@@ -27,3 +27,4 @@ Route::post('verify-user-already-spinned' , [SpinerGamaController::class , 'veri
 // Route::get('social-media-rewards' , [SpinerGamaController::class , 'socialMediaRewards'])->name('social-media-rewards');
 Route::post('social-media-rewards' , [SpinerGamaController::class , 'socialMediaRewards'])->name('social-media-rewards');
 Route::post('add-wallet-address' , [SpinerGamaController::class , 'addWalletAddress'])->name('add-wallet-address');
+Route::post('claim-retweet-link' , [SpinerGamaController::class , 'claimRetweetLink'])->name('claim-retweet-link');

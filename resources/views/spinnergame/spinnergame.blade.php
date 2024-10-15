@@ -117,7 +117,7 @@
                     <button data-bs-toggle="modal" data-bs-target="#example_Modal">
                         <img style="width: 16px; margin-top: -5px;"
                             src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}"
-                            alt><span>Rewards</span>
+                            alt><span>Quest</span>
                     </button>
                 </div>
             </div>
@@ -206,7 +206,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal_body_reward">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Rewards</h3>
+                    {{-- <h3 class="modal-title" id="exampleModalLabel">Rewards</h3> --}}
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="reward_modal_cls_btn"></button>
                 </div>
@@ -523,25 +523,31 @@
                         </div>
                     @endif
 
-                    {{-- @if(@$ReTweetLink != true)
-                    <div class="url-claim social-link">
-                        <input type="text" id="url-input" placeholder="Paste retweet link" />
-                        <button class="claim-button" data-user_id="{{ session('user_id') }}"
-                            data-source="ReTweetLink" data-points="200" id="claim-url-btn">Claim
-                        </button>
-                    </div>
-                    @else
-                    <div class="url-claim social-link"
-                            style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text">
-                            ReTweet Link<br>
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                200</span>
-                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
-                                Claimed</span>
+{{-- @dd($ReTweetLink) --}}
+                    {{-- new code start --}}
+                    @if (@$ReTweetLink != true)
+                        <div class="social-link" id="retweet-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
+                            data-wait-time="5000">
+                            <span class="social-text d-flex">
+                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                <div>
+                                    Re-Tweet Post<br>
+                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points: 200</span>
+                                </div>
                             </span>
                         </div>
-                    @endif --}}
+                    @else
+                        <div class="url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
+                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                ReTweet Link<br>
+                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
+                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
+                            </span>
+                        </div>
+                    @endif
+                    {{-- new code end --}}
+                    
                 </div>
             </div>
         </div>
@@ -986,10 +992,83 @@ $(document).ready(function() {
 
     $('#reward_modal_cls_btn').click(function() {
         window.location.reload();
-    })
+    });
 });
 
 setTimeout(function() {
     document.getElementById('message').style.display = 'none';
 }, 5000);
+
+
+$(document).ready(function() {
+    $('#retweet-link').click(function(event) {
+        event.preventDefault();
+        
+        // Open the retweet URL in a new tab/window
+        var retweetUrl = $(this).data('url');
+        window.open(retweetUrl, '_blank');
+
+        // Replace the clicked section with the input field and claim button
+        $(this).replaceWith(`
+            <div class="url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
+                     <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                <input type="text" id="url-input" placeholder="Paste retweet link" required style="color:white" />
+                <span class="error-message" style="color: red; display: none;">Please enter a valid retweet link.</span>
+                <button class="claim-button" data-user_id="{{ session('user_id') }}" data-source="ReTweetLink"
+                    data-points="200" id="claim-url-btn">Claim</button>
+                    </span>
+            </div>
+        `);
+    });
+
+    function isValidRetweetUrl(url) {
+        const regex = /^https:\/\/x\.com\/.+/; // Check if it starts with 'https://x.com/'
+        return regex.test(url) && url.includes('join_nims'); // Ensure 'join_nims' is part of the URL
+    }
+
+    $(document).on('click', '#claim-url-btn', function(event) {
+        event.preventDefault();
+
+        let user_id = $(this).data('user_id');
+        let source = $(this).data('source');
+        let points = $(this).data('points');
+        let retweetLink = $('#url-input').val();
+
+        // Check if the retweet link is valid
+        if (!isValidRetweetUrl(retweetLink)) {
+            $('.error-message').show();
+            return;
+        } else {
+            $('.error-message').hide();
+        }
+
+        $.ajax({
+            url: "{{ route('claim-retweet-link') }}",
+            method: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                user_id: user_id,
+                source: source,
+                points: points,
+                retweet_link: retweetLink
+            },
+            success: function(response) {
+                if (response.status) {
+                    $('.url-claim').html(`
+                        <span class="social-text">
+                            ReTweet Link<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
+                        </span>
+                    `);
+                } else {
+                    $('.error-message').text(response.message).show();
+                }
+            }
+        });
+    });
+});
+
+
 </script>
