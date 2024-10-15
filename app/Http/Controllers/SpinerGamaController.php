@@ -211,9 +211,11 @@ class SpinerGamaController extends Controller
     public function spinnerGameReward(Request $request)
     {
 
+        $u_id = $request->user_id;
+        $result = DB::table('game_registrations')->select('username')->where('userid', $u_id)->first();
         $response = DB::table('game_rewards')->insertGetId([
-            'userid' => $request->user_id,
-            'username' => session()->get('user_email'),
+            'userid' => $u_id,
+            'username' => isset($result) ? $result->username : '',
             'email' => session()->get('user_email'),
             'total_earn_tokens' => $request->prize_amount,
             'source' => $request->source,
@@ -222,7 +224,7 @@ class SpinerGamaController extends Controller
         ]);
 
         if ($response) {
-            DB::table('game_registrations')->where('userid', $request->user_id)->update([
+            DB::table('game_registrations')->where('userid', $u_id)->update([
                 'total_spin_clicked' => DB::raw('total_spin_clicked + 1'),
                 'total_reward_tokens' => DB::raw('total_reward_tokens + ' . $request->prize_amount),
                 'updated_at' => date('Y-m-d H:i:s'),
