@@ -967,6 +967,23 @@ form input[type="submit"] {
   -moz-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
+
+.claim-daily-quest {
+  position: relative;
+  padding: 4px 12px;
+  border-radius: 17px;
+  border: 1px solid rgb(118 61 255);
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
 .badge-light {
   position: relative;
   padding: 7px 12px;

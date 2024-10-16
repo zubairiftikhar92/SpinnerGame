@@ -58,6 +58,7 @@
                         <div id="minutes" class="count_digit"></div>
                         <div id="seconds" class="count_digit"></div>
                     </div>
+                    <div id="time-up-message" style="display: none; color: red;"></div>
 
                     <div class="sta_r">
                         <div class="icon"><img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt>
@@ -226,15 +227,47 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal_body_reward">
                 <div class="modal-header">
-                    {{-- <h3 class="modal-title" id="exampleModalLabel">Rewards</h3> --}}
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="reward_modal_cls_btn"></button>
                 </div>
                 <div class="modal-body">
                     <div class="reward_main">
                         <h5 style="">Rewards: {{ $social_media_rewards }}</h5>
-                        <!-- Social Media Buttons -->
-                        <div class="social-links">
+                        {{-- <hr> --}}
+                        <div>
+                            @if (!@$DailyQuest)
+                                <div class="social-link quest " id="daily-quest" data-quest="0" style="color:white; display: flex; justify-content: space-between; align-items: center;">
+                                    <span class="social-text d-flex">
+                                        <img src="{{ asset('account/landing_page_images/assets/daily_quest.GIF') }}" style="width: 36px;height: 36px;margin: 0px 18px 0px 0px;border-radius: 8px;" alt="">
+                                        <div style="color: white">
+                                            Daily Quest<br>
+                                            <span class="muted-point-value" style="font-size: 12px; color: gray;">Points: 100</span>
+                                        </div>
+                                    </span>
+                                    <button id="start-quest-btn" class="claim-daily-quest" data-user_id="{{ session('user_id') }}" style="cursor: pointer;">
+                                        Start Quest
+                                    </button>
+                                </div>
+                                
+                                <div id="quest-form" class="d-none" style="margin-top: 20px;">
+                                    <p id="question" style="color: white"></p>
+                                    <input type="text" class="form-control" id="quest-answer" data-quest_reward_tokens="100" placeholder="Enter your answer" style="margin-bottom: 10px;" />
+                                    <button id="submit-answer-btn" class="claim-daily-quest" style="cursor: pointer;">Submit Answer</button> <br>
+                                <small style="color: white">Check our social media for quiz answers.</small>
+                                </div>
+                            @else
+                            <div class="url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/daily_quest.GIF') }}" style="width: 36px;height: 36px;margin: 0px 18px 0px 0px;border-radius: 8px;" alt="">
+                                    Daily Quest<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
+                                </span>
+                            </div>
+                            @endif
+
+                        
+                    <hr style="color: #fff">
 
                             @if (@$ReTweetLink != true)
                         <div class="social-link" id="retweet-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
@@ -921,16 +954,16 @@ $(document).ready(function() {
 
     function startCountdown(seconds) {
         const timerElement = document.getElementById('timer');
-        timerElement.style.visibility = 'visible'; // Show the timer
+        const timeUpMessage = document.getElementById('time-up-message');
+        timerElement.style.visibility = 'visible';
 
         const hoursElement = document.getElementById('hours');
         const minutesElement = document.getElementById('minutes');
         const secondsElement = document.getElementById('seconds');
 
-        // Ensure seconds is a valid number
         if (isNaN(seconds) || seconds === null || seconds < 0) {
             console.error("Invalid seconds value:", seconds);
-            return; // Exit the function if seconds is invalid
+            return;
         }
 
         // Declare timerInterval here to avoid 'before initialization' error
@@ -952,22 +985,20 @@ $(document).ready(function() {
             // Stop the countdown when it reaches 0
             if (seconds < 0) {
                 clearInterval(timerInterval);
-                timerElement.style.display = 'none'; // Hide the timer
-                // Optionally, allow the user to spin again here
-                // document.getElementById("spin-btn").disabled = false; // Enable spin button
+                timerElement.style.display = 'none';
+                timeUpMessage.textContent = "Time's up! Spin now.";
+                timeUpMessage.style.display = 'block';
             }
         }
 
-        // Update the timer immediately
         updateTimer();
-        // Update the timer every second
         timerInterval = setInterval(updateTimer, 1000);
     }
 
     function timeStringToSeconds(timeString) {
         if (!timeString || typeof timeString !== 'string') {
             console.error("Invalid time string:", timeString);
-            return 0; // Return 0 or handle the error appropriately
+            return 0;
         }
 
         const [hours, minutes, seconds] = timeString.split(':').map(Number);
@@ -1143,6 +1174,65 @@ $(document).ready(function() {
         });
     });
 });
+</script>
 
+<script>
+    $(document).ready(function() {
+        let underScore = String.fromCharCode(95);
+        let under_score_string = underScore + underScore +underScore + underScore + underScore +underScore;
+        console.log(under_score_string);
+        const questions = [
+            `A ${under_score_string} is a digital software program that stores your cryptocurrencies?`,
+        ];
 
+        $('#start-quest-btn').click(function() {
+            $(this).hide();
+            $('#quest-form').removeClass('d-none');
+
+            let randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+            $('#question').text(randomQuestion);
+        });
+
+        $('#submit-answer-btn').click(function() {
+            let question = $('#question').text();
+            let answer = $('#quest-answer').val();
+            let quest_reward_tokens = $('#quest-answer').data('quest_reward_tokens');
+
+            if(answer === '') {
+                alert('Please enter an answer.');
+                return;
+            }
+
+            $.ajax({
+                url: "{{ route('submit-daily-quest') }}",
+                method: "POST",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    user_id: "{{ session('user_id') }}",
+                    quest_reward_tokens: quest_reward_tokens,
+                    question: question,
+                    answer: answer
+                },
+                success: function(response) {
+                    if(response.status) {
+                        $('#quest-form').addClass('d-none');
+                        $('.quest').html(`
+                        <span class="social-text">
+                            ReTweet Link<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
+                        </span>
+                    `);
+                    } else {
+                        $('#quest-form').append('<p style="color: red; font-size: 14px;" id="error-message">Incorrect answer. Try again.</p>');
+                        
+                        // Remove the error message after a few seconds
+                        setTimeout(function() {
+                            $('#error-message').remove();
+                        }, 3000);
+                    }
+                }
+            });
+        });
+    });
 </script>
