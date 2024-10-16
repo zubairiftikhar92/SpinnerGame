@@ -58,7 +58,11 @@
                         <div id="minutes" class="count_digit"></div>
                         <div id="seconds" class="count_digit"></div>
                     </div>
-                    <div id="time-up-message" style="display: none; color: red;"></div>
+                    <div class="timeup sign" id="time-up-message" style="display: none;">
+                        
+                        <span class="fast-flicker">S</span>PIN<span class="flicker">N</span>NOW
+                        
+                    </div>
 
                     <div class="sta_r">
                         <div class="icon"><img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt>
@@ -249,11 +253,11 @@
                                     </button>
                                 </div>
                                 
-                                <div id="quest-form" class="d-none" style="margin-top: 20px;">
-                                    <p id="question" style="color: white"></p>
+                                <div id="quest-form" class="d-none" style="margin-top: 20px;text-align:center; ">
+                                    <p id="question" style="color: white;"></p>
                                     <input type="text" class="form-control" id="quest-answer" data-quest_reward_tokens="100" placeholder="Enter your answer" style="margin-bottom: 10px;" />
                                     <button id="submit-answer-btn" class="claim-daily-quest" style="cursor: pointer;">Submit Answer</button> <br>
-                                <small style="color: white">Check our social media for quiz answers.</small>
+                                <small class="blinking-text" style="color: white">Check Our Social Media For Quest Answers.</small>
                                 </div>
                             @else
                             <div class="url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
