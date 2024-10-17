@@ -207,7 +207,17 @@ class SpinerGamaController extends Controller
         $FollowCTO = isset($social_sources) ? $social_sources->contains('FollowCTO') : false;
         $watchYouTubeVideo = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo') : false;
         $ReTweetLink = isset($social_sources) ? $social_sources->contains('ReTweetLink') : false;
-        $DailyQuest = isset($social_sources) ? $social_sources->contains('DailyQuest') : false;
+
+        $daily_quest_data = DB::table('game_rewards')
+            ->where('userid', $u_id)
+            ->where('source', 'LIKE', 'DailyQuest%')
+            ->whereDate('created_at', Carbon::today())
+            ->first();
+
+        $DailyQuest = false;
+        if ($daily_quest_data) {
+            $DailyQuest = true;
+        }
 
         return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress'));
     }

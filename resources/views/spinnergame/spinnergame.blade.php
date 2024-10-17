@@ -1218,7 +1218,7 @@ $(document).ready(function() {
                         $('#quest-form').addClass('d-none');
                         $('.quest').html(`
                         <span class="social-text">
-                            ReTweet Link<br>
+                            Daily Quest<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
                             <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
                         </span>
