@@ -206,11 +206,9 @@ class SpinerGamaController extends Controller
 
         $social_media_rewards = DB::table('game_rewards')->where('userid', $u_id)->whereNotIn('source', ['web_app'])->sum('total_earn_tokens');
         $user_email = isset($results) ? $results->email : '';
-        if (env('APP_ENV') == 'local') {
-            $user_referral_link = "http://localhost:8000/spinner-game-login?user_email=" . $user_email;
-        } else {
-            $user_referral_link = "https://airdrop.nims.network/spinner-game-login?user_email=" . $user_email;
-        }
+        // $base_url = env('APP_ENV') == 'local' ? env('APP_URL') : env('APP_URL_PRODUCTION');
+        $base_url = env('APP_ENV') == 'local' ? request()->getSchemeAndHttpHost(): env('APP_URL_PRODUCTION');
+        $user_referral_link = $base_url . "/spinner-game-login?user_email=" . $user_email;
 
         $instagram_claimed = isset($social_sources) ? $social_sources->contains('instagram') : false;
         $telegram_claimed = isset($social_sources) ? $social_sources->contains('telegram') : false;
@@ -432,7 +430,6 @@ class SpinerGamaController extends Controller
         if (!$request->has('question') || !$request->has('answer')) {
             return response()->json(['status' => false, 'message' => 'Invalid request.']);
         }
-
         $user_id = $request->user_id;
         $question = strtolower(trim($request->question));
         $answer = strtolower(trim($request->answer));
@@ -440,8 +437,14 @@ class SpinerGamaController extends Controller
 
         $underScore = chr(95);
         $under_score_string =  $underScore .  $underScore . $underScore .  $underScore .  $underScore . $underScore;
+        // 1st quest ask on 16-10-24
+        // $correct_answers = [
+        //     "a $under_score_string is a digital software program that stores your cryptocurrencies?" => "wallet",
+        // ];
+
+        // 2nd quest ask on 17-10-24
         $correct_answers = [
-            "a $under_score_string is a digital software program that stores your cryptocurrencies?" => "wallet",
+            "cryptocurrencies are $under_score_string, meaning they are not controlled by a single entity like a government or bank." => "decentralized",
         ];
 
         if (array_key_exists($question, $correct_answers) && $correct_answers[$question] == $answer) {

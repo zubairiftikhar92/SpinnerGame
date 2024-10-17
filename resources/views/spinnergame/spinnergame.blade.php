@@ -253,7 +253,7 @@
                             <div class="social-link quest " id="daily-quest" data-quest="0"
                                 style="color:white; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text d-flex">
-                                    <img src="{{ asset('account/landing_page_images/assets/daily_quest.GIF') }}"
+                                    <img src="{{ asset('account/landing_page_images/assets/daily_quest.gif') }}"
                                         style="width: 36px;height: 36px;margin: 0px 18px 0px 0px;border-radius: 8px;"
                                         alt="">
                                     <div style="color: white">
@@ -1220,8 +1220,14 @@ $(document).ready(function() {
     let underScore = String.fromCharCode(95);
     let under_score_string = underScore + underScore + underScore + underScore + underScore + underScore;
     console.log(under_score_string);
+    // 1st quest ask on 16-10-24
+    // const questions = [
+    //     `A ${under_score_string} is a digital software program that stores your cryptocurrencies?`,
+    // ];
+
+    // 2nd quest ask on 17-10-24
     const questions = [
-        `A ${under_score_string} is a digital software program that stores your cryptocurrencies?`,
+        `Cryptocurrencies are ${under_score_string}, meaning they are not controlled by a single entity like a government or bank.`,
     ];
 
     $('#start-quest-btn').click(function() {
@@ -1259,7 +1265,7 @@ $(document).ready(function() {
                         <div style="color:white; display: flex; justify-content: space-between; align-items: center;">
                             <span class="social-text d-flex">
                             Daily Quest
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 100</span>
                             <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
                             </span>
                         </div>
