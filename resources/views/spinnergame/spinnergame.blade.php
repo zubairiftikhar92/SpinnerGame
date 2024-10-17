@@ -59,9 +59,9 @@
                         <div id="seconds" class="count_digit"></div>
                     </div>
                     <div class="timeup sign" id="time-up-message" style="display: none;">
-                        
+
                         <span class="fast-flicker">S</span>PIN<span class="flicker">N</span>NOW
-                        
+
                     </div>
 
                     <div class="sta_r">
@@ -131,19 +131,25 @@
                 </button>
             </div>
             <div class="spin_rule">
-                <a href="https://www.instagram.com/join_nims/" target="_blank"><img src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
-                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://t.me/join_NIMS" target="_blank"><img src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"
-                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://www.linkedin.com/company/nims-network/mycompany/" target="_blank"><img src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"
-                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" target="_blank"><img src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"
-                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://x.com/join_nims" target="_blank"><img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
-                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                <a href="https://www.youtube.com/@NimsNetwork" target="_blank"><img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
-                    style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
-                
+                <a href="https://www.instagram.com/join_nims/" target="_blank"><img
+                        src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
+                        style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://t.me/join_NIMS" target="_blank"><img
+                        src="{{ asset('account/landing_page_images/assets/telegram.svg') }}"
+                        style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://www.linkedin.com/company/nims-network/mycompany/" target="_blank"><img
+                        src="{{ asset('account/landing_page_images/assets/linkedIn.svg') }}"
+                        style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://www.facebook.com/nimsnetwork?mibextid=kFxxJD" target="_blank"><img
+                        src="{{ asset('account/landing_page_images/assets/facebook.svg') }}"
+                        style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://x.com/join_nims" target="_blank"><img
+                        src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                        style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+                <a href="https://www.youtube.com/@NimsNetwork" target="_blank"><img
+                        src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                        style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
+
             </div>
         </div>
     </div>
@@ -207,7 +213,7 @@
                                 placeholder="Enter your wallet address"
                                 value="{{ old('wallet_address', $walletAddress ?? '') }}"
                                 {{ isset($walletAddress) ? 'disabled' : '' }} required>
-                                <button data-bs-toggle="modal" data-bs-target="#EditWalletAddress">Edit</button>
+                            <button data-bs-toggle="modal" data-bs-target="#EditWalletAddress">Edit</button>
                         </div>
                         <div class="wallet_button">
                             <button type="submit" {{ isset($walletAddress) && $walletAddress != '' ? 'disabled' : '' }}>
@@ -241,61 +247,80 @@
                         {{-- <hr> --}}
                         <div>
                             @if (!@$DailyQuest)
-                                <div class="social-link quest " id="daily-quest" data-quest="0" style="color:white; display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="social-text d-flex">
-                                        <img src="{{ asset('account/landing_page_images/assets/daily_quest.GIF') }}" style="width: 36px;height: 36px;margin: 0px 18px 0px 0px;border-radius: 8px;" alt="">
-                                        <div style="color: white">
-                                            Daily Quest<br>
-                                            <span class="muted-point-value" style="font-size: 12px; color: gray;">Points: 100</span>
-                                        </div>
-                                    </span>
-                                    <button id="start-quest-btn" class="claim-daily-quest" data-user_id="{{ session('user_id') }}" style="cursor: pointer;">
-                                        Start Quest
-                                    </button>
-                                </div>
-                                
-                                <div id="quest-form" class="d-none" style="margin-top: 20px;text-align:center; ">
-                                    <p id="question" style="color: white;"></p>
-                                    <input type="text" class="form-control" id="quest-answer" data-quest_reward_tokens="100" placeholder="Enter your answer" style="margin-bottom: 10px;" />
-                                    <button id="submit-answer-btn" class="claim-daily-quest" style="cursor: pointer;">Submit Answer</button> <br>
-                                <small class="blinking-text" style="color: white">Check Our Social Media For Quest Answers.</small>
-                                </div>
+                            <div class="social-link quest " id="daily-quest" data-quest="0"
+                                style="color:white; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/daily_quest.GIF') }}"
+                                        style="width: 36px;height: 36px;margin: 0px 18px 0px 0px;border-radius: 8px;"
+                                        alt="">
+                                    <div style="color: white">
+                                        Daily Quest<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+                                </span>
+                                <button id="start-quest-btn" class="claim-daily-quest"
+                                    data-user_id="{{ session('user_id') }}" style="cursor: pointer;">
+                                    Start Quest
+                                </button>
+                            </div>
+
+                            <div id="quest-form" class="d-none" style="margin-top: 20px;text-align:center; ">
+                                <p id="question" style="color: white;"></p>
+                                <input type="text" class="form-control" id="quest-answer" data-quest_reward_tokens="100"
+                                    placeholder="Enter your answer" style="margin-bottom: 10px;" />
+                                <button id="submit-answer-btn" class="claim-daily-quest" style="cursor: pointer;">Submit
+                                    Answer</button> <br>
+                                <small class="blinking-text" style="color: white">Check Our Social Media For Quest
+                                    Answers.</small>
+                            </div>
                             @else
-                            <div class="url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                                <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                                    <img src="{{ asset('account/landing_page_images/assets/daily_quest.GIF') }}" style="width: 36px;height: 36px;margin: 0px 18px 0px 0px;border-radius: 8px;" alt="">
+                            <div class="url-claim social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/daily_quest.GIF') }}"
+                                        style="width: 36px;height: 36px;margin: 0px 18px 0px 0px;border-radius: 8px;"
+                                        alt="">
                                     Daily Quest<br>
-                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 100</span>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
                                     <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
                                 </span>
                             </div>
                             @endif
 
-                        
-                    <hr style="color: #fff">
+
+                            <hr style="color: #fff">
 
                             @if (@$ReTweetLink != true)
-                        <div class="social-link" id="retweet-link" data-link_clicked="0" data-url="https://x.com/RootBlockCEO"
-                            data-wait-time="5000">
-                            <span class="social-text d-flex">
-                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                <div>
-                                    Re-Tweet Post<br>
-                                    <span class="muted-point-value" style="font-size: 12px; color: gray;">Points: 200</span>
-                                </div>
-                            </span>
-                        </div>
-                    @else
-                        <div class="url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
-                            <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
-                                <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
-                                ReTweet Link<br>
-                                <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
-                                <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
-                            </span>
-                        </div>
-                    @endif
-                    
+                            <div class="social-link" id="retweet-link" data-link_clicked="0"
+                                data-url="https://x.com/RootBlockCEO" data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+                                        Re-Tweet Post<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            200</span>
+                                    </div>
+                                </span>
+                            </div>
+                            @else
+                            <div class="url-claim social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
+                                    ReTweet Link<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        200</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
+                                </span>
+                            </div>
+                            @endif
+
                             @if ($instagram_claimed != true)
                             <div class="social-link" data-link_clicked="0"
                                 data-url="https://www.instagram.com/join_nims/" data-wait-time="5000">
@@ -633,13 +658,13 @@
                                 </span>
                             </div>
                             @endif
-                    
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    </div>
+        </div>
     </div>
     </div>
     <!-- END REWARD MODAL -->
@@ -656,14 +681,21 @@
                     <div class="rule_modal">
                         <h3>Game Rules and Participation</h3>
                         <h5>1. Eligibility: <span> All participants with a valid email address are welcome.</span></h5>
-                        <h5>2. Spinning: <span> Participants can spin the wheel every 6 hours and earn an extra spin for inviting three friends.</span></h5>
-                        <h5>3. Points: <span> Players accumulate points based on spin outcomes and quest completion.</span></h5>
-                        <h5>4. Airdrop: <span> Quest completion is essential for eligibility to maximize airdrop rewards.</span></h5>
-                        <h5>5. Fair Play: <span> The use of bots, multiple accounts, or any form of cheating is strictly prohibited.</span></h5>
-                        <h5>6. Dispute Resolution: <span> The NIMS team reserves the right to resolve any disputes.</span></h5>
+                        <h5>2. Spinning: <span> Participants can spin the wheel every 6 hours and earn an extra spin for
+                                inviting three friends.</span></h5>
+                        <h5>3. Points: <span> Players accumulate points based on spin outcomes and quest
+                                completion.</span></h5>
+                        <h5>4. Airdrop: <span> Quest completion is essential for eligibility to maximize airdrop
+                                rewards.</span></h5>
+                        <h5>5. Fair Play: <span> The use of bots, multiple accounts, or any form of cheating is strictly
+                                prohibited.</span></h5>
+                        <h5>6. Dispute Resolution: <span> The NIMS team reserves the right to resolve any
+                                disputes.</span></h5>
                         <h3>Additional Requirements</h3>
-                        <h5>7. Social Media Engagement: <span> Following, liking, or subscribing to our social media channels is mandatory for full point accumulation.</span></h5>
-                        <h5>8. Quest Answers: <span> Daily quest answers can be found on our social media platforms.</span></h5>
+                        <h5>7. Social Media Engagement: <span> Following, liking, or subscribing to our social media
+                                channels is mandatory for full point accumulation.</span></h5>
+                        <h5>8. Quest Answers: <span> Daily quest answers can be found on our social
+                                media platforms.</span></h5>
                     </div>
                 </div>
             </div>
@@ -679,9 +711,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <input type="text" name="wallet_address" id="wallet_new_address"
-                                placeholder="Enter your New wallet address"
-                                value="text" required>
+                    <input type="text" name="wallet_address" id="wallet_new_address"
+                        placeholder="Enter your New wallet address" value="text" required>
                 </div>
             </div>
         </div>
@@ -1130,7 +1161,7 @@ setTimeout(function() {
 $(document).ready(function() {
     $('#retweet-link').click(function(event) {
         event.preventDefault();
-        
+
         // Open the retweet URL in a new tab/window
         var retweetUrl = $(this).data('url');
         window.open(retweetUrl, '_blank');
@@ -1199,64 +1230,66 @@ $(document).ready(function() {
 </script>
 
 <script>
-    $(document).ready(function() {
-        let underScore = String.fromCharCode(95);
-        let under_score_string = underScore + underScore +underScore + underScore + underScore +underScore;
-        console.log(under_score_string);
-        const questions = [
-            `A ${under_score_string} is a digital software program that stores your cryptocurrencies?`,
-        ];
+$(document).ready(function() {
+    let underScore = String.fromCharCode(95);
+    let under_score_string = underScore + underScore + underScore + underScore + underScore + underScore;
+    console.log(under_score_string);
+    const questions = [
+        `A ${under_score_string} is a digital software program that stores your cryptocurrencies?`,
+    ];
 
-        $('#start-quest-btn').click(function() {
-            $(this).hide();
-            $('#quest-form').removeClass('d-none');
+    $('#start-quest-btn').click(function() {
+        $(this).hide();
+        $('#quest-form').removeClass('d-none');
 
-            let randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-            $('#question').text(randomQuestion);
-        });
+        let randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+        $('#question').text(randomQuestion);
+    });
 
-        $('#submit-answer-btn').click(function() {
-            let question = $('#question').text();
-            let answer = $('#quest-answer').val();
-            let quest_reward_tokens = $('#quest-answer').data('quest_reward_tokens');
+    $('#submit-answer-btn').click(function() {
+        let question = $('#question').text();
+        let answer = $('#quest-answer').val();
+        let quest_reward_tokens = $('#quest-answer').data('quest_reward_tokens');
 
-            if(answer === '') {
-                alert('Please enter an answer.');
-                return;
-            }
+        if (answer === '') {
+            alert('Please enter an answer.');
+            return;
+        }
 
-            $.ajax({
-                url: "{{ route('submit-daily-quest') }}",
-                method: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    user_id: "{{ session('user_id') }}",
-                    quest_reward_tokens: quest_reward_tokens,
-                    question: question,
-                    answer: answer
-                },
-                success: function(response) {
-                    if(response.status) {
-                        $('#quest-form').addClass('d-none');
-                        $('.quest').html(`
+        $.ajax({
+            url: "{{ route('submit-daily-quest') }}",
+            method: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                user_id: "{{ session('user_id') }}",
+                quest_reward_tokens: quest_reward_tokens,
+                question: question,
+                answer: answer
+            },
+            success: function(response) {
+                if (response.status) {
+                    $('#quest-form').addClass('d-none');
+                    $('.quest').html(`
                         <div style="color:white; display: flex; justify-content: space-between; align-items: center;">
                             <span class="social-text d-flex">
-                            ReTweet Link
+                            Daily Quest
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
                             <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
                             </span>
                         </div>
                     `);
-                    } else {
-                        $('#quest-form').append('<p style="color: red; font-size: 14px;" id="error-message">Incorrect answer. Try again.</p>');
-                        
-                        // Remove the error message after a few seconds
-                        setTimeout(function() {
-                            $('#error-message').remove();
-                        }, 3000);
-                    }
+                } else {
+                    $('#quest-form').append(
+                        '<p style="color: red; font-size: 14px;" id="error-message">Incorrect answer. Try again.</p>'
+                        );
+
+                    // Remove the error message after a few seconds
+                    setTimeout(function() {
+                        $('#error-message').remove();
+                    }, 3000);
                 }
-            });
+            }
         });
     });
+});
 </script>
