@@ -207,6 +207,7 @@
                                 placeholder="Enter your wallet address"
                                 value="{{ old('wallet_address', $walletAddress ?? '') }}"
                                 {{ isset($walletAddress) ? 'disabled' : '' }} required>
+                                <button data-bs-toggle="modal" data-bs-target="#EditWalletAddress">Edit</button>
                         </div>
                         <div class="wallet_button">
                             <button type="submit" {{ isset($walletAddress) && $walletAddress != '' ? 'disabled' : '' }}>
@@ -669,6 +670,23 @@
         </div>
     </div>
     <!-- END RULES MODAL -->
+    <!-- START edit wallet MODAL -->
+    <div class="modal fade" id="EditWalletAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal_body_invite">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Wallet Address</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <input type="text" name="wallet_address" id="wallet_new_address"
+                                placeholder="Enter your New wallet address"
+                                value="text" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END edit wallet MODAL -->
 
     {{-- <script src="{{ asset('account/js/spinnergame.js') }}"></script> --}}
 </body>
@@ -1221,11 +1239,13 @@ $(document).ready(function() {
                     if(response.status) {
                         $('#quest-form').addClass('d-none');
                         $('.quest').html(`
-                        <span class="social-text">
-                            Daily Quest<br>
+                        <div style="color:white; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="social-text d-flex">
+                            ReTweet Link
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
                             <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
-                        </span>
+                            </span>
+                        </div>
                     `);
                     } else {
                         $('#quest-form').append('<p style="color: red; font-size: 14px;" id="error-message">Incorrect answer. Try again.</p>');
