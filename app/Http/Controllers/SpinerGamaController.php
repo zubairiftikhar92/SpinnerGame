@@ -143,6 +143,22 @@ class SpinerGamaController extends Controller
             session()->put('user_id', $current_user->userid);
             session()->put('user_email', $current_user->email);
 
+            DB::table('game_registrations')
+            ->where('userid', $dsponserid)
+            ->update([
+                    'total_reward_tokens' => DB::raw('total_reward_tokens + 500')
+                ]);
+
+            // $result = DB::table('game_registrations')->select('username')->where('userid', $u_id)->first();
+            DB::table('game_rewards')->insertGetId([
+                'userid' => $dsponserid,
+                'username' => isset($res) ? $res->username : '',
+                'email' => isset($res) ? $res->email : '',
+                'total_earn_tokens' => 500,
+                'source' => 'referral_reward',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
             return redirect()->route('spinner-game')->with('message', 'Registration Successful');
         } else {
             // Log registration failure
@@ -318,14 +334,47 @@ class SpinerGamaController extends Controller
     }
     public function addWalletAddress(Request $request)
     {
-        $u_id = session()->get('user_id');
+        // dd($request->all());
+        $u_id = $request->user_id;
         $response = DB::table('game_registrations')->where('userid', $u_id)->update([
             'wallet_address' => $request->wallet_address,
         ]);
-        if ($response) {
-            return redirect()->route('spinner-game')->with('message', 'Wallet Address Added Successfully');
-        } else {
-            return redirect()->route('spinner-game')->with('message', 'Wallet Address Added Failed');
+        if($response){
+            return response()->json([
+                'status' => true,
+                'message' => 'Wallet Address Added Successfully',
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'Wallet Address Added Failed',
+            ]);
+
+        }
+        // if ($response) {
+        //     return redirect()->route('spinner-game')->with('message', 'Wallet Address Added Successfully');
+        // } else {
+        //     return redirect()->route('spinner-game')->with('message', 'Wallet Address Added Failed');
+        // }
+    }
+
+    public function updateWalletAddress(Request $request){
+        $u_id = $request->user_id;
+        $response = DB::table('game_registrations')->where('userid', $u_id)->update([
+            'wallet_address' => $request->wallet_address,
+            'updated_at' => Carbon::now(),
+        ]);
+        if($response){
+            return response()->json([
+                'status' => true,
+                'message' => 'Wallet Address Updated',
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'Wallet Address Updated Failed',
+            ]);
+
         }
     }
     public function claimRetweetLink(Request $request)

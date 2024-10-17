@@ -116,7 +116,7 @@
                     <img src="{{ asset('account/landing_page_images/assets/invite.svg') }}" alt><span>Friends</span>
                 </button>
 
-                <button data-bs-toggle="modal" data-bs-target="#walletModal">
+                <button data-bs-toggle="modal" data-bs-target="#walletModal" id="wallet_modal_btn">
                     <img style="margin-bottom: 4px;" src="{{ asset('account/landing_page_images/assets/wallet.svg') }}"
                         alt><span>Wallet</span>
                 </button>
@@ -172,7 +172,13 @@
                     <div class="invite_list">
                         <ul>
                             @foreach ($direct_referral as $key => $row)
-                            <li>{{ $row->username }}</li>
+                            <li>
+                                {{ $row->username }}
+                                <span class="badge badge-success" style="margin-left: 10px;">
+                                    Claimed 
+                                    <span class="badge badge-warning" style="margin-left: 5px;">500</span>
+                                </span>
+                            </li>
                             @endforeach
                         </ul>
                     </div>
@@ -206,19 +212,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="walletForm" method="POST" action="{{ route('add-wallet-address') }}">
+                    {{-- <form id="walletForm" method="POST" action="{{ route('add-wallet-address') }}"> --}}
+                    <form id="walletForm">
                         @csrf
                         <div class="wallet_button">
                             <input type="text" name="wallet_address" id="wallet_address"
                                 placeholder="Enter your wallet address"
-                                value="{{ old('wallet_address', $walletAddress ?? '') }}"
-                                {{ isset($walletAddress) ? 'disabled' : '' }} required>
-                            <button data-bs-toggle="modal" data-bs-target="#EditWalletAddress">Edit</button>
-                        </div>
+                                value="{{ old('wallet_address', $walletAddress ?? '') }}" required>
+                            </div>
                         <div class="wallet_button">
-                            <button type="submit" {{ isset($walletAddress) && $walletAddress != '' ? 'disabled' : '' }}>
-                                Add Wallet
-                            </button>
+                            <button id="wallet_submit_button" type="button" data-wallet_address_value=""></button>
                         </div>
                     </form>
                 </div>
@@ -702,23 +705,6 @@
         </div>
     </div>
     <!-- END RULES MODAL -->
-    <!-- START edit wallet MODAL -->
-    <div class="modal fade" id="EditWalletAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal_body_invite">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Wallet Address</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" name="wallet_address" id="wallet_new_address"
-                        placeholder="Enter your New wallet address" value="text" required>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END edit wallet MODAL -->
-
     {{-- <script src="{{ asset('account/js/spinnergame.js') }}"></script> --}}
 </body>
 
@@ -1287,6 +1273,63 @@ $(document).ready(function() {
                     setTimeout(function() {
                         $('#error-message').remove();
                     }, 3000);
+                }
+            }
+        });
+    });
+
+    $('#wallet_modal_btn').click(function(){
+        let wallet_address = '{{ $walletAddress }}';
+
+        if (wallet_address === '' || wallet_address === null) 
+            {
+                $('#wallet_submit_button').text('Add Wallet');
+                $('#wallet_submit_button').data('wallet_address_value', '0');
+            } else {
+                $('#wallet_submit_button').text('Update Wallet');
+                $('#wallet_submit_button').data('wallet_address_value', '1');
+            }
+            console.log("Wallet Address is : "+wallet_address);
+    });
+
+    $('#wallet_submit_button').click(function(){
+        let wallet_address_verification = $(this).data('wallet_address_value');
+        console.log("wallet address already verified value is : " + wallet_address_verification);
+
+        url = '';
+        if(wallet_address_verification == '0'){
+            url = "{{ route('add-wallet-address') }}";
+        }else{
+            url = "{{ route('update-wallet-address') }}";
+        }
+        console.log("wallet address url is : " + url);
+
+        $.ajax({
+            url: url,
+            method: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                user_id: "{{ session('user_id') }}",
+                wallet_address: $('#wallet_address').val()
+            },
+            success: function(response) {
+                if (response.status) {
+                    swal({
+                        title: "Success",
+                        text: response.message,
+                        icon: "success",
+                        button: "OK",
+                    }).then(function() {
+                        window.location.reload();
+                    });
+
+                } else {
+                    swal({
+                        title: "Error",
+                        text: response.message,
+                        icon: "error",
+                        button: "OK",
+                    });
                 }
             }
         });

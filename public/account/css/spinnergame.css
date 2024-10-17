@@ -1060,7 +1060,12 @@ form input[type="submit"] {
 }
 
 /* END REWARD CSS */
-
+.swal-icon--success:after, .swal-icon--success:before {
+  background-color: transparent !important;
+}
+.swal-icon--success__hide-corners {
+  background-color: transparent !important;
+}
 
 /* START ZERO SPIN MODAL */
 .swal-modal{
