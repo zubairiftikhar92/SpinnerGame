@@ -83,7 +83,7 @@
                     PRESS "SPACE" KEY TO SPIN THE WHEEL
                 </h4>
 
-                <div class="pop-up-content" style="text-align: center">
+                <div class="pop-up-content" id="confettiModal" style="text-align: center">
                     <h1>You Won!!</h1>
                     <p class="pop-up-para"></p>
                     <input type="hidden" value="" id="reward_tokens">
@@ -824,12 +824,13 @@ function removeClass() {
         "rotate(" + prize * 30 + "deg)";
 
     // $(".pop-up-content").fadeIn();
-    $(".pop-up-content").fadeIn(); // Show the modal
-
-    // Set a timeout to hide the modal after 5 seconds (5000 milliseconds)
+    // Show the modal and trigger the celebration after the modal fades in
+    $(".pop-up-content").fadeIn(500, function() {
+        triggerCelebration();
+    });
     setTimeout(function() {
         spinnerClaimReward();
-        $(".pop-up-content").fadeOut(); // Hide the modal with a fade out effect
+        $(".pop-up-content").fadeOut();
     }, 5000);
 
     setTimeout(function() {
@@ -1389,67 +1390,73 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script>
-    const sound = document.getElementById("sound_");
-const triggers = document.querySelectorAll(".pop-up-content");
 const defaults = {
-  disableForReducedMotion: true
+    disableForReducedMotion: true
 };
+function triggerCelebration() {
+    const sound = document.getElementById("sound_");
+    const modal = document.getElementById("confettiModal");
+    const trigger = document.querySelector(".pop-up-content");
 
-function fire(particleRatio, opts) {
-  confetti(
-    Object.assign({}, defaults, opts, {
-      particleCount: Math.floor(200 * particleRatio)
-    })
-  );
-}
+    // Show the modal
+    modal.style.display = "block";
 
-function confettiExplosion(origin) {
-  fire(0.25, {
-    spread: 26,
-    startVelocity: 55,
-    origin
-  });
-  fire(0.2, {
-    spread: 60,
-    origin
-  });
-  fire(0.35, {
-    spread: 100,
-    decay: 0.91,
-    origin
-  });
-  fire(0.1, {
-    spread: 120,
-    startVelocity: 25,
-    decay: 0.92,
-    origin
-  });
-  fire(0.1, {
-    spread: 120,
-    startVelocity: 45,
-    origin
-  });
-}
+    function fire(particleRatio, opts) {
+        confetti(
+            Object.assign({}, defaults, opts, {
+                particleCount: Math.floor(200 * particleRatio)
+            })
+        );
+    }
 
-Array.from(triggers).forEach((trigger) => {
-  trigger.addEventListener("click", () => {
+    function confettiExplosion(origin) {
+        fire(0.25, {
+            spread: 26,
+            startVelocity: 55,
+            origin
+        });
+        fire(0.2, {
+            spread: 60,
+            origin
+        });
+        fire(0.35, {
+            spread: 100,
+            decay: 0.91,
+            origin
+        });
+        fire(0.1, {
+            spread: 120,
+            startVelocity: 25,
+            decay: 0.92,
+            origin
+        });
+        fire(0.1, {
+            spread: 120,
+            startVelocity: 45,
+            origin
+        });
+    }
+
+    // Get the center of the modal content for confetti explosion
     const rect = trigger.getBoundingClientRect();
     const center = {
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2
     };
     const origin = {
-      x: center.x / window.innerWidth,
-      y: center.y / window.innerHeight
+        x: center.x / window.innerWidth,
+        y: center.y / window.innerHeight
     };
 
+    // Play sound and trigger confetti
     if (sound) {
-      sound.currentTime = 0;
-      sound.play();
+        sound.currentTime = 0;
+        sound.play();
     }
     confettiExplosion(origin);
-  });
-});
-
+}
 </script>
