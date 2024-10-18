@@ -260,7 +260,7 @@
                                     <div style="color: white">
                                         Daily Quest<br>
                                         <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
-                                            100</span>
+                                            500</span>
                                     </div>
                                 </span>
                                 <button id="start-quest-btn" class="claim-daily-quest"
@@ -271,7 +271,7 @@
 
                             <div id="quest-form" class="d-none" style="margin-top: 20px;text-align:center; ">
                                 <p id="question" style="color: white;"></p>
-                                <input type="text" class="form-control" id="quest-answer" data-quest_reward_tokens="100"
+                                <input type="text" class="form-control" id="quest-answer" data-quest_reward_tokens="500"
                                     placeholder="Enter your answer" style="margin-bottom: 10px;" />
                                 <button id="submit-answer-btn" class="claim-daily-quest" style="cursor: pointer;">Submit
                                     Answer</button> <br>
@@ -283,19 +283,50 @@
                                 style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                                 <span class="social-text d-flex"
                                     style="display:flex; align-items: center; width: 100%;">
-                                    <img src="{{ asset('account/landing_page_images/assets/daily_quest.GIF') }}"
+                                    <img src="{{ asset('account/landing_page_images/assets/daily_quest.gif') }}"
                                         style="width: 36px;height: 36px;margin: 0px 18px 0px 0px;border-radius: 8px;"
                                         alt="">
                                     Daily Quest<br>
                                     <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
-                                        100</span>
+                                        500</span>
                                     <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
                                 </span>
                             </div>
                             @endif
-
-
                             <hr style="color: #fff">
+
+                            @if (@$watchYouTubeVideo_NimsDecentralizationAndSecurity != true)
+                            <div class="social-link" data-link_clicked="0"
+                                data-url="https://youtu.be/vsoQoeF2g60"
+                                data-wait-time="5000" style="">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+                                        Nims Decentralization<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            100</span>
+                                    </div>
+                                </span>
+                                <button id="video_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
+                                    data-source="watchYouTubeVideo_NimsDecentralizationAndSecurity" data-points="100" style="visibility: hidden">Watch
+                                    Video</button>
+                            </div>
+                            @else
+                            <div class="social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
+                                        Nims Decentralization<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        100</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
+                                        Claimed</span>
+                                </span>
+                            </div>
+                            @endif
 
                             @if (@$ReTweetLink != true)
                             <div class="social-link" id="retweet-link" data-link_clicked="0"
@@ -1230,6 +1261,21 @@ $(document).ready(function() {
     const questions = [
         `Cryptocurrencies are ${under_score_string}, meaning they are not controlled by a single entity like a government or bank.`,
     ];
+
+    // 3rd quest ask on 18-10-24 (ans='volatile')
+    // const questions = [
+    //     `Cryptocurrencies can be ${under_score_string}, meaning their prices can fluctuate significantly.`,
+    // ];
+
+    // 4th quest ask on 19-10-24 (ans='cryptocurrency exchange')
+    // const questions = [
+    //     `Cryptocurrencies can be purchased on a ${under_score_string} or directly from another person.`,
+    // ];
+
+    // 5th quest ask on 20-10-24 (ans='cryptography')
+    // const questions = [
+    //     `A cryptocurrency is a digital or virtual currency that uses ${under_score_string} for security and to control the creation of units of a currency`,
+    // ];
 
     $('#start-quest-btn').click(function() {
         $(this).hide();

@@ -221,6 +221,7 @@ class SpinerGamaController extends Controller
         $FollowCTO = isset($social_sources) ? $social_sources->contains('FollowCTO') : false;
         $watchYouTubeVideo = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo') : false;
         $ReTweetLink = isset($social_sources) ? $social_sources->contains('ReTweetLink') : false;
+        $watchYouTubeVideo_NimsDecentralizationAndSecurity = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo_NimsDecentralizationAndSecurity') : false;
 
         $daily_quest_data = DB::table('game_rewards')
             ->where('userid', $u_id)
@@ -233,7 +234,7 @@ class SpinerGamaController extends Controller
             $DailyQuest = true;
         }
 
-        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress'));
+        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo','watchYouTubeVideo_NimsDecentralizationAndSecurity', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress'));
     }
 
     public function spinnerGameReward(Request $request)
@@ -446,6 +447,22 @@ class SpinerGamaController extends Controller
         $correct_answers = [
             "cryptocurrencies are $under_score_string, meaning they are not controlled by a single entity like a government or bank." => "decentralized",
         ];
+        
+
+        // 3rd quest ask on 18-10-24 (ans='volatile')
+        // $correct_answers = [
+        //     "cryptocurrencies can be $under_score_string, meaning their prices can fluctuate significantly." => "volatile",
+        // ];
+
+        // 4th quest ask on 19-10-24 (ans='cryptocurrency exchange')
+        // $correct_answers = [
+        //     "cryptocurrencies can be purchased on a $under_score_string or directly from another person." => "cryptocurrency exchange",
+        // ];
+
+        // 5th quest ask on 20-10-24 (ans='cryptography')
+        // $correct_answers = [
+        //     "a cryptocurrency is a digital or virtual currency that uses $under_score_string for security and to control the creation of units of a currency" => "cryptography",
+        // ];
 
         if (array_key_exists($question, $correct_answers) && $correct_answers[$question] == $answer) {
             $user = DB::table('game_registrations')->where('userid', $user_id)->first();
