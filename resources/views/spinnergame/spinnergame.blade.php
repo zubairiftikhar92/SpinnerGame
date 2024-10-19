@@ -89,7 +89,7 @@
                     <input type="hidden" value="" id="reward_tokens">
                     {{-- <button class="pop-up-btn" id="closePopup">Activate Bonus</button> --}}
                 </div>
-                <audio src="https://assets.codepen.io/1256430/whistle.mp3" id="sound_" preload="auto" hidden></audio>
+                <audio src="./account/landing_page_images/assets/Cheer.wav" id="sound_" preload="auto" hidden></audio>
 
                 <!-- START RANKING -->
 
