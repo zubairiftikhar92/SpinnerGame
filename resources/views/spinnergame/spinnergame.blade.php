@@ -1314,9 +1314,9 @@ $(document).ready(function() {
     // ];
 
     // 2nd quest ask on 17-10-24 (ans='decentralized')
-    const questions = [
-        `Cryptocurrencies are ${under_score_string}, meaning they are not controlled by a single entity like a government or bank.`,
-    ];
+    //const questions = [
+    //    `Cryptocurrencies are ${under_score_string}, meaning they are not controlled by a single entity like a government or bank.`,
+    //];
 
     // 3rd quest ask on 18-10-24 (ans='volatile')
     // const questions = [
@@ -1324,9 +1324,9 @@ $(document).ready(function() {
     // ];
 
     // 4th quest ask on 19-10-24 (ans='cryptocurrency exchange')
-    // const questions = [
-    //     `Cryptocurrencies can be purchased on a ${under_score_string} or directly from another person.`,
-    // ];
+     const questions = [
+         `Cryptocurrencies can be purchased on a ${under_score_string} or directly from another person.`,
+     ];
 
     // 5th quest ask on 20-10-24 (ans='cryptography')
     // const questions = [
