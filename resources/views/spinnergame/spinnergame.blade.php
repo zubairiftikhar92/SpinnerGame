@@ -138,6 +138,12 @@
                     <span>Playing Field Rules</span>
                 </button>
             </div>
+
+            <div class="spin_rule">
+                <button data-bs-toggle="modal" data-bs-target="#leaderBoardModal">
+                    <span>Leader Board</span>
+                </button>
+            </div>
             <div class="spin_rule">
                 <a href="https://www.instagram.com/join_nims/" target="_blank"><img
                         src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
@@ -758,6 +764,39 @@
     </div>
     </div>
     <!-- END REWARD MODAL -->
+
+    <!-- START RULES MODAL -->
+    <div class="modal fade" id="leaderBoardModal" tabindex="-1" aria-labelledby="leaderBoardModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal_body_invite">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Top Leaders</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="rule_modal">
+                        @foreach ($leaders_list as $key => $value)
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <div class="position">
+                                    {{ $key + 1 }}
+                                </div>
+                                <div class="user_name">
+                                    {{ $value->username }}
+                                </div>
+                            </div>
+                            <div class="points">
+                                {{ $value->total_reward_tokens }}
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END RULES MODAL -->
+
 
     <!-- START RULES MODAL -->
     <div class="modal fade" id="exampleModalrule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

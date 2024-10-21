@@ -30,3 +30,4 @@ Route::post('add-wallet-address' , [SpinerGamaController::class , 'addWalletAddr
 Route::post('update-wallet-address' , [SpinerGamaController::class , 'updateWalletAddress'])->name('update-wallet-address');
 Route::post('claim-retweet-link' , [SpinerGamaController::class , 'claimRetweetLink'])->name('claim-retweet-link');
 Route::post('submit-daily-quest' , [SpinerGamaController::class , 'submitDailyQuest'])->name('submit-daily-quest');
+Route::post('laeder-board-list' , [SpinerGamaController::class , 'laederBoardList'])->name('laeder-board-list');

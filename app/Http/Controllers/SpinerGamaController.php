@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Register;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class SpinerGamaController extends Controller
 {
@@ -174,13 +175,32 @@ class SpinerGamaController extends Controller
 
     public function spinerGameLoginStore(Request $request)
     {
+        // dd($request->all() , env('SESSION_LIFETIME'));
+
 
         $response = DB::table('game_registrations')->where('email', $request->email)
-            ->where('password', $request->password)
+            ->where('password', $request->password) // Assuming passwords are hashed
             ->first();
+
         if ($response) {
+            // Store session information
             session()->put('user_id', $response->userid);
             session()->put('user_email', $response->email);
+            // dd($response);
+
+            // Check if "Remember Me" is checked
+            if ($request->has('remember_me')) {
+                // Generate a new remember token and store it in the database
+                $rememberToken = Str::random(60); // 60 characters long
+                DB::table('game_registrations')->where('userid', $response->userid)->update([
+                    'remember_token' => $rememberToken
+                ]);
+
+                // Set a cookie for the remember token (valid for 30 days, you can adjust the time)
+                // cookie()->queue('remember_token', $rememberToken, 43200); // 30 days in minutes
+                cookie()->queue('remember_token', $rememberToken, 1);
+            }
+
             return redirect()->route('spinner-game');
         } else {
             return redirect()->back()->with('message', 'Login Failed');
@@ -224,17 +244,20 @@ class SpinerGamaController extends Controller
         $watchYouTubeVideo_NimsDecentralizationAndSecurity = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo_NimsDecentralizationAndSecurity') : false;
 
         $daily_quest_data = DB::table('game_rewards')
-            ->where('userid', $u_id)
+            // ->where('userid', $u_id)
             ->where('source', 'LIKE', 'DailyQuest%')
             ->whereDate('created_at', Carbon::today())
             ->first();
+            $leaders_list = DB::table('game_registrations')
+            ->orderBy('total_reward_tokens', 'desc')
+            ->limit(10)
+            ->get();
+            // dd($leaders_list);
 
         $DailyQuest = false;
         if ($daily_quest_data) {
             $DailyQuest = true;
         }
-
-        $leaders_list = DB::table('game_registrations')->orderBy('total_reward_tokens', 'desc')->get();
 
         return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo','watchYouTubeVideo_NimsDecentralizationAndSecurity', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress' , 'leaders_list'));
     }
