@@ -253,66 +253,33 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="leader_ranks">
-                        <div class="leader_names">
-                            <span class="material-symbols-outlined" style="color: #FFD700;position: relative;top: 2px; font-size: 16px;">
-                             workspace_premium
-                            </span>
-                            <span style="font-size: 14px;margin-left: 10px;">Justin Mark</span>
+                    @foreach ($leaders_list as $key => $leader)
+                        <div class="leader_ranks">
+                            <div class="leader_names">
+                                <!-- Display different icons for top 3 ranks -->
+                                @if ($key == 0)
+                                    <!-- Gold icon -->
+                                    <span class="material-symbols-outlined" style="color: #FFD700;position: relative;top: 2px; font-size: 16px;">workspace_premium</span>
+                                @elseif ($key == 1)
+                                    <!-- Silver icon -->
+                                    <span class="material-symbols-outlined" style="color: #C0C0C0;position: relative;top: 2px; font-size: 16px;">workspace_premium</span>
+                                @elseif ($key == 2)
+                                    <!-- Bronze icon -->
+                                    <span class="material-symbols-outlined" style="color: #CD7F32;position: relative;top: 2px; font-size: 16px;">workspace_premium</span>
+                                @else
+                                <span class="material-symbols-outlined" style="color: #00b6ff;position: relative;top: 2px; font-size: 16px;">
+                                    workspace_premium
+                                </span>
+                                @endif
+                                <span style="font-size: 14px;margin-left: 10px;">{{ $leader->username }}</span>
+                            </div>
+                            <div class="leaders_point">
+                                <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
+                                <span>{{ $leader->total_reward_tokens }}</span>
+                            </div>
                         </div>
-                        <div class="leaders_point">
-                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
-                            <span>12345</span>
-                        </div>
-                    </div>
-                    <div class="leader_ranks">
-                        <div class="leader_names">
-                            <span class="material-symbols-outlined" style="color: #C0C0C0;position: relative;top: 2px; font-size: 16px;">
-                                workspace_premium
-                            </span>
-                            <span style="font-size: 14px;margin-left: 10px;">Usama Saleem</span>
-                        </div>
-                        <div class="leaders_point">
-                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
-                            <span>12345</span>
-                        </div>
-                    </div>
-                    <div class="leader_ranks">
-                        <div class="leader_names">
-                            <span class="material-symbols-outlined" style="color: #964B00;position: relative;top: 2px; font-size: 16px;">
-                                workspace_premium
-                            </span>
-                            <span style="font-size: 14px; margin-left: 10px;">Sofia</span>
-                        </div>
-                        <div class="leaders_point">
-                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
-                            <span>12345</span>
-                        </div>
-                    </div>
-                    <div class="leader_ranks">
-                        <div class="leader_names">
-                            <span class="material-symbols-outlined" style="color: #00b6ff;position: relative;top: 2px; font-size: 16px">
-                                workspace_premium
-                            </span>
-                            <span style="font-size: 14px; margin-left: 10px;">Rick Grimes</span>
-                        </div>
-                        <div class="leaders_point">
-                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
-                            <span>12345</span>
-                        </div>
-                    </div>
-                    <div class="leader_ranks">
-                        <div class="leader_names">
-                            <span class="material-symbols-outlined" style="color: #00b6ff;position: relative;top: 2px; font-size: 16px;">
-                                workspace_premium
-                            </span>
-                            <span style="font-size: 14px; margin-left: 10px;">Amaar</span>
-                        </div>
-                        <div class="leaders_point">
-                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
-                            <span>12345</span>
-                        </div>
-                    </div>
+                    @endforeach
+                    
                 </div>
 
                 <!-- <div class="modal-footer">

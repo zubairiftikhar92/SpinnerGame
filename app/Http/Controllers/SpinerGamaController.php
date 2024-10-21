@@ -234,7 +234,9 @@ class SpinerGamaController extends Controller
             $DailyQuest = true;
         }
 
-        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo','watchYouTubeVideo_NimsDecentralizationAndSecurity', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress'));
+        $leaders_list = DB::table('game_registrations')->orderBy('total_reward_tokens', 'desc')->get();
+
+        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo','watchYouTubeVideo_NimsDecentralizationAndSecurity', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress' , 'leaders_list'));
     }
 
     public function spinnerGameReward(Request $request)
