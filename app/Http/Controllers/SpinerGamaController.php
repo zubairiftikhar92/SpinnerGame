@@ -244,15 +244,13 @@ class SpinerGamaController extends Controller
         $watchYouTubeVideo_NimsDecentralizationAndSecurity = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo_NimsDecentralizationAndSecurity') : false;
 
         $daily_quest_data = DB::table('game_rewards')
-            // ->where('userid', $u_id)
             ->where('source', 'LIKE', 'DailyQuest%')
             ->whereDate('created_at', Carbon::today())
             ->first();
             $leaders_list = DB::table('game_registrations')
             ->orderBy('total_reward_tokens', 'desc')
-            ->limit(10)
+            ->limit(50)
             ->get();
-            // dd($leaders_list);
 
         $DailyQuest = false;
         if ($daily_quest_data) {
