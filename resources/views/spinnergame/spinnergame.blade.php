@@ -1253,12 +1253,12 @@ $(document).ready(function() {
     let underScore = String.fromCharCode(95);
     let under_score_string = underScore + underScore + underScore + underScore + underScore + underScore;
     console.log(under_score_string);
-    // 1st quest ask on 16-10-24
+    // 1st quest ask on 16-10-24    (ans='wallet')
     // const questions = [
     //     `A ${under_score_string} is a digital software program that stores your cryptocurrencies?`,
     // ];
 
-    // 2nd quest ask on 17-10-24
+    // 2nd quest ask on 17-10-24 (ans='decentralized')
     const questions = [
         `Cryptocurrencies are ${under_score_string}, meaning they are not controlled by a single entity like a government or bank.`,
     ];
@@ -1287,6 +1287,7 @@ $(document).ready(function() {
     });
 
     $('#submit-answer-btn').click(function() {
+        $(this).addClass('disabled' , true);
         let question = $('#question').text();
         let answer = $('#quest-answer').val();
         let quest_reward_tokens = $('#quest-answer').data('quest_reward_tokens');
@@ -1313,7 +1314,7 @@ $(document).ready(function() {
                         <div style="color:white; display: flex; justify-content: space-between; align-items: center;">
                             <span class="social-text d-flex">
                             Daily Quest
-                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 100</span>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 500</span>
                             <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
                             </span>
                         </div>
