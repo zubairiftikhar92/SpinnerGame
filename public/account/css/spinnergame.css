@@ -87,11 +87,12 @@ body {
 .spin-btn {
   height: 146px;
 }
+
 .spin-btn:hover {
   cursor: pointer;
 }
 
-.form .regis_ter_button{
+.form .regis_ter_button {
   /* margin-top: 15px;
   padding: 10px 0;
   width: 215px;
@@ -103,24 +104,26 @@ body {
   background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box;
   animation: 2s rotate linear infinite; */
 }
-.form .log_in_button{
 
-}
+.form .log_in_button {}
+
 @keyframes blink {
   0% {
-      opacity: 1;
+    opacity: 1;
   }
+
   50% {
-      opacity: 0;
+    opacity: 0;
   }
+
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
 .blinking-text {
   text-align: center;
-  animation: blink 1s infinite; 
+  animation: blink 1s infinite;
 }
 
 #spinner {
@@ -177,7 +180,8 @@ body {
   font-size: 2rem;
   /* border: 0.5rem dotted #ffd81f; */
 }
-.pop-up-btn{
+
+.pop-up-btn {
   color: #ffffff;
   padding: 6px 25px;
   width: auto;
@@ -189,7 +193,8 @@ body {
   animation: 2s rotate linear infinite;
   font-family: "Poppins", sans-serif;
 }
-.pop-up-btn:hover{
+
+.pop-up-btn:hover {
   box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
   transition: .5s;
 }
@@ -426,7 +431,7 @@ body {
 .invite_reward button {
   width: 110px;
   color: #ffffff;
-  padding: 7px 17px;
+  padding: 5px 10px;
   border-radius: 32px;
   width: auto;
   text-align: center;
@@ -437,7 +442,13 @@ body {
 }
 
 .invite_reward button span {
-  padding: 0px 7px;
+  padding: 0px 4px;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.invite_button button img {
+  width: 16px;
 }
 
 .invite_button {
@@ -463,11 +474,13 @@ body {
   background-color: transparent;
   color: #fff;
 }
+
 .invite_button button input:focus-visible {
   border: none;
   background-color: transparent;
   color: #fff;
 }
+
 .invite_button button span {
   padding: 0px 7px;
 }
@@ -479,8 +492,35 @@ body {
 
 /* END INVITE_REWARD CSS */
 
+
+
+/* START LEADERBOARD CSS */
+.leader_ranks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 15px;
+  border-radius: 17px;
+  color: aliceblue;
+  /* margin: 8px 0px;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box;
+  animation: 2s rotate linear infinite; */
+}
+.leaders_point img{
+  width: 16px;
+}
+.leaders_point span{
+  font-size: 14px;
+}
+
+/* END LEADERBOARD CSS */
+
+
+
 /* START RULE CSS */
-.spin_rule{
+.spin_rule {
   text-align: center;
   margin-top: 2rem;
   width: 450px;
@@ -490,9 +530,10 @@ body {
   background-color: #000000;
   box-shadow: rgb(87 3 245) 0px 0px 11px, rgb(87 3 245) 0px 0px 6px;
 }
-.spin_rule button{
+
+.spin_rule button {
   color: #ffffff;
-  padding: 5px 17px; 
+  padding: 5px 17px;
   width: 434px !important;
   border-radius: 13px;
   width: auto;
@@ -502,24 +543,29 @@ body {
   background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #9100d4, #3600c9, #0068c9) border-box;
   animation: 2s rotate linear infinite;
 }
-.rule_modal{
+
+.rule_modal {
   color: #fff;
 }
-.rule_modal h3{
+
+.rule_modal h3 {
   color: #fff;
 }
-.rule_modal h5{
+
+.rule_modal h5 {
   color: #fff;
   padding: 10px;
   color: #eb6ec3
 }
-.rule_modal span{
+
+.rule_modal span {
   font-size: 15px;
-color: #fff;
+  color: #fff;
 }
+
 /* END RULE CSS */
 
-.wallet_button button{
+.wallet_button button {
   padding: 7px 17px;
   border: 1px solid #0000;
   border-radius: 8px;
@@ -529,17 +575,18 @@ color: #fff;
   MARGIN-TOP: 12PX;
 }
 
-.custom-alert{
-      /* border: 1px solid red; */
-      padding: 11px 32px;
-      margin-top: 24px;
-      border-radius: 7px;
-      background-color: #000000;
-      box-shadow: rgb(87 3 245) 0px 0px 14px 11px, rgb(87 3 245) 0px 0px 6px;
-      margin-top: 2rem;
-      text-shadow: #ff04bc 1px 0 10px;
-      color: #dcf5e9;
+.custom-alert {
+  /* border: 1px solid red; */
+  padding: 11px 32px;
+  margin-top: 24px;
+  border-radius: 7px;
+  background-color: #000000;
+  box-shadow: rgb(87 3 245) 0px 0px 14px 11px, rgb(87 3 245) 0px 0px 6px;
+  margin-top: 2rem;
+  text-shadow: #ff04bc 1px 0 10px;
+  color: #dcf5e9;
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0);
@@ -633,16 +680,24 @@ color: #fff;
     border-radius: 8px;
     margin-top: -4rem;
   }
+
   .spin_rule {
     width: 320px;
     padding: 8px 5px;
     border-radius: 8px;
   }
+
   .spin_rule button {
     width: 300px !important;
   }
-  .invite_reward button{
-    padding: 7px 6px;
+
+  .invite_reward button {
+    padding: 3px;
+  }
+  .invite_reward button span {
+    padding: 0px 4px;
+    font-size: 11px;
+    font-weight: 100;
   }
 
   .coun_down img {
@@ -728,10 +783,12 @@ color: #fff;
   justify-content: center;
   background: #000000;
 }
-.login_buton{
+
+.login_buton {
   cursor: pointer;
 }
-.login_buton:hover{
+
+.login_buton:hover {
   box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
   transition: .5s;
 }
@@ -813,22 +870,25 @@ form input {
   background-color: #04011360;
   border: 1px solid rgb(255 255 255 / 46%);
 }
+
 .spinner_signup_btn {
-height: 45px;
-outline: none;
-padding: 0 15px;
-font-size: 16px;
-font-weight: 400;
-color: #fffefe;
-border-radius: 8px;
-background-color: #04011360;
-border: 1px solid rgb(255 255 255 / 46%);
-cursor: pointer;
+  height: 45px;
+  outline: none;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fffefe;
+  border-radius: 8px;
+  background-color: #04011360;
+  border: 1px solid rgb(255 255 255 / 46%);
+  cursor: pointer;
 }
+
 .spinner_signup_btn:hover {
   box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
   transition: .5s;
 }
+
 .form.login input {
   border: 1px solid #aaa;
 }
@@ -894,6 +954,7 @@ form input[type="submit"] {
 .modal_body_reward h5 {
   color: #fff;
 }
+
 .modal_body_reward h3 {
   color: #fff;
 }
@@ -925,13 +986,12 @@ form input[type="submit"] {
   justify-content: space-between;
   border: 1px solid #0000;
   border-radius: 12px;
-  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(
-        var(--angle),
-        #070707,
-        #687aff
-      ) border-box;
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle),
+      #070707,
+      #687aff) border-box;
   animation: 10s rotate_1 linear infinite;
 }
+
 @keyframes rotate_1 {
   to {
     --angle: 360deg;
@@ -943,14 +1003,17 @@ form input[type="submit"] {
   initial-value: 0deg;
   inherits: false;
 }
-.social-link:hover{
+
+.social-link:hover {
   box-shadow: 0px 1px 6px 4px #5c00ff;
   cursor: pointer;
   transition: 0.5s;
 }
-.social-text{
+
+.social-text {
   color: #fff;
 }
+
 .claim-button {
   position: relative;
   padding: 4px 12px;
@@ -984,6 +1047,7 @@ form input[type="submit"] {
   -moz-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
+
 .badge-light {
   position: relative;
   padding: 7px 12px;
@@ -1034,7 +1098,9 @@ form input[type="submit"] {
   font-weight: 300;
   color: #fff;
 }
-.social-link, .url-claim {
+
+.social-link,
+.url-claim {
   margin-bottom: 20px;
 }
 
@@ -1049,7 +1115,7 @@ form input[type="submit"] {
 }
 
 #url-input {
-  width:  250px;
+  width: 250px;
   margin-right: 10px;
   font-size: 15px;
   background-color: transparent;
@@ -1060,32 +1126,35 @@ form input[type="submit"] {
 }
 
 /* END REWARD CSS */
-.swal-icon--success:after, .swal-icon--success:before {
+.swal-icon--success:after,
+.swal-icon--success:before {
   background-color: transparent !important;
 }
+
 .swal-icon--success__hide-corners {
   background-color: transparent !important;
 }
 
 /* START ZERO SPIN MODAL */
-.swal-modal{
+.swal-modal {
   background: linear-gradient(30deg, rgba(47, 1, 74, 1) 15%, rgba(0, 5, 24, 1) 85%);
   box-shadow: rgb(87 3 245) 0px 0px 18px, rgb(87 3 245) 0px 0px 12px;
 }
-.swal-title{
+
+.swal-title {
   color: #fff;
 }
-.swal-text{
+
+.swal-text {
   color: #fff;
 }
+
 /* START ZERO SPIN MODAL */
 
 .sign {
-  background-image: radial-gradient(
-    ellipse 50% 35% at 50% 50%,
-    #6b1839,
-    transparent
-  );
+  background-image: radial-gradient(ellipse 50% 35% at 50% 50%,
+      #6b1839,
+      transparent);
   transform: translate(-5%, -5%);
   letter-spacing: 2;
   margin-top: 8px;
@@ -1100,6 +1169,7 @@ form input[type="submit"] {
 }
 
 @keyframes blink {
+
   0%,
   22%,
   36%,
@@ -1109,11 +1179,13 @@ form input[type="submit"] {
       -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
       0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
   }
+
   28%,
   33% {
     color: #ff65bd;
     text-shadow: none;
   }
+
   82%,
   97% {
     color: #ff2483;
@@ -1134,6 +1206,7 @@ form input[type="submit"] {
     color: #6b1839;
     text-shadow: none;
   }
+
   100% {
     color: #ffe6ff;
     text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,

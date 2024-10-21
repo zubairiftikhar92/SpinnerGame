@@ -12,6 +12,8 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <!-- bs -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=workspace_premium" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -121,6 +123,11 @@
                     <img style="margin-bottom: 4px;" src="{{ asset('account/landing_page_images/assets/wallet.svg') }}"
                         alt><span>Wallet</span>
                 </button>
+                <button data-bs-toggle="modal" data-bs-target="#leaderboardModal" id="leaderboard_modal_btn">
+                    <img style="margin-bottom: 4px;"
+                        src="{{ asset('account/landing_page_images/assets/leaderboard.svg') }}"
+                        alt><span>Leaderboard</span>
+                </button>
                 <button data-bs-toggle="modal" data-bs-target="#example_Modal">
                     <img style="width: 16px; margin-top: -5px;"
                         src="{{ asset('account/landing_page_images/assets/rewardbox.svg') }}" alt><span>Quests</span>
@@ -176,7 +183,7 @@
                             <li>
                                 {{ $row->username }}
                                 <span class="badge badge-success" style="margin-left: 10px;">
-                                    Claimed 
+                                    Claimed
                                     <span class="badge badge-warning" style="margin-left: 5px;">500</span>
                                 </span>
                             </li>
@@ -220,11 +227,92 @@
                             <input type="text" name="wallet_address" id="wallet_address"
                                 placeholder="Enter your wallet address"
                                 value="{{ old('wallet_address', $walletAddress ?? '') }}" required>
-                            </div>
+                        </div>
                         <div class="wallet_button">
                             <button id="wallet_submit_button" type="button" data-wallet_address_value=""></button>
                         </div>
                     </form>
+                </div>
+
+                <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> -->
+            </div>
+        </div>
+    </div>
+    <!--END Wallet Modal -->
+
+    <!-- START Wallet Modal -->
+    <div class="modal fade" id="leaderboardModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal_body_invite">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="walletModalLabel">NIMS Leader Board</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="leader_ranks">
+                        <div class="leader_names">
+                            <span class="material-symbols-outlined" style="color: #FFD700;position: relative;top: 2px; font-size: 16px;">
+                             workspace_premium
+                            </span>
+                            <span style="font-size: 14px;margin-left: 10px;">Justin Mark</span>
+                        </div>
+                        <div class="leaders_point">
+                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
+                            <span>12345</span>
+                        </div>
+                    </div>
+                    <div class="leader_ranks">
+                        <div class="leader_names">
+                            <span class="material-symbols-outlined" style="color: #C0C0C0;position: relative;top: 2px; font-size: 16px;">
+                                workspace_premium
+                            </span>
+                            <span style="font-size: 14px;margin-left: 10px;">Usama Saleem</span>
+                        </div>
+                        <div class="leaders_point">
+                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
+                            <span>12345</span>
+                        </div>
+                    </div>
+                    <div class="leader_ranks">
+                        <div class="leader_names">
+                            <span class="material-symbols-outlined" style="color: #964B00;position: relative;top: 2px; font-size: 16px;">
+                                workspace_premium
+                            </span>
+                            <span style="font-size: 14px; margin-left: 10px;">Sofia</span>
+                        </div>
+                        <div class="leaders_point">
+                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
+                            <span>12345</span>
+                        </div>
+                    </div>
+                    <div class="leader_ranks">
+                        <div class="leader_names">
+                            <span class="material-symbols-outlined" style="color: #00b6ff;position: relative;top: 2px; font-size: 16px">
+                                workspace_premium
+                            </span>
+                            <span style="font-size: 14px; margin-left: 10px;">Rick Grimes</span>
+                        </div>
+                        <div class="leaders_point">
+                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
+                            <span>12345</span>
+                        </div>
+                    </div>
+                    <div class="leader_ranks">
+                        <div class="leader_names">
+                            <span class="material-symbols-outlined" style="color: #00b6ff;position: relative;top: 2px; font-size: 16px;">
+                                workspace_premium
+                            </span>
+                            <span style="font-size: 14px; margin-left: 10px;">Amaar</span>
+                        </div>
+                        <div class="leaders_point">
+                            <img src="{{ asset('account/landing_page_images/assets/star.svg') }}" alt="">
+                            <span>12345</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- <div class="modal-footer">
@@ -296,8 +384,7 @@
                             <hr style="color: #fff">
 
                             @if (@$watchYouTubeVideo_NimsDecentralizationAndSecurity != true)
-                            <div class="social-link" data-link_clicked="0"
-                                data-url="https://youtu.be/vsoQoeF2g60"
+                            <div class="social-link" data-link_clicked="0" data-url="https://youtu.be/vsoQoeF2g60"
                                 data-wait-time="5000" style="">
                                 <span class="social-text d-flex">
                                     <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
@@ -309,7 +396,8 @@
                                     </div>
                                 </span>
                                 <button id="video_btn" class="claim-button" data-user_id="{{ session('user_id') }}"
-                                    data-source="watchYouTubeVideo_NimsDecentralizationAndSecurity" data-points="100" style="visibility: hidden">Watch
+                                    data-source="watchYouTubeVideo_NimsDecentralizationAndSecurity" data-points="100"
+                                    style="visibility: hidden">Watch
                                     Video</button>
                             </div>
                             @else
@@ -319,7 +407,7 @@
                                     style="display:flex; align-items: center; width: 100%;">
                                     <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
                                         style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
-                                        Nims Decentralization<br>
+                                    Nims Decentralization<br>
                                     <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
                                         100</span>
                                     <span class="claimed-icon" style="color: green;margin-left: auto;">✔️
@@ -1321,7 +1409,7 @@ $(document).ready(function() {
                 } else {
                     $('#quest-form').append(
                         '<p style="color: red; font-size: 14px;" id="error-message">Incorrect answer. Try again.</p>'
-                        );
+                    );
 
                     // Remove the error message after a few seconds
                     setTimeout(function() {
@@ -1332,28 +1420,27 @@ $(document).ready(function() {
         });
     });
 
-    $('#wallet_modal_btn').click(function(){
+    $('#wallet_modal_btn').click(function() {
         let wallet_address = '{{ $walletAddress }}';
 
-        if (wallet_address === '' || wallet_address === null) 
-            {
-                $('#wallet_submit_button').text('Add Wallet');
-                $('#wallet_submit_button').data('wallet_address_value', '0');
-            } else {
-                $('#wallet_submit_button').text('Update Wallet');
-                $('#wallet_submit_button').data('wallet_address_value', '1');
-            }
-            console.log("Wallet Address is : "+wallet_address);
+        if (wallet_address === '' || wallet_address === null) {
+            $('#wallet_submit_button').text('Add Wallet');
+            $('#wallet_submit_button').data('wallet_address_value', '0');
+        } else {
+            $('#wallet_submit_button').text('Update Wallet');
+            $('#wallet_submit_button').data('wallet_address_value', '1');
+        }
+        console.log("Wallet Address is : " + wallet_address);
     });
 
-    $('#wallet_submit_button').click(function(){
+    $('#wallet_submit_button').click(function() {
         let wallet_address_verification = $(this).data('wallet_address_value');
         console.log("wallet address already verified value is : " + wallet_address_verification);
 
         url = '';
-        if(wallet_address_verification == '0'){
+        if (wallet_address_verification == '0') {
             url = "{{ route('add-wallet-address') }}";
-        }else{
+        } else {
             url = "{{ route('update-wallet-address') }}";
         }
         console.log("wallet address url is : " + url);
@@ -1397,6 +1484,7 @@ $(document).ready(function() {
 const defaults = {
     disableForReducedMotion: true
 };
+
 function triggerCelebration() {
     const sound = document.getElementById("sound_");
     const modal = document.getElementById("confettiModal");
