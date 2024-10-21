@@ -438,12 +438,12 @@ class SpinerGamaController extends Controller
 
         $underScore = chr(95);
         $under_score_string =  $underScore .  $underScore . $underScore .  $underScore .  $underScore . $underScore;
-        // 1st quest ask on 16-10-24
+        // 1st quest ask on 16-10-24 (ans='wallet')
         // $correct_answers = [
         //     "a $under_score_string is a digital software program that stores your cryptocurrencies?" => "wallet",
         // ];
 
-        // 2nd quest ask on 17-10-24
+        // 2nd quest ask on 17-10-24 (ans='decentralized')
         $correct_answers = [
             "cryptocurrencies are $under_score_string, meaning they are not controlled by a single entity like a government or bank." => "decentralized",
         ];
