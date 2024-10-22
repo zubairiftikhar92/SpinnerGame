@@ -1149,6 +1149,27 @@ form input[type="submit"] {
   background-color: transparent !important;
 }
 
+
+/* START REFERAL MODAL ON LOAD CSS */
+.referal_modal_body{
+  background: linear-gradient(30deg, rgba(47, 1, 74, 1) 15%, rgba(0, 5, 24, 1) 85%);
+  border-radius: 10px;
+}
+.referal_modal_body button{
+  background-color: aliceblue;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+.referal_modal_body h5{
+  color: #fff;
+}
+.referal_modal_image img{
+  width:100%;
+  border-radius: 20px !important;
+}
+/* END REFERAL MODAL ON LOAD CSS */
+
+
 /* START ZERO SPIN MODAL */
 .swal-modal {
   background: linear-gradient(30deg, rgba(47, 1, 74, 1) 15%, rgba(0, 5, 24, 1) 85%);

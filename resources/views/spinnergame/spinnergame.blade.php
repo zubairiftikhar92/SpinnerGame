@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    @include('partials.OnLoadReferalModal')
     <video class="coin_video" width="100%" autoplay loop muted>
         <source src="./assets/falling_coin.mp4" type="video/mp4" />
     </video>
@@ -867,7 +868,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 $(document).ready(function() {
-
+    $('#OnLoadReferalModal').modal('show');
     // $('#closePopup').click(function(event) {
     //     event.preventDefault();
     //     spinnerClaimReward();
@@ -1658,4 +1659,8 @@ function triggerCelebration() {
     }
     confettiExplosion(origin);
 }
+// $(document).ready(function() {
+//     // Show the Video Add-On Index Modal on page load
+//     $('#OnLoadReferalModal').modal('show');
+// });
 </script>
