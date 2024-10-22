@@ -31,3 +31,4 @@ Route::post('update-wallet-address' , [SpinerGamaController::class , 'updateWall
 Route::post('claim-retweet-link' , [SpinerGamaController::class , 'claimRetweetLink'])->name('claim-retweet-link');
 Route::post('submit-daily-quest' , [SpinerGamaController::class , 'submitDailyQuest'])->name('submit-daily-quest');
 Route::post('laeder-board-list' , [SpinerGamaController::class , 'laederBoardList'])->name('laeder-board-list');
+Route::post('youtube-code-verify' , [SpinerGamaController::class , 'youtubeCodeVerify'])->name('youtube-code-verify');

@@ -356,6 +356,33 @@
                             @endif
                             <hr style="color: #fff">
 
+                            @if (@$YouTubeCodeVideo != true)
+                            <div class="social-link" id="youtube_code_video" data-link_clicked="0"
+                                data-url="https://youtu.be/N9QygiGl8X8" data-wait-time="5000">
+                                <span class="social-text d-flex">
+                                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                                    <div>
+                                        Youtube Claim Video<br>
+                                        <span class="muted-point-value" style="font-size: 12px; color: gray;">Points:
+                                            250</span>
+                                    </div>
+                                </span>
+                            </div>
+                            @else
+                            <div class="youtube-code-url-claim social-link"
+                                style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                                <span class="social-text d-flex"
+                                    style="display:flex; align-items: center; width: 100%;">
+                                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                                    Youtube Claim Video<br>
+                                    <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points:
+                                        250</span>
+                                    <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
+                                </span>
+                            </div>
+                            @endif
                             @if (@$watchYouTubeVideo_NimsDecentralizationAndSecurity != true)
                             <div class="social-link" data-link_clicked="0" data-url="https://youtu.be/vsoQoeF2g60"
                                 data-wait-time="5000" style="">
@@ -1286,9 +1313,9 @@ $(document).ready(function() {
                      <img src="{{ asset('account/landing_page_images/assets/x.svg') }}" style="width: 25px;margin: 0px 18px 0px 0px;" alt="">
                 <input type="text" id="url-input" placeholder="Paste retweet link" required style="color:white" />
                 <span class="error-message" style="color: red; display: none;">Please enter a valid retweet link.</span>
+                </span>
                 <button class="claim-button" data-user_id="{{ session('user_id') }}" data-source="ReTweetLink"
                     data-points="200" id="claim-url-btn">Claim</button>
-                    </span>
             </div>
         `);
     });
@@ -1327,9 +1354,86 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.status) {
                     $('.url-claim').html(`
-                        <span class="social-text">
+                    <img src="{{ asset('account/landing_page_images/assets/x.svg') }}"
+                                        style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                        <span class="social-text" style="width: 100%;display: flex; justify-content:space-between; align-items: center;">
                             ReTweet Link<br>
                             <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 200</span>
+                            <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
+                        </span>
+                    `);
+                } else {
+                    $('.error-message').text(response.message).show();
+                }
+            }
+        });
+    });
+
+
+    // watch youtube video, and get code for claim reward code start here
+    $('#youtube_code_video').click(function(event) {
+        event.preventDefault();
+
+        var youtubeUrl = $(this).data('url');
+        window.open(youtubeUrl, '_blank');
+
+        // Replace the clicked section with the input field and claim button
+        $(this).replaceWith(`
+            <div class="youtube-code-url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
+                <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
+                     <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                            style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                <input type="text" class="youtube_code_paste" id="verify_youtube_code" placeholder="Paste Code Here" required style="color:white" />
+                <input type="hidden" id="youtube_url" data-url="" />
+                <span class="error-message" style="color: red; display: none;">Please enter a valid code here.</span>
+                </span>
+                <button class="claim-button" data-user_id="{{ session('user_id') }}" data-source="YouTubeCodeVideo"
+                    data-points="250" id="verify_youtube_code_btn">Claim</button>
+            </div>
+        `);
+        $('#youtube_url').attr('data-url', youtubeUrl);
+    });
+
+    $(document).on('click', '#verify_youtube_code_btn', function(event) {
+        event.preventDefault();
+
+        let user_id = $(this).data('user_id');
+        let source = $(this).data('source');
+        let points = $(this).data('points');
+        let YoutubeCode = $('#verify_youtube_code').val();
+        let YoutubeURL = $('#youtube_url').data('url');
+
+        if(user_id == null || user_id == '' || user_id == undefined){
+            window.location.href = "{{ route('spinner-game-login') }}";
+            return;
+        }
+        // Check if the retweet link is valid
+        if (!YoutubeCode) {
+            $('.error-message').show();
+            return;
+        } else {
+            $('.error-message').hide();
+        }
+
+        $.ajax({
+            url: "{{ route('youtube-code-verify') }}",
+            method: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                user_id: user_id,
+                source: source,
+                points: points,
+                youtube_code: YoutubeCode,
+                youtube_url : YoutubeURL,
+            },
+            success: function(response) {
+                if (response.status) {
+                    $('.youtube-code-url-claim').html(`
+                    <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
+                                        style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                        <span class="social-text" style="display: flex; width: 100%; align-items: center;">
+                            Youtube Claim Video<br>
+                            <span class="muted-point-value ml-3" style="font-size: 12px; color: gray;">Points: 250</span>
                             <span class="claimed-icon" style="color: green;margin-left: auto;">✔️ Claimed</span>
                         </span>
                     `);

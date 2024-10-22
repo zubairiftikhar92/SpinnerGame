@@ -152,11 +152,11 @@ class SpinerGamaController extends Controller
 
             // $result = DB::table('game_registrations')->select('username')->where('userid', $u_id)->first();
             DB::table('game_rewards')->insertGetId([
-                'userid' => $dsponserid,
-                'username' => isset($res) ? $res->username : '',
-                'email' => isset($res) ? $res->email : '',
-                'total_earn_tokens' => 500,
-                'source' => 'referral_reward',
+                'userid' => isset($dsponserid) ? $dsponserid : $current_user->userid,
+                'username' => isset($res) ? $res->username : $current_user->username,
+                'email' => isset($res) ? $res->email : $current_user->email,
+                'total_earn_tokens' => isset($dsponserid) ? 500 : 0,
+                'source' => isset($dsponserid) ? 'referral_reward' : 'without_referral_user',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);
@@ -189,17 +189,17 @@ class SpinerGamaController extends Controller
             // dd($response);
 
             // Check if "Remember Me" is checked
-            if ($request->has('remember_me')) {
-                // Generate a new remember token and store it in the database
-                $rememberToken = Str::random(60); // 60 characters long
-                DB::table('game_registrations')->where('userid', $response->userid)->update([
-                    'remember_token' => $rememberToken
-                ]);
+            // if ($request->has('remember_me')) {
+            //     // Generate a new remember token and store it in the database
+            //     $rememberToken = Str::random(60); // 60 characters long
+            //     DB::table('game_registrations')->where('userid', $response->userid)->update([
+            //         'remember_token' => $rememberToken
+            //     ]);
 
-                // Set a cookie for the remember token (valid for 30 days, you can adjust the time)
-                // cookie()->queue('remember_token', $rememberToken, 43200); // 30 days in minutes
-                cookie()->queue('remember_token', $rememberToken, 1);
-            }
+            //     // Set a cookie for the remember token (valid for 30 days, you can adjust the time)
+            //     // cookie()->queue('remember_token', $rememberToken, 43200); // 30 days in minutes
+            //     cookie()->queue('remember_token', $rememberToken, 1);
+            // }
 
             return redirect()->route('spinner-game');
         } else {
@@ -209,7 +209,6 @@ class SpinerGamaController extends Controller
 
     public function spinerGame()
     {
-        // dd(session()->all());
         $u_id = session()->get('user_id');
         $results = DB::table('game_registrations')
             ->select('email', 'total_reward_tokens', 'wallet_address', 'created_at', 'updated_at')
@@ -242,6 +241,7 @@ class SpinerGamaController extends Controller
         $watchYouTubeVideo = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo') : false;
         $ReTweetLink = isset($social_sources) ? $social_sources->contains('ReTweetLink') : false;
         $watchYouTubeVideo_NimsDecentralizationAndSecurity = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo_NimsDecentralizationAndSecurity') : false;
+        $YouTubeCodeVideo = isset($social_sources) ? $social_sources->contains('YouTubeCodeVideo') : false;
 
         $daily_quest_data = DB::table('game_rewards')
             ->where('source', 'LIKE', 'DailyQuest%')
@@ -257,7 +257,7 @@ class SpinerGamaController extends Controller
             $DailyQuest = true;
         }
 
-        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo','watchYouTubeVideo_NimsDecentralizationAndSecurity', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress' , 'leaders_list'));
+        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo','watchYouTubeVideo_NimsDecentralizationAndSecurity', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress' , 'leaders_list' , 'YouTubeCodeVideo'));
     }
 
     public function spinnerGameReward(Request $request)
@@ -507,5 +507,58 @@ class SpinerGamaController extends Controller
             return response()->json(['status' => true, 'message' => 'Correct answer! Points awarded.']);
         }
         return response()->json(['status' => false, 'message' => 'Incorrect answer.']);
+    }
+
+    public function youtubeCodeVerify(Request $request)
+    {
+        // Validate Youtube Code
+        $CODE = 'NIMSAIRDROP';
+
+        $u_id = $request->user_id;
+        $source = $request->source;
+        $points = $request->points;
+        $YoutubeCode = $request->youtube_code;
+        $YoutubeURL = $request->youtube_url;
+
+        if ($YoutubeCode != $CODE) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Verify Code Please!!!',
+            ]);
+        }
+        
+        $user = DB::table('game_registrations')->where('userid', $u_id)->first();
+        $response = DB::table('game_rewards')
+            ->where('userid', $u_id)
+            ->where('source', $source)
+            ->first();
+            
+        if ($response == null) {
+            DB::table('game_rewards')->insert([
+                'userid' => $user->userid,
+                'username' => $user->username,
+                'email' => $user->email,
+                'total_earn_tokens' => $points,
+                'source' => $source,
+                'retweet_link' => $YoutubeURL.'('. $YoutubeCode .')',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
+
+            // Update user's total reward tokens
+            DB::table('game_registrations')->where('userid', $u_id)->update([
+                'total_reward_tokens' => DB::raw('total_reward_tokens + ' . $points),
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Reward Claimed',
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Reward Already Claimed',
+            ]);
+        }
     }
 }

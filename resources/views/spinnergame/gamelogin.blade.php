@@ -65,10 +65,10 @@
                     <input type="text" id="email" name="email" placeholder="Email address" required />
                     <input type="password" id="password" name="password" placeholder="Password" required />
                     <a href="#">Forgot password?</a>
-                    <div style="color: white">
+                    {{-- <div style="color: white">
                         <input type="checkbox" name="remember_me" id="remember_me">
                         <label for="remember_me">Remember Me</label>
-                    </div>
+                    </div> --}}
                     <input type="submit" class="login_buton" value="Login" />
                 </form>
 

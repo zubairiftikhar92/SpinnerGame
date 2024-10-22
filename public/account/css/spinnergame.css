@@ -1082,6 +1082,20 @@ form input[type="submit"] {
   transform: translate(-50%, -50%);
 }
 
+
+/* START YOUTUBE CODE CSS */
+.youtube_code_paste{
+  width: 250px;
+  margin-right: 10px;
+  font-size: 15px;
+  background-color: transparent;
+  border-bottom: 1px solid #c40eff;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+}
+/* START YOUTUBE CODE CSS */
+
 @keyframes load_er {
   0% {
     transform: rotate(0deg);
@@ -1101,7 +1115,7 @@ form input[type="submit"] {
 
 .social-link,
 .url-claim {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 #claim-url-btn {
