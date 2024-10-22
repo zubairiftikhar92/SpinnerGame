@@ -255,7 +255,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal_body_invite">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="walletModalLabel">NIMS Leader Board</h5>
+                    <h5 class="modal-title" id="walletModalLabel">NIMS Leaderboard</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -1353,9 +1353,9 @@ $(document).ready(function() {
     // ];
 
     // 2nd quest ask on 17-10-24 (ans='decentralized')
-    const questions = [
-        `Cryptocurrencies are ${under_score_string}, meaning they are not controlled by a single entity like a government or bank.`,
-    ];
+    //const questions = [
+    //    `Cryptocurrencies are ${under_score_string}, meaning they are not controlled by a single entity like a government or bank.`,
+    //];
 
     // 3rd quest ask on 18-10-24 (ans='volatile')
     // const questions = [
@@ -1363,9 +1363,9 @@ $(document).ready(function() {
     // ];
 
     // 4th quest ask on 19-10-24 (ans='cryptocurrency exchange')
-    // const questions = [
-    //     `Cryptocurrencies can be purchased on a ${under_score_string} or directly from another person.`,
-    // ];
+     const questions = [
+         `Cryptocurrencies can be purchased on a ${under_score_string} or directly from another person.`,
+     ];
 
     // 5th quest ask on 20-10-24 (ans='cryptography')
     // const questions = [
