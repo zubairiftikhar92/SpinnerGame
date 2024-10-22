@@ -467,9 +467,9 @@ class SpinerGamaController extends Controller
         // ];
 
         // 2nd quest ask on 17-10-24 (ans='decentralized')
-        $correct_answers = [
-            "cryptocurrencies are $under_score_string, meaning they are not controlled by a single entity like a government or bank." => "decentralized",
-        ];
+        //$correct_answers = [
+        //    "cryptocurrencies are $under_score_string, meaning they are not controlled by a single entity like a government or bank." => "decentralized",
+        //];
         
 
         // 3rd quest ask on 18-10-24 (ans='volatile')
@@ -478,9 +478,9 @@ class SpinerGamaController extends Controller
         // ];
 
         // 4th quest ask on 19-10-24 (ans='cryptocurrency exchange')
-        // $correct_answers = [
-        //     "cryptocurrencies can be purchased on a $under_score_string or directly from another person." => "cryptocurrency exchange",
-        // ];
+         $correct_answers = [
+             "cryptocurrencies can be purchased on a $under_score_string or directly from another person." => "cryptocurrency exchange",
+         ];
 
         // 5th quest ask on 20-10-24 (ans='cryptography')
         // $correct_answers = [
