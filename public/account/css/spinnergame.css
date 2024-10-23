@@ -761,6 +761,16 @@ body {
   .star_text img {
     width: 16px;
   }
+  .youtube_code_paste{
+    width: 130px !important;
+  }
+  .claim-button {
+    padding: 3px 6px !important;
+    font-size: 11px !important;
+  }
+  #url-input{
+    width: 130px !important;
+  }
 }
 
 
@@ -1085,7 +1095,7 @@ form input[type="submit"] {
 
 /* START YOUTUBE CODE CSS */
 .youtube_code_paste{
-  width: 250px;
+  width: 245px;
   margin-right: 10px;
   font-size: 15px;
   background-color: transparent;
@@ -1093,6 +1103,9 @@ form input[type="submit"] {
   border-right: none;
   border-top: none;
   border-left: none;
+}
+.youtube_code_paste:focus-visible{
+  border: none;
 }
 /* START YOUTUBE CODE CSS */
 
