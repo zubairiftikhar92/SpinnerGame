@@ -32,3 +32,4 @@ Route::post('claim-retweet-link' , [SpinerGamaController::class , 'claimRetweetL
 Route::post('submit-daily-quest' , [SpinerGamaController::class , 'submitDailyQuest'])->name('submit-daily-quest');
 Route::post('laeder-board-list' , [SpinerGamaController::class , 'laederBoardList'])->name('laeder-board-list');
 Route::post('youtube-code-verify' , [SpinerGamaController::class , 'youtubeCodeVerify'])->name('youtube-code-verify');
+Route::post('youtube-code-verify-2nd-video' , [SpinerGamaController::class , 'youtubeCodeVerify_2ndVideo'])->name('youtube-code-verify-2nd-video');
