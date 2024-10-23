@@ -141,11 +141,6 @@
             </div>
 
             <div class="spin_rule">
-                <button data-bs-toggle="modal" data-bs-target="#leaderBoardModal">
-                    <span>Leader Board</span>
-                </button>
-            </div>
-            <div class="spin_rule">
                 <a href="https://www.instagram.com/join_nims/" target="_blank"><img
                         src="{{ asset('account/landing_page_images/assets/instagram.svg') }}"
                         style="width: 25px;margin: 0px 18px 0px 0px;" alt=""></a>
@@ -1412,7 +1407,7 @@ $(document).ready(function() {
             <div class="youtube-code-url-claim social-link" style="color:white ; display: flex; justify-content: space-between; align-items: center;">
                 <span class="social-text d-flex" style="display:flex; align-items: center; width: 100%;">
                      <img src="{{ asset('account/landing_page_images/assets/youTube.svg') }}"
-                            style="width: 25px; border-radius:20px;margin: 0px 18px 0px 0px;" alt="">
+                            style="width: 25px; margin: 0px 18px 0px 0px;" alt="">
                 <input type="text" class="youtube_code_paste" id="verify_youtube_code" placeholder="Paste Code Here" required style="color:white" />
                 <input type="hidden" id="youtube_url" data-url="" />
                 <span class="error-message" style="color: red; display: none;">Please enter a valid code here.</span>
