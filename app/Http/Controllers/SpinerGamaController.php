@@ -242,6 +242,7 @@ class SpinerGamaController extends Controller
         $ReTweetLink = isset($social_sources) ? $social_sources->contains('ReTweetLink') : false;
         $watchYouTubeVideo_NimsDecentralizationAndSecurity = isset($social_sources) ? $social_sources->contains('watchYouTubeVideo_NimsDecentralizationAndSecurity') : false;
         $YouTubeCodeVideo = isset($social_sources) ? $social_sources->contains('YouTubeCodeVideo') : false;
+        $SecondYouTubeCodeVideo = isset($social_sources) ? $social_sources->contains('SecondYouTubeCodeVideo') : false;
 
         $daily_quest_data = DB::table('game_rewards')
             ->where('source', 'LIKE', 'DailyQuest%')
@@ -258,7 +259,7 @@ class SpinerGamaController extends Controller
             $DailyQuest = true;
         }
 
-        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo','watchYouTubeVideo_NimsDecentralizationAndSecurity', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress' , 'leaders_list' , 'YouTubeCodeVideo'));
+        return view('spinnergame.spinnergame', compact('prize_tokens', 'direct_referral', 'direct_referral_count', 'timeRemaining', 'instagram_claimed', 'linkedIn_claimed', 'telegram_claimed', 'facebook_claimed', 'twitter_join_claimed', 'twitter_like_claimed', 'youtube_claimed', 'FollowCEO', 'FollowCTO', 'watchYouTubeVideo','watchYouTubeVideo_NimsDecentralizationAndSecurity', 'ReTweetLink', 'DailyQuest', 'social_media_rewards', 'user_referral_link', 'walletAddress' , 'leaders_list' , 'YouTubeCodeVideo' , 'SecondYouTubeCodeVideo'));
     }
 
     public function spinnerGameReward(Request $request)
@@ -514,6 +515,59 @@ class SpinerGamaController extends Controller
     {
         // Validate Youtube Code
         $CODE = 'NIMSAIRDROP';
+
+        $u_id = $request->user_id;
+        $source = $request->source;
+        $points = $request->points;
+        $YoutubeCode = $request->youtube_code;
+        $YoutubeURL = $request->youtube_url;
+
+        if ($YoutubeCode != $CODE) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Verify Code Please!!!',
+            ]);
+        }
+        
+        $user = DB::table('game_registrations')->where('userid', $u_id)->first();
+        $response = DB::table('game_rewards')
+            ->where('userid', $u_id)
+            ->where('source', $source)
+            ->first();
+            
+        if ($response == null) {
+            DB::table('game_rewards')->insert([
+                'userid' => $user->userid,
+                'username' => $user->username,
+                'email' => $user->email,
+                'total_earn_tokens' => $points,
+                'source' => $source,
+                'retweet_link' => $YoutubeURL.'('. $YoutubeCode .')',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
+
+            // Update user's total reward tokens
+            DB::table('game_registrations')->where('userid', $u_id)->update([
+                'total_reward_tokens' => DB::raw('total_reward_tokens + ' . $points),
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Reward Claimed',
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Reward Already Claimed',
+            ]);
+        }
+    }
+
+    public function youtubeCodeVerify_2ndVideo(Request $request)
+    {
+        // Validate Youtube Code
+        $CODE = 'fluctuate0009';
 
         $u_id = $request->user_id;
         $source = $request->source;
