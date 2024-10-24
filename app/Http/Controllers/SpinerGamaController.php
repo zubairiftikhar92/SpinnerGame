@@ -246,6 +246,7 @@ class SpinerGamaController extends Controller
 
         $daily_quest_data = DB::table('game_rewards')
             ->where('source', 'LIKE', 'DailyQuest%')
+            ->where('userid', $u_id)
             ->whereDate('created_at', Carbon::today())
             ->first();
             $leaders_list = DB::table('game_registrations')
